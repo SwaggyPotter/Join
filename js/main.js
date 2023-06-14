@@ -1,4 +1,4 @@
-setURL('https://tim-mellentin.developerakademie.net/Join%28New%29/backend');
+setURL('https://tim-mellentin.developerakademie.net/Join/backend');
 let users = [];
 let allContacts = [];
 let tasksToDo = [];
