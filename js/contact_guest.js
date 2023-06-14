@@ -9,9 +9,6 @@ async function loadContactFromBackEnd() {
     }, 300)
 }
 
-
-
-
 // render the contacts
 function renderTheQuestContacts() {
     sortedContacts = sortContactsAndSave(sortedContacts)
