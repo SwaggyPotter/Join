@@ -3,6 +3,7 @@ let checkboxChecked;
 let containerToAdd;
 let bgColor;
 
+
 /**
  * this function renders the board
  * 
@@ -13,6 +14,7 @@ function renderBoard() {
     renderTasksAwaitFeedback();
     renderTasksDone();
 }
+
 
 /**
  * this function sets the background color for the category
@@ -26,6 +28,7 @@ function getCategoryColor(category){
         } 
     }
 }
+
 
 /**
  * this function renders the tasks to do container
@@ -44,6 +47,7 @@ function renderTasksToDo() {
         renderSelectedPersonToDo(i);
     }
 }
+
 
 /**
  * this function renders the selected persons for the task to do
@@ -66,6 +70,7 @@ function renderSelectedPersonToDo(i) {
     fxNbOfInCharge(nbOfInCharge, selectedPerson);
 }
 
+
 /**
  * this function renders the tasks in progress container
  * 
@@ -83,6 +88,7 @@ function renderTasksInProgress() {
         renderSelectedPersonInProgress(i);
     }
 }
+
 
 /**
  * this function renders the selected persons for the task in progress
@@ -105,6 +111,7 @@ function renderSelectedPersonInProgress(i) {
     fxNbOfInCharge(nbOfInCharge, selectedPerson);
 }
 
+
 /**
  * this function renders the tasks await feedback container
  * 
@@ -122,6 +129,7 @@ function renderTasksAwaitFeedback() {
         renderSelectedPersonAwaitFeedback(i);
     }
 }
+
 
 /**
  * this function renders the selected persons for the task await feedback
@@ -144,6 +152,7 @@ function renderSelectedPersonAwaitFeedback(i) {
     fxNbOfInCharge(nbOfInCharge, selectedPerson);
 }
 
+
 /**
  * this function renders the tasks done container
  * 
@@ -161,6 +170,7 @@ function renderTasksDone() {
         renderSelectedPersonDone(i);
     }
 }
+
 
 /**
  * this function renders the selected persons for the task done
@@ -182,6 +192,7 @@ function renderSelectedPersonDone(i) {
     }
     fxNbOfInCharge(nbOfInCharge, selectedPerson);
 }
+
 
 /**
  * this function checks which subtaskss are already done
@@ -219,6 +230,7 @@ function checkDoneTasks(i, taskStatus) {
     }   
 }
 
+
 /**
  * this function checks if there are more than 3 persons assigned to the task and renders a circle with that number inside
  * 
@@ -233,6 +245,7 @@ function fxNbOfInCharge(nbOfInCharge, selectedPerson){
     }
 }
 
+
 /**
  * this function calls the filter function with the value of the search field
  * 
@@ -245,6 +258,7 @@ function filter() {
     filterAwaitFeedback(search);
     filterDone(search);
 }
+
 
 /**
  * this function filters the tasks to do by search
@@ -266,6 +280,7 @@ function filterToDo(search) {
     }
 }
 
+
 /**
  * this function filters the tasks in progress by search
  * 
@@ -285,6 +300,7 @@ function filterInProgress(search) {
         }
     }
 }
+
 
 /**
  * this function filters the tasks await feedback by search
@@ -306,6 +322,7 @@ function filterAwaitFeedback(search) {
     }
 }
 
+
 /**
  * this function filters the tasks done by search
  * 
@@ -326,6 +343,7 @@ function filterDone(search) {
     }
 }
 
+
 /**
  * this function opens the add task popup
  * 
@@ -335,6 +353,7 @@ function openAddTaskPopup(containerString) {
     document.getElementById('add-task-popup-container').classList.remove('d-none');
     renderDueDate();
 }
+
 
 /**
  * this function closes the add task popup

@@ -127,7 +127,7 @@ var DragDropTouch;
      * For details and examples on HTML drag and drop, see
      * https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Drag_operations.
      */
-    var DragDropTouch = (function () {
+    let DragDropTouch = (function () {
         /**
          * Initializes the single instance of the @see:DragDropTouch class.
          */

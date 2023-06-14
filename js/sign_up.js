@@ -6,7 +6,6 @@ function login() {
     let email = document.getElementById("login-mail");
     let password = document.getElementById("login-password");
     let allUsersAsArray = getUsersAsArray();
-
     if(allUsersAsArray != null) { // If users exists in the backend
         let userToReset = allUsersAsArray.filter((user) => user.email == email.value);
         let userCanLogin = loginValidation(userToReset, email, password, 1);
@@ -27,6 +26,7 @@ function login() {
         emptyValues(email, password);
     }
 }
+
 
 /**
  * This function is used to check all login possibilities
@@ -49,10 +49,10 @@ function loginValidation(userToReset, email, password, param) {
     }
 }
 
+
 /**
  * This MAIN function is used to push all the sign-up information in an ARRAY
  */
-
 async function register() {
     let name = document.getElementById("signup-name");
     let email = document.getElementById("signup-mail");
@@ -73,6 +73,7 @@ async function register() {
         await pushToUsersArray(users, name, email, password);
     }
 }
+
 
 /**
  * This function is used to definitely push the users to the array
@@ -95,6 +96,7 @@ async function pushToUsersArray(users, name, email, password) {
     }
 }
 
+
 /**
  * This function prints an error message
  * @return {string}
@@ -106,6 +108,7 @@ function printErrorMessage(msg) {
     errorMessage.innerHTML = `<p class="red">${msg}</p>`;
     setTimeout(()=>{errorMessage.innerHTML = "";},3000);
 }
+
 
 /**
  * This function prints a success message
@@ -119,6 +122,7 @@ function printSuccessMessage(success) {
         setTimeout(()=>{successMsg.innerHTML = "";},3000);
     }
 }
+
 
 /**
  * This function is used to check if you can recover your password
@@ -143,6 +147,7 @@ function recoverPassword() {
     }
 }
 
+
 /**
  * This function starts the animation that the email was sent. Manipulation of several elements
  * @param email - Get the element of the email input field
@@ -157,6 +162,7 @@ function startPwChangeAnimation(email) {
     popup.style.display, popupcontainer.style.display = "block";
 }
 
+
 /**
  * This function is redirecting to the page to recreate the password
  */
@@ -165,6 +171,7 @@ function redirectToPwChange(email) {
     let formElement = document.getElementById("forgot-pw-form");
     formElement.submit();
 }
+
 
 /**
  * This functions checks if you are allowed to stay on the page (checks also if email exists)
@@ -184,6 +191,7 @@ function validatePermission() {
     }
 }
 
+
 /**
  * This function is used to check if the user can reset the PW or not
  */
@@ -197,6 +205,7 @@ function userCanReset() {
         printErrorMessage("The passwords do not match, please retry!");
     }
 }
+
 
 /**
  * This function is used to check IF the user was found and the insert PWs are the same
@@ -216,6 +225,7 @@ function checkPasswordIdentity(email) {
     }
 }
 
+
 /**
  * This function is used to reset definitely your password
  * @param email - The email address for resetting the pw
@@ -229,6 +239,7 @@ async function finalResetPw(email, newPw) {
     await saveUsersToBackend();
     window.location.href = "index.html?success=Password changed correctly";
 }
+
 
 /**
  * This function is used to set the PW inputs to read only

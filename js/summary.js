@@ -38,6 +38,7 @@ function getCurrentDate(x) {
     return `${checkMonthName(month)} ${date}, ${year}`;
 }
 
+
 function formatDate(dateString) {
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     let date = new Date(dateString);
@@ -206,10 +207,6 @@ function checkMonthName(M) {
         return 'December';
     }
 }
-
-
-
-
 
 
 loadTasksFromForSummary()

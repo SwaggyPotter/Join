@@ -9,6 +9,7 @@ async function loadContactFromBackEnd() {
     }, 300)
 }
 
+
 // render the contacts
 function renderTheQuestContacts() {
     sortedContacts = sortContactsAndSave(sortedContacts)
@@ -26,6 +27,7 @@ function renderTheQuestContacts() {
         </div>
     </div>`}
 }
+
 
 // function for giving back the first letter of the firstname and the surename
 function getTheFirstLetterOfName(x) {
@@ -51,6 +53,7 @@ function sortContactsAndSave(contacts) {
     });
     return sortedContacts;
 }
+
 
 // showing the details of a contact: full name, email, telephone number
 function showDetail(j) {
@@ -202,6 +205,7 @@ window.addEventListener('resize', () => {
     }
 })
 
+
 // the function remove and add the blue background in the contact list
 function removeBackgroundFromUnchosed(k) {
     for (let index = 0; index < sortedContacts.length; index++) {
@@ -213,6 +217,8 @@ function removeBackgroundFromUnchosed(k) {
         }
     }
 }
+
+
 // load the letters of the first name into an array and return the letter
 // if the letter counter bigger than 1 he return nothing
 let letterCounter = [];
@@ -227,6 +233,7 @@ function letterSortSet(l) {
     }
 }
 
+
 // this function giving back the amount of a letter
 function countLetter(arr, letter) {
     let count = 0;
@@ -238,11 +245,13 @@ function countLetter(arr, letter) {
     return count;
 }
 
+
 // open the add contact window
 function openAdd() {
     document.getElementById('add-window').style.left = '0';
     closeEdit()
 }
+
 
 // close the add contact window
 function closeAdd() {
@@ -273,6 +282,7 @@ function firstAndSecondNameUpdate(inputVal, number) {
     sortedContacts[number]['name'] = result[0]
     sortedContacts[number]['second-name'] = result[1]
 }
+
 
 // save button for adding a new contact
 function addNewContact() {
@@ -326,6 +336,7 @@ function openAddTask() {
     }
 }
 
+
 let open = 0;
 window.addEventListener('resize', () => {
     if (window.innerWidth > 600 && open == 1) {
@@ -339,6 +350,7 @@ window.addEventListener('resize', () => {
         document.getElementById('task-add-btn').style.right = '-10px';
     }
 })
+
 
 // check for two words in the string
 function containsTwoWords(inputString) {

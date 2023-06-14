@@ -11,6 +11,7 @@ function openNewCategory() {
     addNewCategory();
 }
 
+
 /**
  * this function opens a popup to enter a new category
  * 
@@ -24,6 +25,7 @@ function addNewCategory() {
     }
 }
 
+
 /**
  * this function closes the new category popup
  * 
@@ -31,6 +33,7 @@ function addNewCategory() {
 function closeNewCategory() {
     document.getElementById('new-category').innerHTML = htmlTemplateNewCategory();
 }
+
 
 /**
  * this function checks if name and color are given for the new category
@@ -52,6 +55,7 @@ function getNewCategory() {
     }
 }
 
+
 /**
  * this function pushes the new category in the different arrays
  * 
@@ -70,6 +74,7 @@ async function saveNewCategory(newCategory, newCategoryColor) {
     await saveCategoriesToBackend();
 }
 
+
 /**
  * this function saves the categories in the backend
  * 
@@ -79,6 +84,7 @@ async function saveCategoriesToBackend(){
     await backend.setItem('categoryColors', JSON.stringify(categoryColors));
     await backend.setItem('categories', JSON.stringify(categories));
 }
+
 
 /**
  * this function renders the new category to the category list
@@ -92,6 +98,7 @@ function renderAddedCategory(){
             htmlTemplateCategoryChecked(categoryToRender, ellipseToRender);
 };
     
+
 /**
  * this function stes the new category color
  * 

@@ -50,6 +50,7 @@ function htmlTemplateTasksInProgress(i, widthProgressBar, nbDone){
         `;
 }
 
+
 function htmlTemplateSelectedPersonInProgress(i,j){
     return`
     <div class="initials-icon bg${j}">${tasksInProgress[i]['initials'][j]}</div>
@@ -78,6 +79,7 @@ function htmlTemplateTasksAwaitFeedback(i, widthProgressBar, nbDone){
 </div>
         `;
 }
+
 
 function htmlTemplateSelectedPersonAwaitFeedback(i,j){
     return`
@@ -108,11 +110,13 @@ function htmlTemplateTasksDone(i, widthProgressBar, nbDone){
         `;
 }
 
+
 function htmlTemplateSelectedPersonDone(i,j){
     return`
     <div class="initials-icon bg${j}">${tasksDone[i]['initials'][j]}</div>
     `;
 }
+
 
 function htmlTemplateDetailCardToDo(x){
     return`
@@ -138,6 +142,7 @@ function htmlTemplateDetailCardToDo(x){
     `;
 }
 
+
 function htmlTemplatePersonsDetailCardToDo(x, j){
     return`
     <div class="names">
@@ -147,11 +152,13 @@ function htmlTemplatePersonsDetailCardToDo(x, j){
     `;
 }
 
+
 function htmlTemplateSubtasksDetailCardToDo(x, j, checkedStatus){
     return `
     <span style="padding-top: 6px"> <input class="sutaskCheckbox" type="checkbox" ${checkedStatus}/> ${tasksToDo[x]['subtasks'][j]}</span>
     `;
 }
+
 
 function htmlTemplateDetailCardInProgress(x){
     return`
@@ -177,6 +184,7 @@ function htmlTemplateDetailCardInProgress(x){
     `;
 }
 
+
 function htmlTemplatePersonsDetailCardInProgress(x, j){
     return`
     <div class="names">
@@ -186,11 +194,13 @@ function htmlTemplatePersonsDetailCardInProgress(x, j){
     `;
 }
 
+
 function htmlTemplateSubtasksDetailCardInProgress(x, j, checkedStatus){
     return `
     <span style="padding-top: 6px"> <input class="sutaskCheckbox" type="checkbox" ${checkedStatus}/> ${tasksInProgress[x]['subtasks'][j]}</span>
     `;
 }
+
 
 function htmlTemplateDetailCardAwaitFeedback(x){
     return`
@@ -216,6 +226,7 @@ function htmlTemplateDetailCardAwaitFeedback(x){
     `;
 }
 
+
 function htmlTemplatePersonsDetailCardAwaitFeedback(x, j){
     return`
     <div class="names">
@@ -225,11 +236,13 @@ function htmlTemplatePersonsDetailCardAwaitFeedback(x, j){
     `;
 }
 
+
 function htmlTemplateSubtasksDetailCardAwaitFeedback(x, j, checkedStatus){
     return `
     <span style="padding-top: 6px"> <input class="sutaskCheckbox" type="checkbox" ${checkedStatus}/> ${tasksAwaitFeedback[x]['subtasks'][j]}</span>
     `;
 }
+
 
 function htmlTemplateDetailCardDone(x){
     return`
@@ -255,6 +268,7 @@ function htmlTemplateDetailCardDone(x){
     `;
 }
 
+
 function htmlTemplatePersonsDetailCardDone(x, j){
     return`
     <div class="names">
@@ -264,11 +278,13 @@ function htmlTemplatePersonsDetailCardDone(x, j){
     `;
 }
 
+
 function htmlTemplateSubtasksDetailCardDone(x, j, checkedStatus){
     return `
     <span style="padding-top: 6px"> <input class="sutaskCheckbox" type="checkbox" ${checkedStatus}/> ${tasksDone[x]['subtasks'][j]}</span>
     `;
 }
+
 
 function htmlTemplateTaskToEdit(titleEdit, year, month, day, taskStatus,x){
     return`
@@ -299,6 +315,7 @@ function htmlTemplateTaskToEdit(titleEdit, year, month, day, taskStatus,x){
 `;
 }
 
+
 function htmlTemplateSubtasksToEdit(subtasksToEdit, i, checkedStatus){
     return `
     <div class="ckeckbox-in-edit"> 
@@ -307,6 +324,7 @@ function htmlTemplateSubtasksToEdit(subtasksToEdit, i, checkedStatus){
     </div>
     `;
 }
+
 
 function htmlTemplateAssignedToEdit(assignedToEdit, j){
     return`

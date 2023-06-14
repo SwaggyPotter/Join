@@ -4,6 +4,7 @@ let dueDateEdit;
 let priorityEdit;
 let assignedToEdit;
 
+
 /**
  * this function gets the values who can be changed
  * 
@@ -55,6 +56,7 @@ function editTask(taskStatus, x) {
     renderEditTaskCard(taskStatus, titleEdit, textEdit, dueDateEdit, subtasksToEdit, subtasksToEditAlreadyDone, x);
 }
 
+
 /**
  * this function opens and renders the task to edit while it closes the detail card
  * 
@@ -80,6 +82,7 @@ function renderEditTaskCard(taskStatus, titleEdit, textEdit, dueDateEdit, subtas
     renderSubtasksEditTaskCard(subtasksToEdit, subtasksToEditAlreadyDone);
 }
 
+
 /**
  * this function renders the subtasks on the edit card
  * 
@@ -99,6 +102,7 @@ function renderSubtasksEditTaskCard(subtasksToEdit, subtasksToEditAlreadyDone){
     renderAssignedToEditTaskCard(assignedToEdit);
 }
 
+
 /**
  * this function renders the people the task is assigned to
  * 
@@ -111,6 +115,7 @@ function renderAssignedToEditTaskCard(assignedToEdit){
             htmlTemplateAssignedToEdit(assignedToEdit, j);
     }
 }
+
 
 /**
  * this function registers the added subtask on the edit card
@@ -147,6 +152,7 @@ function renderAddedSubtask(taskStatus, x) {
     executeRenderingAddedSubtask(subtasksToEdit, i);
 }
 
+
 /**
  * this function renders the added subtask on the edit card
  * 
@@ -158,6 +164,7 @@ function executeRenderingAddedSubtask(subtasksToEdit, i){
     document.getElementById('subtask-to-edit').innerHTML +=
         htmlTemplateSubtasksToEdit(subtasksToEdit, i, checkedStatus);
 }
+
 
 /**
  * this function updates the edited task
@@ -200,6 +207,7 @@ function closeEdit(taskStatus, x) {
     closeEditedCard();
 }
 
+
 /**
  * this function closes the edit card 
  * 
@@ -209,6 +217,7 @@ function closeEditedCard(){
     saveTasksToBackend();
     renderBoard();
 }
+
 
 /**
  * this function chooses the priority symbol 
@@ -231,6 +240,7 @@ function editPriority(level, taskStatus, x) {
     }
     changePriority(taskStatus, x, symbol, level);
 }
+
 
 /**
  * this function pushes the priority level and symbol into the specific array
@@ -261,6 +271,7 @@ function changePriority(taskStatus, x, symbol, level) {
     }
     saveTasksToBackend();
 }
+
 
 /**
  * this function prevents that the popups are closed by clicking on them

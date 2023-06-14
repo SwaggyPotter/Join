@@ -17,6 +17,7 @@ function openDetailCardToDo(x) {
     renderSubtaksInDetailCardToDo(x);
 }
 
+
 /**
  * this function renders the subtasks on the detail card for tasks to do
  * 
@@ -34,6 +35,7 @@ function renderSubtaksInDetailCardToDo(x) {
             htmlTemplateSubtasksDetailCardToDo(x, j, checkedStatus);
     }
 }
+
 
 /**
  * this function opens the detail card for tasks in progress
@@ -54,6 +56,7 @@ function openDetailCardInProgress(x) {
     renderSubtaksInDetailCardInProgress(x);
 }
 
+
 /**
  * this function renders the subtasks on the detail card for tasks in progress
  * 
@@ -71,6 +74,7 @@ function renderSubtaksInDetailCardInProgress(x) {
             htmlTemplateSubtasksDetailCardInProgress(x, j, checkedStatus);
     }
 }
+
 
 /**
  * this function opens the detail card for tasks await feedback
@@ -90,6 +94,7 @@ function openDetailCardAwaitFeedback(x) {
     renderSubtaksInDetailCardAwaitFeedback(x);
 }
 
+
 /**
  * this function renders the subtasks on the detail card for tasks await feedback
  * 
@@ -107,6 +112,7 @@ function renderSubtaksInDetailCardAwaitFeedback(x) {
             htmlTemplateSubtasksDetailCardAwaitFeedback(x, j, checkedStatus);
     }
 }
+
 
 /**
  * this function opens the detail card for tasks done
@@ -126,6 +132,7 @@ function openDetailCardDone(x) {
     renderSubtaksInDetailCardDone(x);
 }
 
+
 /**
  * this function renders the subtasks on the detail card for tasks done
  * 
@@ -144,6 +151,7 @@ function renderSubtaksInDetailCardDone(x) {
     }
 }
 
+
 /**
  * this function closes the detail card
  * 
@@ -158,6 +166,7 @@ function closeDetailCard(taskStatus, x) {
     saveTasksToBackend();
     renderBoard();
 }
+
 
 /**
  * this function checks which checkboxes are checked
@@ -174,6 +183,7 @@ function getCheckedCheckBoxes(inputElements){
         }
     };
 }
+
 
 /**
  * this function registers which checkboxes are checked
@@ -213,6 +223,7 @@ function updateCheckboxChecked(taskStatus, x, checkboxChecked){
             };
     }
 }
+
 
 /**
  * this function deletes the selected task

@@ -19,6 +19,7 @@ async function addTask() {
     window.location.href = "board.html";
 }
 
+
 /**
  * This function pushes all data of a new task in the array taskToDo and sves them in the backend
  * 
@@ -44,6 +45,7 @@ async function pushTask(title, text, dueDate) {
     await saveNewTaskinFolder(data);
 }
 
+
 /**
  * this function searchs for checked ckeckboxes
  * 
@@ -53,6 +55,7 @@ function getCheckboxes(){
     getSubtasksForm();
     getSubtasksChecked();
 }
+
 
 /**
  * this function pushes the new task in the choosen tasklist
@@ -77,6 +80,7 @@ async function saveNewTaskinFolder(data){
     await saveTasksToBackend();
 }
 
+
 /**
  * this function pushes the array of people assigned to the task in the data array
  * 
@@ -88,6 +92,7 @@ function getInCharge() {
     }
 }
 
+
 /**
  * this function registers the new added subtasks in the data array
  * 
@@ -97,6 +102,7 @@ function getSubtasksForm() {
         data['subtasks'].push(subtasks[i]);
     }
 }
+
 
 /**
  * this function checks if there are crossed subtasks
@@ -117,6 +123,7 @@ function getSubtasksChecked() {
     }
 }
 
+
 /**
  * this function registers the new task's category
  * 
@@ -132,6 +139,7 @@ function getCategory() {
     checkEmptyCategory(category);
 }
 
+
 /**
  * this function checks if a category is selected
  * 
@@ -145,6 +153,7 @@ function checkEmptyCategory(category){
         addTask();
     }
 }
+
 
 /**
  * this function registers the people who are assigned to the new task
@@ -163,6 +172,7 @@ function getAssignedTo() {
     checkEmptyAssignedTo(assignedTo);
 }
 
+
 /**
  * this function checks if a contact is assigned to the task
  * 
@@ -177,6 +187,7 @@ function checkEmptyAssignedTo(assignedTo){
     }
 }
 
+
 /**
  * this function closes the error message if no contact or category is selected
  * 
@@ -188,6 +199,7 @@ function closeErrorMsg(){
     document.getElementById('color-msg').classList.add('d-none');
     document.getElementById('error-msg').classList.add('d-none');
 }
+
 
 /**
  * this function pushes all new subtasks in the subtasks array
@@ -202,6 +214,7 @@ function getSubTasks() {
     }
 }
 
+
 /**
  * this function opens the name list container 
  * 
@@ -210,6 +223,7 @@ function openContactsToAssign() {
     document.getElementById('list-assigned-to').classList.toggle('d-none');
 }
 
+
 /**
  * this function opens the category list
  * 
@@ -217,6 +231,7 @@ function openContactsToAssign() {
 function openTaskCategory() {
     document.getElementById('list-task-category').classList.toggle('d-none');
 }
+
 
 /**
  * this function renders the assigned to list
@@ -229,6 +244,7 @@ function renderListAssignedTo() {
         content.innerHTML +=
             htmlTemplateListAssignedTo(i);
 }
+
 
 /**
  * this function renders the category list
@@ -245,6 +261,7 @@ function renderListTaskCategory() {
     }
 }
 
+
 /**
  * this function renders the subtasks list
  * 
@@ -260,6 +277,7 @@ function renderSubtasks() {
     content.value = '';
 }
 
+
 /**
  * this function empties the add task form
  * 
@@ -274,6 +292,7 @@ function clearAddTaskForm() {
     document.getElementById('ckeckbox-subtasks').innerHTML = '';
     nbOfSubtasks = 0;
 }
+
 
 /**
  * this function sets the new task's priority and changes the color of the buttons
@@ -302,6 +321,7 @@ function setPriority(string) {
     }
 }
 
+
 /**
  * this function resets the priority buttons' color
  * 
@@ -315,6 +335,7 @@ function resetPriorityBtn() {
     document.getElementById('urgent-btn-img').src = "assets/img/urgent.svg";
 }
 
+
 /**
  * this function renders the date picker with today´s date
  * 
@@ -324,6 +345,7 @@ function renderDueDate(){
     document.getElementById('date-picker').innerHTML = 
         htmlTemplateDueDate(todayDate);
 }
+
 
 /**
  * this function saves all JSON arrays to the backend

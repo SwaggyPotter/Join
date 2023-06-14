@@ -12,6 +12,7 @@ let categoriesBackground = [];
 let categoryColors = [];
 let categories = [];
 
+
 /**
  * this function loads the tasks from backend
  * 
@@ -27,6 +28,7 @@ function loadTasksFromBackend() {
     tasksDone = JSON.parse(taskstringDone) || [];    
 }
 
+
 /**
  * this function loads the contacts from backend
  * 
@@ -34,6 +36,7 @@ function loadTasksFromBackend() {
 function loadContactsFromBackend(){
     contacts = JSON.parse(backend.getItem('contacts'));
 }
+
 
 /**
  * this function loads the categories from the backend
@@ -45,6 +48,7 @@ function loadCategoriesFromBackend(){
     categories = JSON.parse(backend.getItem('categories')) || [];
 }
 
+
 /**
  * This function is used to INIT the backend.
  *
@@ -54,6 +58,7 @@ function loadCategoriesFromBackend(){
 async function initBackend() {
     await downloadFromServer();    
 }
+
 
 /**
  * this function inits the board.html
@@ -66,6 +71,7 @@ async function initBoard() {
     loadCategoriesFromBackend();
     renderBoard();
 }
+
 
 /**
  * this function inits the add_task.html
@@ -80,6 +86,7 @@ async function initAddTask() {
     containerToAdd = 'toDo';
 }
 
+
 /**
  * This function is used to GET all the users from the backend
  * @returns {Promise<void>}
@@ -88,6 +95,7 @@ async function initAddTask() {
 function getSavedUsersFromBackend() {
     users = JSON.parse(backend.getItem('registeredUsers')) || [];
 }
+
 
 /**
  * This function is used to SAVE the users into the backend
@@ -98,6 +106,7 @@ async function saveUsersToBackend() {
     let allUsersAsString = JSON.stringify(users);
     await backend.setItem("registeredUsers", allUsersAsString);
 }
+
 
 /**
  * This function is used to include HTML files from other folders
@@ -116,6 +125,7 @@ async function includeHTML() {
         }
     }
 }
+
 
 /**
  *  This function RETURNS all registered users as an ARRAY
@@ -150,6 +160,7 @@ function getUrlParameters(param) {
     return success;
 }
 
+
 /**
  * This function is used to show/hide the log off menu (toggle class)
  */
@@ -157,6 +168,7 @@ function showLogOffBox() {
     let logOffBox = document.getElementById("more-details");
     logOffBox.classList.toggle("showit");
 }
+
 
 /**
  * this function is used to include the add_task_template.html

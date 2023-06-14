@@ -6,11 +6,13 @@ function htmlTemplateSubtasks(newtaskSubtask, i){
     </div>`;    
 }
 
+
 function htmlTemplateListAssignedTo(i){
     return `
     <li><input class="checkbox-contacts" type="checkbox" /> ${contacts[i]['name']} ${contacts[i]['second-name']}</li>
     `;
 }
+
 
 function htmlTemplateCategory(categoryToRender, ellipseToRender){
     return `
@@ -23,6 +25,7 @@ function htmlTemplateCategory(categoryToRender, ellipseToRender){
     `;
 }
 
+
 function htmlTemplateDueDate(todayDate){
     return `
         <input type="date" id="due-date" name="trip-start" value="" min="${todayDate}" onfocus="this.showPicker()"required>
@@ -30,12 +33,14 @@ function htmlTemplateDueDate(todayDate){
         `;
 }
 
+
 function htmlTemplateNewCategory(){
     return`
     <div class="new-category" id="new-category">
     <span class="hover" onclick="openNewCategory()">New Category</span>
     `;
 }
+
 
 function htmlTemplateNewCategoryEnter(){
     return`
@@ -48,11 +53,13 @@ function htmlTemplateNewCategoryEnter(){
     `;
 }
 
+
 function htmlTemplateNewCategoryColor(ellipse, i){
     return`
     <img src="${ellipse}" id="color${i}" onclick="setCategoryColor(${i})">
     `;
 }
+
 
 function htmlTemplateCategoryChecked(categoryToRender, ellipseToRender){
     return `

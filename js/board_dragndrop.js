@@ -2,6 +2,7 @@ let currentDraggedElement;
 let taskStatus;
 let movedTask;
 
+
 /**
  * this function allows to drop an element
  * 
@@ -10,6 +11,7 @@ let movedTask;
 function allowDrop(ev){
     ev.preventDefault();
 }
+
 
 /**
  * this function changes the task's status 
@@ -62,6 +64,7 @@ function moveTo(container){
 
     saveTasksToBackend();
 }
+
 
 /**
  * this function rembers the task to move
