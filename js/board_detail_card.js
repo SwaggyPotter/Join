@@ -173,7 +173,7 @@ function closeDetailCard(taskStatus, x) {
  * 
  * @param {string} inputElements 
  */
-function getCheckedCheckBoxes(inputElements){
+function getCheckedCheckBoxes(inputElements) {
     checkboxChecked = [];
     for (let i = 0; inputElements[i]; ++i) {
         if (inputElements[i].checked) {
@@ -192,36 +192,29 @@ function getCheckedCheckBoxes(inputElements){
  * @param {number} x 
  * @param {Array} checkboxChecked 
  */
-function updateCheckboxChecked(taskStatus, x, checkboxChecked){
+function updateCheckboxChecked(taskStatus, x, checkboxChecked) {
     switch (taskStatus) {
-
         case 'tasksToDo':
-            tasksToDo[x]['alreadyDone'] = [];
-            for (let i = 0; i < checkboxChecked.length; i++){
-                tasksToDo[x]['alreadyDone'].push(checkboxChecked[i]);
-            };
+            updateCheckboxCheckedExtension(taskStatus, x, checkboxChecked, tasksToDo)
             break;
-
-        case 'tasksInProgress':            
-            tasksInProgress[x]['alreadyDone'] = [];
-            for (let i = 0; i < checkboxChecked.length; i++){
-                tasksInProgress[x]['alreadyDone'].push(checkboxChecked[i]);
-            }
+        case 'tasksInProgress':
+            updateCheckboxCheckedExtension(taskStatus, x, checkboxChecked, tasksInProgress)
             break;
-
         case 'tasksAwaitFeedback':
-            tasksAwaitFeedback[x]['alreadyDone'] = [];
-            for (let i = 0; i < checkboxChecked.length; i++){
-                tasksAwaitFeedback[x]['alreadyDone'].push(checkboxChecked[i]);
-            };
+            updateCheckboxCheckedExtension(taskStatus, x, checkboxChecked, tasksAwaitFeedback)
             break;
-
         case 'tasksDone':
-            tasksDone[x]['alreadyDone'] = [];
-            for (let i = 0; i < checkboxChecked.length; i++){
-                tasksDone[x]['alreadyDone'].push(checkboxChecked[i]);
-            };
+            updateCheckboxCheckedExtension(taskStatus, x, checkboxChecked, tasksDone)
+            break;
     }
+}
+
+
+function updateCheckboxCheckedExtension(taskStatus, x, checkboxChecked, taskType) {
+    taskType[x]['alreadyDone'] = [];
+    for (let i = 0; i < checkboxChecked.length; i++) {
+        taskType[x]['alreadyDone'].push(checkboxChecked[i]);
+    };
 }
 
 
@@ -238,17 +231,14 @@ function deleteTask(taskToDelete, x) {
             delete tasksToDo[x];
             tasksToDo = tasksToDo.filter(isGoodValue);
             break;
-
         case 'tasksInProgress':
             delete tasksInProgress[x];
             tasksInProgress = tasksInProgress.filter(isGoodValue);
             break;
-
         case 'tasksAwaitFeedback':
             delete tasksAwaitFeedback[x];
             tasksAwaitFeedback = tasksAwaitFeedback.filter(isGoodValue);
             break;
-
         case 'tasksDone':
             delete tasksDone[x];
             tasksDone = tasksDone.filter(isGoodValue);

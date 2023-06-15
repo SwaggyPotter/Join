@@ -108,9 +108,6 @@ function renderAssignedToEditTaskCard(assignedToEdit) {
  * @param {number} x 
  */
 function renderAddedSubtask(taskStatus, x) {
-    let i = 0;
-    let subtasksToPush = document.getElementById('task-subtask-edit').value;
-    document.getElementById('task-subtask-edit').value = '';
     switch (taskStatus) {
         case 'tasksToDo':
             renderTaksExtension(taskStatus, x, tasksToDo)
@@ -125,14 +122,17 @@ function renderAddedSubtask(taskStatus, x) {
             renderTaksExtension(taskStatus, x, tasksDone)
             break;
     }
-    executeRenderingAddedSubtask(subtasksToEdit, i);
 }
 
 
-function renderTaksExtension(taskStatus, x, taskType) {
+function renderTaksExtension(taskStatus, x, taskType, subtasksToPush) {
+    let i = 0;
+    subtasksToPush = document.getElementById('task-subtask-edit').value;
+    document.getElementById('task-subtask-edit').value = '';
     taskType[x]['subtasks'].push(subtasksToPush);
     i = taskType[x]['subtasks'].length - 1;
     subtasksToEdit = taskType[x]['subtasks'];
+    executeRenderingAddedSubtask(subtasksToEdit, i);
 }
 
 
