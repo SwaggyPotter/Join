@@ -188,28 +188,24 @@ function setTheNumbersInHtml() {
  */
 function checkForUrgentTasks() {
     for (i = 0; i < tasksToDo.length; i++) {
-        if (tasksToDo[i]['priorityByName'] === 'urgent') {
-            urgentCounter++
-            document.getElementById('tasks-urgent-counter').innerText = urgentCounter;
-        }
+        checkForUrgentTasksExtension(tasksToDo)
     }
     for (i = 0; i < tasksInProgress.length; i++) {
-        if (tasksInProgress[i]['priorityByName'] === 'urgent') {
-            urgentCounter++
-            document.getElementById('tasks-urgent-counter').innerText = urgentCounter;
-        }
+        checkForUrgentTasksExtension(tasksInProgress)
     }
     for (i = 0; i < tasksAwaitFeedback.length; i++) {
-        if (tasksAwaitFeedback[i]['priorityByName'] === 'urgent') {
-            urgentCounter++
-            document.getElementById('tasks-urgent-counter').innerText = urgentCounter;
-        }
+        checkForUrgentTasksExtension(tasksAwaitFeedback)
     }
     for (i = 0; i < tasksDone.length; i++) {
-        if (tasksDone[i]['priorityByName'] === 'urgent') {
-            urgentCounter++
-            document.getElementById('tasks-urgent-counter').innerText = urgentCounter;
-        }
+        checkForUrgentTasksExtension(tasksDone)
+    }
+}
+
+
+function checkForUrgentTasksExtension(taksType) {
+    if (taksType[i]['priorityByName'] === 'urgent') {
+        urgentCounter++
+        document.getElementById('tasks-urgent-counter').innerText = urgentCounter;
     }
 }
 
