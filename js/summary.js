@@ -66,14 +66,16 @@ function getCurrentDate(x) {
  * @returns - returns the month-name
  */
 function formatDate(dateString) {
-    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    let date = new Date(dateString);
-    let monthIndex = date.getMonth();
-    let monthName = months[monthIndex];
-    let day = date.getDate();
-    let year = date.getFullYear();
-    let formattedDate = `${monthName} ${day}, ${year}`;
-    return formattedDate;
+    if (dateString != undefined) {
+        let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        let date = new Date(dateString);
+        let monthIndex = date.getMonth();
+        let monthName = months[monthIndex];
+        let day = date.getDate();
+        let year = date.getFullYear();
+        let formattedDate = `${monthName} ${day}, ${year}`;
+        return formattedDate;
+    }
 }
 
 
@@ -81,7 +83,12 @@ function formatDate(dateString) {
  * Show the next deadline
  */
 function setCurrentDay() {
-    document.getElementById('deadline-date').innerText = `${formatDate(nextClosestDate(today(), dateList))}`;
+    if (formatDate(nextClosestDate(today(), dateList)) == undefined) {
+        document.getElementById('deadline-date').innerText = 'No'
+    }
+    else {
+        document.getElementById('deadline-date').innerText = `${formatDate(nextClosestDate(today(), dateList))}`;
+    }
 }
 
 
