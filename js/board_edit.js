@@ -14,46 +14,30 @@ let assignedToEdit;
 function editTask(taskStatus, x) {
     switch (taskStatus) {
         case 'tasksToDo':
-            titleEdit = tasksToDo[x]['titel'];
-            textEdit = tasksToDo[x]['text'];
-            dueDateEdit = tasksToDo[x]['dueDate'];
-            priorityEdit = tasksToDo[x]['priority'];
-            assignedToEdit = tasksToDo[x]['initials'];
-            subtasksToEdit = tasksToDo[x]['subtasks'];
-            subtasksToEditAlreadyDone = tasksToDo[x]['alreadyDone'];
+            editTasksExtension(taskStatus, x, tasksToDo)
             break;
-
         case 'tasksInProgress':
-            titleEdit = tasksInProgress[x]['titel'];
-            textEdit = tasksInProgress[x]['text'];
-            dueDateEdit = tasksInProgress[x]['dueDate'];
-            priorityEdit = tasksInProgress[x]['priority'];
-            assignedToEdit = tasksInProgress[x]['initials'];
-            subtasksToEdit = tasksInProgress[x]['subtasks'];
-            subtasksToEditAlreadyDone = tasksInProgress[x]['alreadyDone'];
+            editTasksExtension(taskStatus, x, tasksInProgress)
             break;
-
         case 'tasksAwaitFeedback':
-            titleEdit = tasksAwaitFeedback[x]['titel'];
-            textEdit = tasksAwaitFeedback[x]['text'];
-            dueDateEdit = tasksAwaitFeedback[x]['dueDate'];
-            priorityEdit = tasksAwaitFeedback[x]['priority'];
-            assignedToEdit = tasksAwaitFeedback[x]['initials'];
-            subtasksToEdit = tasksAwaitFeedback[x]['subtasks'];
-            subtasksToEditAlreadyDone = tasksAwaitFeedback[x]['alreadyDone'];
+            editTasksExtension(taskStatus, x, tasksAwaitFeedback)
             break;
-
         case 'tasksDone':
-            titleEdit = tasksDone[x]['titel'];
-            textEdit = tasksDone[x]['text'];
-            dueDateEdit = tasksDone[x]['dueDate'];
-            priorityEdit = tasksDone[x]['priority'];
-            assignedToEdit = tasksDone[x]['initials'];
-            subtasksToEdit = tasksDone[x]['subtasks'];
-            subtasksToEditAlreadyDone = tasksDone[x]['alreadyDone'];
+            editTasksExtension(taskStatus, x, tasksDone)
             break;
     }
     renderEditTaskCard(taskStatus, titleEdit, textEdit, dueDateEdit, subtasksToEdit, subtasksToEditAlreadyDone, x);
+}
+
+
+function editTasksExtension(taskStatus, x, taskType) {
+    titleEdit = taskType[x]['titel'];
+    textEdit = taskType[x]['text'];
+    dueDateEdit = taskType[x]['dueDate'];
+    priorityEdit = taskType[x]['priority'];
+    assignedToEdit = taskType[x]['initials'];
+    subtasksToEdit = taskType[x]['subtasks'];
+    subtasksToEditAlreadyDone = taskType[x]['alreadyDone'];
 }
 
 
@@ -68,7 +52,7 @@ function editTask(taskStatus, x) {
  * @param {Array} subtasksToEditAlreadyDone 
  * @param {number} x 
  */
-function renderEditTaskCard(taskStatus, titleEdit, textEdit, dueDateEdit, subtasksToEdit, subtasksToEditAlreadyDone, x){
+function renderEditTaskCard(taskStatus, titleEdit, textEdit, dueDateEdit, subtasksToEdit, subtasksToEditAlreadyDone, x) {
     let year = dueDateEdit.substring(0, 4);
     let month = dueDateEdit.substring(5, 7);
     let day = dueDateEdit.substring(8, 10);
@@ -89,7 +73,7 @@ function renderEditTaskCard(taskStatus, titleEdit, textEdit, dueDateEdit, subtas
  * @param {Array} subtasksToEdit 
  * @param {Array} subtasksToEditAlreadyDone 
  */
-function renderSubtasksEditTaskCard(subtasksToEdit, subtasksToEditAlreadyDone){
+function renderSubtasksEditTaskCard(subtasksToEdit, subtasksToEditAlreadyDone) {
     for (let i = 0; i < subtasksToEdit.length; i++) {
         if (subtasksToEditAlreadyDone[i] == 1) {
             checkedStatus = 'checked';
@@ -108,7 +92,7 @@ function renderSubtasksEditTaskCard(subtasksToEdit, subtasksToEditAlreadyDone){
  * 
  * @param {Array} assignedToEdit 
  */
-function renderAssignedToEditTaskCard(assignedToEdit){
+function renderAssignedToEditTaskCard(assignedToEdit) {
     document.getElementById('persons-to-edit').innerHTML = '';
     for (let j = 0; j < assignedToEdit.length; j++) {
         document.getElementById('persons-to-edit').innerHTML +=
@@ -129,27 +113,26 @@ function renderAddedSubtask(taskStatus, x) {
     document.getElementById('task-subtask-edit').value = '';
     switch (taskStatus) {
         case 'tasksToDo':
-            tasksToDo[x]['subtasks'].push(subtasksToPush);
-            i = tasksToDo[x]['subtasks'].length - 1;
-            subtasksToEdit = tasksToDo[x]['subtasks'];
+            renderTaksExtension(taskStatus, x, tasksToDo)
             break;
         case 'tasksInProgress':
-            tasksInProgress[x]['subtasks'].push(subtasksToPush);
-            i = tasksInProgress[x]['subtasks'].length - 1;
-            subtasksToEdit = tasksInProgress[x]['subtasks'];
+            renderTaksExtension(taskStatus, x, tasksInProgress)
             break;
         case 'tasksAwaitFeedback':
-            tasksAwaitFeedback[x]['subtasks'].push(subtasksToPush);
-            i = tasksAwaitFeedback[x]['subtasks'].length - 1;
-            subtasksToEdit = tasksAwaitFeedback[x]['subtasks'];
+            renderTaksExtension(taskStatus, x, tasksAwaitFeedback)
             break;
         case 'tasksDone':
-            tasksDone[x]['subtasks'].push(subtasksToPush);
-            i = tasksDone[x]['subtasks'].length - 1;
-            subtasksToEdit = tasksDone[x]['subtasks'];
+            renderTaksExtension(taskStatus, x, tasksDone)
             break;
     }
     executeRenderingAddedSubtask(subtasksToEdit, i);
+}
+
+
+function renderTaksExtension(taskStatus, x, taskType) {
+    taskType[x]['subtasks'].push(subtasksToPush);
+    i = taskType[x]['subtasks'].length - 1;
+    subtasksToEdit = taskType[x]['subtasks'];
 }
 
 
@@ -159,7 +142,7 @@ function renderAddedSubtask(taskStatus, x) {
  * @param {Array} subtasksToEdit 
  * @param {number} i 
  */
-function executeRenderingAddedSubtask(subtasksToEdit, i){
+function executeRenderingAddedSubtask(subtasksToEdit, i) {
     checkedStatus = '';
     document.getElementById('subtask-to-edit').innerHTML +=
         htmlTemplateSubtasksToEdit(subtasksToEdit, i, checkedStatus);
@@ -178,33 +161,29 @@ function closeEdit(taskStatus, x) {
     switch (taskStatus) {
         case 'tasksToDo':
             updateCheckboxChecked(taskStatus, x, checkboxChecked);
-            tasksToDo[x]['titel'] = document.getElementById('edited-title').value;
-            tasksToDo[x]['text'] = document.getElementById('textarea-edit').value;
-            tasksToDo[x]['dueDate'] = document.getElementById('due-date-edit').value;
+            closeEditExtension(taskStatus, x, checkboxChecked, tasksToDo);
             break;
-
         case 'tasksInProgress':
             updateCheckboxChecked(taskStatus, x, checkboxChecked);
-            tasksInProgress[x]['titel'] = document.getElementById('edited-title').value;
-            tasksInProgress[x]['text'] = document.getElementById('textarea-edit').value;
-            tasksInProgress[x]['dueDate'] = document.getElementById('due-date-edit').value;
+            closeEditExtension(taskStatus, x, checkboxChecked, tasksInProgress);
             break;
-
         case 'tasksAwaitFeedback':
             updateCheckboxChecked(taskStatus, x, checkboxChecked);
-            tasksAwaitFeedback[x]['titel'] = document.getElementById('edited-title').value;
-            tasksAwaitFeedback[x]['text'] = document.getElementById('textarea-edit').value;
-            tasksAwaitFeedback[x]['dueDate'] = document.getElementById('due-date-edit').value;
+            closeEditExtension(taskStatus, x, checkboxChecked, tasksAwaitFeedback);
             break;
-
         case 'tasksDone':
             updateCheckboxChecked(taskStatus, x, checkboxChecked);
-            tasksDone[x]['titel'] = document.getElementById('edited-title').value;
-            tasksDone[x]['text'] = document.getElementById('textarea-edit').value;
-            tasksDone[x]['dueDate'] = document.getElementById('due-date-edit').value;
+            closeEditExtension(taskStatus, x, checkboxChecked, tasksDone);
             break;
     }
     closeEditedCard();
+}
+
+
+function closeEditExtension(taskStatus, x, checkboxChecked, taskType) {
+    taskType[x]['titel'] = document.getElementById('edited-title').value;
+    taskType[x]['text'] = document.getElementById('textarea-edit').value;
+    taskType[x]['dueDate'] = document.getElementById('due-date-edit').value;
 }
 
 
@@ -212,7 +191,7 @@ function closeEdit(taskStatus, x) {
  * this function closes the edit card 
  * 
  */
-function closeEditedCard(){
+function closeEditedCard() {
     document.getElementById('edit-task').classList.add('d-none');
     saveTasksToBackend();
     renderBoard();
@@ -253,23 +232,25 @@ function editPriority(level, taskStatus, x) {
 function changePriority(taskStatus, x, symbol, level) {
     switch (taskStatus) {
         case 'tasksToDo':
-            tasksToDo[x]['priority'] = symbol;
-            tasksToDo[x]['priorityByName'] = level;
+            changePriorityExtension(taskStatus, x, symbol, level, tasksToDo)
             break;
         case 'tasksInProgress':
-            tasksInProgress[x]['priority'] = symbol;
-            tasksInProgress[x]['priorityByName'] = level;
+            changePriorityExtension(taskStatus, x, symbol, level, tasksInProgress)
             break;
         case 'tasksAwaitFeedback':
-            tasksAwaitFeedback[x]['priority'] = symbol;
-            tasksAwaitFeedback[x]['priorityByName'] = level;
+            changePriorityExtension(taskStatus, x, symbol, level, tasksAwaitFeedback)
             break;
         case 'tasksDone':
-            tasksDone[x]['priority'] = symbol;
-            tasksDone[x]['priorityByName'] = level;
+            changePriorityExtension(taskStatus, x, symbol, level, tasksDone)
             break;
     }
     saveTasksToBackend();
+}
+
+
+function changePriorityExtension(taskStatus, x, symbol, level, taskType) {
+    taskType[x]['priority'] = symbol;
+    taskType[x]['priorityByName'] = level;
 }
 
 
