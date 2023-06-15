@@ -10,7 +10,9 @@ async function loadContactFromBackEnd() {
 }
 
 
-// render the contacts
+/**
+ * render the contacts
+ */
 function renderTheQuestContacts() {
     sortedContacts = sortContactsAndSave(sortedContacts)
     document.getElementById('show-contacts-quest').innerHTML = ``
@@ -29,7 +31,11 @@ function renderTheQuestContacts() {
 }
 
 
-// function for giving back the first letter of the firstname and the surename
+/**
+ * function for giving back the first letter of the firstname and the surename
+ * @param {string} x - the first letter of the choosen name
+ * @returns 
+ */
 function getTheFirstLetterOfName(x) {
     let firstname = sortedContacts[x]['name'].charAt(0).toUpperCase()
     let surename = sortedContacts[x]['second-name'].charAt(0).toUpperCase()
@@ -37,7 +43,11 @@ function getTheFirstLetterOfName(x) {
     return firstletterFullName
 }
 
-// sorting the contacts
+/**
+ * sorting the contacts
+ * @param {object} contacts 
+ * @returns 
+ */
 function sortContactsAndSave(contacts) {
     let sortedContacts = contacts.slice();
     sortedContacts.sort(function (a, b) {
@@ -55,13 +65,19 @@ function sortContactsAndSave(contacts) {
 }
 
 
-// showing the details of a contact: full name, email, telephone number
+/**
+ * showing the details of a contact: full name, email, telephone number
+ * @param {*} j 
+ */
 function showDetail(j) {
     showChosenContact(j);
     document.getElementById('detail-information-screen').innerHTML = detailScreenAdd(j)
 }
 
-
+/**
+ * Open the edit window
+ * @param {object} o - the choosen contact
+ */
 function openEdit(o) {
     document.getElementById('edit-window').innerHTML = openEditScreen(o);
     document.getElementById('edit-window').style.left = '0';
@@ -69,7 +85,9 @@ function openEdit(o) {
     closeAdd()
 }
 
-
+/**
+ * Close the detail window
+ */
 function closeDetail() {
     if (window.innerWidth > 1340 && activShowingContact == true) {
         activShowingContact = false;
@@ -84,13 +102,20 @@ function closeDetail() {
 }
 
 
+/**
+ * Fill the input with name,number.email and phone number of the choosen contact
+ * @param {object} x - the choosen contact
+ */
 function fillEditInput(x) {
     document.getElementById(`nameInputEdit${x}`).value = `${sortedContacts[x]['name'].concat(" ") + sortedContacts[x]['second-name']}`
     document.getElementById(`emailInputEdit${x}`).value = `${sortedContacts[x]['email']}`
     document.getElementById(`phoneInputEdit${x}`).value = `${sortedContacts[x]['tel']}`
 }
 
-
+/**
+ * Save the changes of the choosen contact
+ * @param {object} x - the choosen contact
+ */
 function saveTheEdit(x) {
     if (containsTwoWords(document.getElementById(`nameInputEdit${x}`).value) === true) {
         letterCounter = [];
@@ -110,6 +135,9 @@ function saveTheEdit(x) {
 }
 
 
+/**
+ * Close the edit window
+ */
 function closeEdit() {
     if (window.innerWidth > 1100) {
         document.getElementById('edit-window').style.left = '-50vw'
@@ -120,6 +148,9 @@ function closeEdit() {
 }
 
 
+/**
+ * Change the edit and add window's with on rezise
+ */
 window.addEventListener('resize', () => {
     if (window.innerWidth > 1100) {
         document.getElementById('edit-window').style.left = '-50vw'
@@ -132,7 +163,9 @@ window.addEventListener('resize', () => {
 })
 
 
-// change the background of the s
+/**
+ * change the background of the choosen contact
+ */
 let chosenContactCounter = 0;
 let activShowingContact = null;
 function showChosenContact(c) {
@@ -147,6 +180,9 @@ function showChosenContact(c) {
 }
 
 
+/**
+ * Change the css style of the detail information screen from the chossen contact on rezise
+ */
 window.addEventListener('resize', () => {
     if (window.innerWidth > 1340 && activShowingContact == true) {
         document.getElementById('detail-information-screen').style.padding = 'unset';
@@ -168,7 +204,10 @@ window.addEventListener('resize', () => {
 })
 
 
-// the function remove and add the blue background in the contact list
+/**
+ * the function remove and add the blue background in the contact list
+ * @param {number} k - number in the array of the choosen contact
+ */
 function removeBackgroundFromUnchosed(k) {
     for (let index = 0; index < sortedContacts.length; index++) {
         if (index == chosenContactCounter) {
@@ -181,8 +220,10 @@ function removeBackgroundFromUnchosed(k) {
 }
 
 
-// load the letters of the first name into an array and return the letter
-// if the letter counter bigger than 1 he return nothing
+/**
+ * load the letters of the first name into an array and return the letter
+ * if the letter counter bigger than 1 he return nothing
+ */
 let letterCounter = [];
 function letterSortSet(l) {
     let firstname = sortedContacts[i]['name'].charAt(0).toUpperCase()
@@ -196,7 +237,12 @@ function letterSortSet(l) {
 }
 
 
-// this function giving back the amount of a letter
+/**
+ * this function giving back the amount of a letter
+ * @param {Array} arr 
+ * @param {string} letter 
+ * @returns 
+ */
 function countLetter(arr, letter) {
     let count = 0;
     for (let i = 0; i < arr.length; i++) {
@@ -208,14 +254,18 @@ function countLetter(arr, letter) {
 }
 
 
-// open the add contact window
+/**
+ * open the add contact window
+ */
 function openAdd() {
     document.getElementById('add-window').style.left = '0';
     closeEdit()
 }
 
 
-// close the add contact window
+/**
+ * close the add contact window
+ */
 function closeAdd() {
     if (window.innerWidth > 1100) {
         document.getElementById('add-window').style.left = '-50vw';
@@ -229,6 +279,11 @@ function closeAdd() {
 }
 
 
+/**
+ * Split the full name into first and second name
+ * @param {string} inputValue - the full name from the input
+ * @returns 
+ */
 function splitWords(inputValue) {
     let wordsArray = inputValue.split(" ");
     let firstWord = wordsArray[0];
@@ -238,6 +293,11 @@ function splitWords(inputValue) {
 }
 
 
+/**
+ * Update the names array
+ * @param {string} inputVal 
+ * @param {number} number 
+ */
 function firstAndSecondNameUpdate(inputVal, number) {
     let input = inputVal;
     let result = splitWords(input);
@@ -246,7 +306,9 @@ function firstAndSecondNameUpdate(inputVal, number) {
 }
 
 
-// save button for adding a new contact
+/**
+ * save button for adding a new contact
+ */
 function addNewContact() {
     if (containsTwoWords(document.getElementById('addNameInput').value) === true) {
         let nameAdd = splitWords(document.getElementById('addNameInput').value)
@@ -266,11 +328,17 @@ function addNewContact() {
 }
 
 
+/**
+ * Upload the name to the backend
+ */
 async function addContactToBackend() {
     await backend.setItem('contacts', JSON.stringify(sortedContacts))
 }
 
 
+/**
+ * Clear the inputs from the add window
+ */
 function clearTheAddInput() {
     nameAdd = document.getElementById('addNameInput').value = ``
     emailAdd = document.getElementById('addEmailInput').value = ``
@@ -278,12 +346,18 @@ function clearTheAddInput() {
 }
 
 
+/**
+ * Close the add task window on the contact page
+ */
 function closeAddTaskContact() {
     document.getElementById('add-task-to-contact-container').style.width = '0px'
     open--
 }
 
 
+/**
+ * Open the add task window on the contact page
+ */
 function openAddTask() {
     open++
     if (window.innerWidth > 600 && open == 1) {
@@ -299,6 +373,9 @@ function openAddTask() {
 }
 
 
+/**
+ * Change on rezise the add task to contact windows with
+ */
 let open = 0;
 window.addEventListener('resize', () => {
     if (window.innerWidth > 600 && open == 1) {
@@ -312,73 +389,6 @@ window.addEventListener('resize', () => {
         document.getElementById('task-add-btn').style.right = '-10px';
     }
 })
-
-
-// check for two words in the string
-function containsTwoWords(inputString) {
-    let words = inputString.trim().split(' ');
-    return words.length === 2 && !words.includes('');
-}
-
-
-function getRandomColor() {
-    let colors = ["#FF4136", "#FF851B", "#FFDC00", "#2ECC40", "#0074D9", "#B10DC9", "#01FF70", "#F012BE", "#85144b", "#7FDBFF", "#001f3f", "#39CCCC", "#3D9970", "#2ECC40", "#01FF70", "#FFDC00", "#FF4136", "#85144b", "#F012BE", "#111111"];
-    let randomIndex = Math.floor(Math.random() * colors.length);
-    return colors[randomIndex];
-}
-
-
-function getBackgroundColor(element) {
-    let style = window.getComputedStyle(element);
-    let backgroundColor = style.getPropertyValue("background-color");
-
-    if (backgroundColor.indexOf("rgb") !== -1) {
-        return backgroundColor;
-    } else {
-        let hexColor = rgbToHex(backgroundColor);
-        return hexColor;
-    }
-}
-
-
-function rgbToHex(rgbColor) {
-    let rgbArray = rgbColor.substring(4, rgbColor.length - 1).split(",");
-    let hexArray = [];
-
-    for (let i = 0; i < rgbArray.length; i++) {
-        let hexValue = parseInt(rgbArray[i]).toString(16);
-        hexArray.push(hexValue.length === 1 ? "0" + hexValue : hexValue);
-    }
-    return "#" + hexArray.join("");
-}
-
-
-function openWarning() {
-    document.getElementById('warning-full-name').style.display = 'flex';
-}
-
-
-function closeWarningContact() {
-    document.getElementById('warning-full-name').style.display = 'none';
-}
-
-function showAddPopUp() {
-    document.getElementById('popup-container').style.display = 'flex';
-    document.getElementById('popup-pic').classList.add('popupClassAnimation')
-    setTimeout(() => {
-        document.getElementById('popup-container').style.display = 'none';
-        document.getElementById('popup-pic').classList.remove('popupClassAnimation')
-    }, 1900)
-}
-
-
-function addTaskWithTimeOut() {
-    closeAddTaskContact()
-    showAddPopUp()
-    setTimeout(() => {
-        addTask()
-    }, 2000)
-}
 
 
 loadContactFromBackEnd()
