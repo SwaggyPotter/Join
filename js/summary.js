@@ -1,20 +1,36 @@
 let urgentCounter = 0;
 let dateList = [];
 
+
+/**
+ * Get the username from the local storage
+ * @returns - the user name 
+ */
 function getUsernameFromLocalStorage() {
     let username = localStorage.getItem('username');
     return username;
 }
 
 
+/**
+ * Check the username in the url
+ * @param {string} name 
+ * @returns - name as a string
+ */
 function checkUsernameInUrl(name) {
     let urlParams = new URLSearchParams(window.location.search);
     let username = urlParams.get('name');
     return username === name;
 }
 
-let username = getUsernameFromLocalStorage();
 
+/**
+ * username from local storage
+ */
+let username = getUsernameFromLocalStorage();
+/**
+ * Show the username for the greeting
+ */
 function loadUserNameForGreeting() {
     if (checkUsernameInUrl(username)) {
         if (username !== null) {
@@ -29,6 +45,11 @@ function loadUserNameForGreeting() {
 }
 
 
+/**
+ * Get the current date
+ * @param {*} x 
+ * @returns - the Month name- day and year
+ */
 function getCurrentDate(x) {
     let today = new Date();
     let date = x.getDate();
@@ -39,6 +60,11 @@ function getCurrentDate(x) {
 }
 
 
+/**
+ * Search based on the month number the matched month name
+ * @param {string} dateString 
+ * @returns - returns the month-name
+ */
 function formatDate(dateString) {
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     let date = new Date(dateString);
@@ -51,11 +77,20 @@ function formatDate(dateString) {
 }
 
 
+/**
+ * Show the next deadline
+ */
 function setCurrentDay() {
     document.getElementById('deadline-date').innerText = `${formatDate(nextClosestDate(today(), dateList))}`;
 }
 
 
+/**
+ * Check for the closest deadline date
+ * @param {number} date 
+ * @param {Array} dateList 
+ * @returns 
+ */
 function nextClosestDate(date, dateList) {
     let closest = dateList[0];
     let diff = Math.abs(date - closest);
@@ -70,6 +105,9 @@ function nextClosestDate(date, dateList) {
 }
 
 
+/**
+ * Load the tasks
+ */
 function loadTasksDates() {
     for (i = 0; i < tasksToDo.length; i++) {
         dateList.push(tasksToDo[i]['dueDate'])
@@ -86,6 +124,10 @@ function loadTasksDates() {
 }
 
 
+/**
+ * 
+ * @returns - Returns the current day
+ */
 function today() {
     let today = new Date();
     let date = today.getDate();
@@ -95,6 +137,10 @@ function today() {
 }
 
 
+/**
+ * 
+ * @returns - return a 0 if a number is under 10
+ */
 function checkForZero() {
     let today = new Date();
     let month = today.getMonth() + 1;
@@ -104,6 +150,9 @@ function checkForZero() {
 }
 
 
+/**
+ * load the tasks and push it into the array for the summary screen
+ */
 async function loadTasksFromForSummary() {
     await downloadFromServer();
     loadTasksFromBackend();
@@ -122,6 +171,9 @@ async function loadTasksFromForSummary() {
 }
 
 
+/**
+ * Update the summary screen with the amount of task-, todo, inBoard etc.
+ */
 function setTheNumbersInHtml() {
     document.getElementById('tasks-to-do-counter').innerText = tasksToDo.length;
     document.getElementById('task-in-board-counter').innerText = (tasksToDo.length + tasksInProgress.length + tasksAwaitFeedback.length + tasksDone.length)
@@ -131,6 +183,9 @@ function setTheNumbersInHtml() {
 }
 
 
+/**
+ * loop over all the tasks and search for a taks with priority urgent
+ */
 function checkForUrgentTasks() {
     for (i = 0; i < tasksToDo.length; i++) {
         if (tasksToDo[i]['priorityByName'] === 'urgent') {
@@ -159,6 +214,9 @@ function checkForUrgentTasks() {
 }
 
 
+/**
+ * Greet the person on devices under 1140px in a full screen 
+ */
 function greetingOnSmartDevice() {
     if (window.innerWidth < 1140) {
         document.getElementById('full-screen-greeting').style.display = 'flex';
@@ -169,6 +227,11 @@ function greetingOnSmartDevice() {
 }
 
 
+/**
+ * Check based on the month number for the month name
+ * @param {number} M - the number of the month
+ * @returns - the month name
+ */
 function checkMonthName(M) {
     if (M == 1) {
         return 'January';
