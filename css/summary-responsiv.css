@@ -1,4 +1,4 @@
-@media screen and (max-width:1370px) {
+@media screen and (max-width:1390px) {
     #time-and-tasks {
         display: inline;
         justify-content: space-between;
@@ -15,7 +15,7 @@
     }
 }
 
-@media screen and (min-width:1101px) and (max-width:1370px) {
+@media screen and (min-width:1101px) and (max-width:1389px) {
     #tasks-to-to {
         transition: 125ms;
         display: flex;
@@ -67,8 +67,17 @@
 }
 
 @media screen and (max-width: 1140px) {
+    body {
+        overflow: auto;
+    }
+
     #greeting {
         display: none;
+    }
+
+    #summary-content {
+        overflow: auto;
+        height: auto;
     }
 }
 
@@ -325,7 +334,7 @@
         border: solid rgba(255, 255, 255, 0.103) 1px;
     }
 
-    #task-urgent-emblem-number{
+    #task-urgent-emblem-number {
         margin-right: 17px;
     }
 
