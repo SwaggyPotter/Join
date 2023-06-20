@@ -3,9 +3,9 @@
 ########### CONFIG ###############
 
 $recipient = $_POST['email'];
-$link = "https://f0156383@tim-mellentin.developerakademie.net/Join%28New%29/reset_pw.html" . $recipient;
+$link = "https://tim-mellentin.developerakademie.net/Join/reset_pw.html?email=" . $recipient;
 $message = 'Someone requested to reset the password for the account ' . $recipient . '. Please click on ' . $link . ' to reset your password. If it wasn\'t you, just ignore this email.';
-$redirect = 'https://f0156383@tim-mellentin.developerakademie.net/Join%28New%29/index.html';
+$redirect = 'https://tim-mellentin.developerakademie.net/Join/index.html';
 ########### CONFIG END ###########
 
 
@@ -41,7 +41,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         header("Access-Control-Allow-Origin: *");
 
         $subject = "Password change request";
-        $headers = "From:  noreply@join.net";
+        $headers = "From:  joinprojekt.mellentin@freenet.de";
 
         mail($_POST['email'], $subject, $message, $headers);
         header("Location: " . $redirect); 
