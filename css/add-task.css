@@ -1,6 +1,7 @@
 body {
     font-family: 'PT Sans', 'sans-serif';
     background-color: #f9f9f9;
+    overflow: hidden;
 }
 
 .add-task-container{
@@ -338,7 +339,7 @@ body {
     display: none;
 }
 
-@media(max-width: 1140px) {
+@media(max-width: 1215px) {
    .add-task-container{
     justify-content:center ;
     align-items: center;
@@ -356,7 +357,8 @@ body {
     }
 }
 
-@media(max-width: 550px){
+
+@media(max-width: 570px){
     .add-task-form{
         width: 95vw;
     }

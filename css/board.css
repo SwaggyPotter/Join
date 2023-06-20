@@ -337,7 +337,7 @@ height: 15px;
     align-items: center;
     justify-content: center;
     overflow-y: scroll !important;
-    min-height: 100%;
+    min-height: 110%;
     height: auto !important;
     margin: auto;
 }
