@@ -1,6 +1,10 @@
+body{
+    overflow: hidden;
+}
+
 #contact-content {
     display: flex;
-    height: 89vh;
+    height: 80vh;
     overflow-y: scroll;
 }
 

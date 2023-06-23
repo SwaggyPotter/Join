@@ -262,7 +262,7 @@
 
     #contact-content {
         display: flex;
-        height: 80vh;
+        height: 73vh;
         overflow-y: scroll;
         width: 100%;
         justify-content: center;
@@ -295,5 +295,54 @@
         width: 100%;
         transition: 125ms;
         background-color: rgb(255, 255, 255);
+    }
+
+
+    .email-card-guest {
+        width: 453px;
+        padding: 25px 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media screen and (max-height: 529px) and (min-height: 370px) {
+    #contact-content {
+        display: flex;
+        height: 50vh;
+        overflow-y: scroll;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-height: 700px) and (min-height: 530px) {
+    #contact-content {
+        display: flex;
+        height: 65vh;
+        overflow-y: scroll;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-height: 853px) and (min-height: 700px) {
+    #contact-content {
+        display: flex;
+        height: 70vh;
+        overflow-y: scroll;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-height: 925px) and (min-height: 854px) {
+    #contact-content {
+        display: flex;
+        height: 78vh;
+        overflow-y: scroll;
+        width: 100%;
+        justify-content: center;
     }
 }

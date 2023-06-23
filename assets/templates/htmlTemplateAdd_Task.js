@@ -29,7 +29,7 @@ function htmlTemplateCategory(categoryToRender, ellipseToRender){
 function htmlTemplateDueDate(todayDate){
     return `
         <input type="date" id="due-date" name="trip-start" value="" min="${todayDate}" onfocus="this.showPicker()"required>
-        <img src="/assets/img/calendar.svg">
+        <img src="assets/img/calendar.svg">
         `;
 }
 
