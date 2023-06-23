@@ -15,6 +15,7 @@ function openDetailCardToDo(x) {
             htmlTemplatePersonsDetailCardToDo(x, j);
     };
     renderSubtaksInDetailCardToDo(x);
+    document.getElementById('body').style.overflow = 'hidden';
 }
 
 
@@ -54,6 +55,7 @@ function openDetailCardInProgress(x) {
             htmlTemplatePersonsDetailCardInProgress(x, j);
     };
     renderSubtaksInDetailCardInProgress(x);
+    document.getElementById('body').style.overflow = 'hidden';
 }
 
 
@@ -92,6 +94,7 @@ function openDetailCardAwaitFeedback(x) {
             htmlTemplatePersonsDetailCardAwaitFeedback(x, j);
     };
     renderSubtaksInDetailCardAwaitFeedback(x);
+    document.getElementById('body').style.overflow = 'hidden';
 }
 
 
@@ -130,6 +133,7 @@ function openDetailCardDone(x) {
             htmlTemplatePersonsDetailCardDone(x, j);
     };
     renderSubtaksInDetailCardDone(x);
+    document.getElementById('body').style.overflow = 'hidden';
 }
 
 
@@ -165,6 +169,7 @@ function closeDetailCard(taskStatus, x) {
     document.getElementById('details').classList.add('d-none');
     saveTasksToBackend();
     renderBoard();
+    document.getElementById('body').style.overflow = 'visible';
 }
 
 

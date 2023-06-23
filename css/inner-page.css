@@ -25,7 +25,7 @@ h2 {
     padding-bottom: 20px;
 }
 
-.paddingTop{
+.paddingTop {
     padding-top: 10vh;
 }
 
@@ -43,7 +43,7 @@ h2 {
 }
 
 .main .container .center {
-    padding:0;
+    padding: 0;
     max-width: inherit;
     margin: auto;
 }
@@ -86,7 +86,7 @@ h2 {
 .user-img {
     background: #fff;
     display: block;
-    width:50px;
+    width: 50px;
     height: 50px;
     border-radius: 50%;
     display: flex;
@@ -96,7 +96,7 @@ h2 {
 
 .user-img img {
     border-radius: 50%;
-    border:3px solid #4589FF;
+    border: 3px solid #4589FF;
 }
 
 .more-details {
@@ -126,17 +126,17 @@ h2 {
 }
 
 .sidebar {
-    width:20%;
+    width: 20%;
     height: calc(100vh - 102.5px);
     box-shadow: 0px 2px 5px #ececec;
     position: sticky;
 }
 
 .content {
-    width:80%;
+    width: 80%;
     font-size: 16px;
     color: #000;
-    background:#f9f9f9;
+    background: #f9f9f9;
     overflow: scroll;
     height: 94vh;
 }
@@ -158,14 +158,14 @@ h2 {
 .content ol li {
     display: flex;
     align-items: flex-start;
-    margin:0 0 10px 0;
+    margin: 0 0 10px 0;
 }
 
 .content ol li span {
     font-size: 33px;
     font-weight: bold;
     color: #005DFF;
-    padding:5px 35px 0 0;
+    padding: 5px 35px 0 0;
 }
 
 .sidebar .wrapper {
@@ -189,7 +189,7 @@ h2 {
 
 .go-back {
     position: absolute;
-    top:0;
+    top: 0;
     right: 0;
 }
 
@@ -198,11 +198,11 @@ h2 {
 }
 
 .navigation li {
-    margin-top:20px;
+    margin-top: 20px;
 }
 
 .navigation li:first-child {
-    margin-top:0;
+    margin-top: 0;
 }
 
 .navigation a {
@@ -218,12 +218,12 @@ h2 {
 }
 
 .navigation a.active-menu, .navigation a:hover {
-    background:#D2E3FF;
+    background: #D2E3FF;
     border-radius: 8px;
 }
 
 .navigation span.m-img {
-    width:30px;
+    width: 30px;
     margin-right: 20px;
 }
 
@@ -233,12 +233,12 @@ h2 {
 }
 
 #secondary-navigation a:hover {
-    background:#005DFF;
+    background: #005DFF;
     color: #fff;
 }
 
 #secondary-navigation a.active-menu {
-    background:#005DFF;
+    background: #005DFF;
     border-radius: 8px;
     color: #fff;
 }
@@ -259,7 +259,7 @@ h2 {
         display: block;
     }
 
-    body{
+    body {
         overflow: auto;
     }
 
@@ -286,7 +286,7 @@ h2 {
     }
 
     .sidebar .wrapper {
-        padding:0px 23px;
+        padding: 0px 23px;
         height: auto;
     }
 
@@ -308,12 +308,14 @@ h2 {
         justify-content: center;
         gap: 15px;
     }
+
     .navigation a {
         display: block;
         height: auto;
         line-height: inherit;
         padding: 10px;
     }
+
     .navigation img {
         margin: 0 auto;
         height: 40px;
@@ -333,7 +335,12 @@ h2 {
     h2 {
         font-size: 23px;
     }
+
     .right-bar p {
         display: none;
+    }
+
+    .paddingTop {
+        padding-top: 15vh;
     }
 }
