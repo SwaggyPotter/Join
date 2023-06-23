@@ -1,4 +1,4 @@
-body{
+body {
     overflow: hidden;
 }
 
@@ -43,6 +43,20 @@ body{
     border-radius: 10px;
     border: none;
     background-color: #4589FF;
+    color: white;
+    font-size: 23px;
+    cursor: pointer;
+}
+
+.add-contact-button:hover {
+    position: absolute;
+    right: 48px;
+    bottom: 84px;
+    padding: 18px 10px 18px 10px;
+    width: 197px;
+    border-radius: 10px;
+    border: none;
+    background-color: #0f67ff;
     color: white;
     font-size: 23px;
     cursor: pointer;
@@ -227,7 +241,7 @@ body{
     border-bottom: solid 1px gray;
 }
 
-.input-container input{
+.input-container input {
     border: none;
     padding: 20px;
 }
