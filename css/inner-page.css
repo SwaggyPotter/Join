@@ -25,9 +25,16 @@ h2 {
     padding-bottom: 20px;
 }
 
+.paddingTop{
+    padding-top: 10vh;
+}
+
 .header {
     background: #4589FF;
     color: #fff;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
 }
 
 .main {

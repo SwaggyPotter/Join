@@ -27,6 +27,7 @@ body{
 #time-and-tasks {
     display: flex;
     justify-content: space-between;
+    margin-top: 10vh;
 }
 
 #time-and-tasks a {

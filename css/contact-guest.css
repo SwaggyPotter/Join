@@ -54,6 +54,7 @@ body{
     align-items: center;
     width: 357px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .contact-card-quest:hover {
