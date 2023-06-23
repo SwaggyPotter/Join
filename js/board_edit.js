@@ -41,6 +41,20 @@ function editTasksExtension(taskStatus, x, taskType) {
 }
 
 
+function setPriorityColor(priorityEdit) {
+    if (priorityEdit == 'assets/img/urgent.svg') {
+        document.getElementById('urgent-btn').style.backgroundColor = 'red';
+        console.log('change')
+    }
+    else if (priorityEdit == 'assets/img/medium.svg') {
+        document.getElementById('medium-btn').style.backgroundColor = 'yellow';
+    }
+    else if (priorityEdit == 'assets/img/low.svg') {
+        document.getElementById('low-btn').style.backgroundColor = 'green';
+    }
+}
+
+
 /**
  * this function opens and renders the task to edit while it closes the detail card
  * 
@@ -59,10 +73,12 @@ function renderEditTaskCard(taskStatus, titleEdit, textEdit, dueDateEdit, subtas
     document.getElementById('details').classList.add('d-none');
     document.getElementById('edit-task').classList.remove('d-none');
     document.getElementById('edit-task-popup').innerHTML = '';
+    document.getElementById('edit-task').setAttribute('onclick', `closeEdit('${taskStatus}', ${x})`)
     document.getElementById('edit-task-popup').innerHTML +=
         htmlTemplateTaskToEdit(titleEdit, year, month, day, taskStatus, x);
     document.getElementById('textarea-edit').value = textEdit;
     document.getElementById('subtask-to-edit').innerHTML = '';
+    setPriorityColor(priorityEdit)
     renderSubtasksEditTaskCard(subtasksToEdit, subtasksToEditAlreadyDone);
 }
 
@@ -157,6 +173,7 @@ function executeRenderingAddedSubtask(subtasksToEdit, i) {
  */
 function closeEdit(taskStatus, x) {
     let inputElements = document.getElementsByClassName('edited-subtasks');
+    document.getElementById('body').style.overflow = 'visible'
     getCheckedCheckBoxes(inputElements);
     switch (taskStatus) {
         case 'tasksToDo':
