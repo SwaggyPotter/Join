@@ -44,7 +44,6 @@ function editTasksExtension(taskStatus, x, taskType) {
 function setPriorityColor(priorityEdit) {
     if (priorityEdit == 'assets/img/urgent.svg') {
         document.getElementById('urgent-btn').style.backgroundColor = 'red';
-        console.log('change')
     }
     else if (priorityEdit == 'assets/img/medium.svg') {
         document.getElementById('medium-btn').style.backgroundColor = 'yellow';
@@ -198,11 +197,17 @@ function closeEdit(taskStatus, x) {
 
 
 function closeEditExtension(taskStatus, x, checkboxChecked, taskType) {
+    loadNewAssignedTo();
     taskType[x]['titel'] = document.getElementById('edited-title').value;
     taskType[x]['text'] = document.getElementById('textarea-edit').value;
     taskType[x]['dueDate'] = document.getElementById('due-date-edit').value;
+    taskType[x]['inCharge']
 }
 
+
+function loadNewAssignedTo(){
+    
+}
 
 /**
  * this function closes the edit card 

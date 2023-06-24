@@ -1,4 +1,4 @@
-function htmlTemplateTasksToDo(i, widthProgressBar, nbDone){
+function htmlTemplateTasksToDo(i, widthProgressBar, nbDone) {
     return `
     <div draggable="true" ondragstart=" startDragging(${i}, 'tasksToDo')" class="task-container-detail" onclick="openDetailCardToDo(${i})">
         <div class="category" style="background:${bgColor}">${tasksToDo[i]['category']}</div>
@@ -21,14 +21,14 @@ function htmlTemplateTasksToDo(i, widthProgressBar, nbDone){
 }
 
 
-function htmlTemplateSelectedPersonToDo(i,j){
-    return`
+function htmlTemplateSelectedPersonToDo(i, j) {
+    return `
         <div class="initials-icon bg${j}">${tasksToDo[i]['initials'][j]}</div>
     `;
 }
 
 
-function htmlTemplateTasksInProgress(i, widthProgressBar, nbDone){
+function htmlTemplateTasksInProgress(i, widthProgressBar, nbDone) {
     return `
     <div draggable="true" ondragstart=" startDragging(${i}, 'tasksInProgress')" class="task-container-detail" onclick="openDetailCardInProgress(${i})">
         <div class="category" style="background:${bgColor}">${tasksInProgress[i]['category']}</div>
@@ -51,14 +51,14 @@ function htmlTemplateTasksInProgress(i, widthProgressBar, nbDone){
 }
 
 
-function htmlTemplateSelectedPersonInProgress(i,j){
-    return`
+function htmlTemplateSelectedPersonInProgress(i, j) {
+    return `
     <div class="initials-icon bg${j}">${tasksInProgress[i]['initials'][j]}</div>
     `;
 }
 
 
-function htmlTemplateTasksAwaitFeedback(i, widthProgressBar, nbDone){
+function htmlTemplateTasksAwaitFeedback(i, widthProgressBar, nbDone) {
     return `
     <div draggable="true" ondragstart=" startDragging(${i}, 'tasksAwaitFeedback')" class="task-container-detail" onclick="openDetailCardAwaitFeedback(${i})">
         <div class="category" style="background:${bgColor}">${tasksAwaitFeedback[i]['category']}</div>
@@ -81,14 +81,14 @@ function htmlTemplateTasksAwaitFeedback(i, widthProgressBar, nbDone){
 }
 
 
-function htmlTemplateSelectedPersonAwaitFeedback(i,j){
-    return`
+function htmlTemplateSelectedPersonAwaitFeedback(i, j) {
+    return `
     <div class="initials-icon bg${j}">${tasksAwaitFeedback[i]['initials'][j]}</div>
     `;
 }
 
 
-function htmlTemplateTasksDone(i, widthProgressBar, nbDone){
+function htmlTemplateTasksDone(i, widthProgressBar, nbDone) {
     return `
     <div draggable="true" ondragstart=" startDragging(${i}, 'tasksDone')" class="task-container-detail" onclick="openDetailCardDone(${i})">
         <div class="category" style="background:${bgColor}">${tasksDone[i]['category']}</div>
@@ -111,15 +111,15 @@ function htmlTemplateTasksDone(i, widthProgressBar, nbDone){
 }
 
 
-function htmlTemplateSelectedPersonDone(i,j){
-    return`
+function htmlTemplateSelectedPersonDone(i, j) {
+    return `
     <div class="initials-icon bg${j}">${tasksDone[i]['initials'][j]}</div>
     `;
 }
 
 
-function htmlTemplateDetailCardToDo(x){
-    return`
+function htmlTemplateDetailCardToDo(x) {
+    return `
     <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('tasksToDo', ${x})"> <button onclick="closeDetailCard('tasksToDo', ${x})">X</button></div>
     <span class="category" style="background:${bgColor}">${tasksToDo[x]['category']}</span>
     <h1>${tasksToDo[x]['titel']}</h1>
@@ -143,25 +143,26 @@ function htmlTemplateDetailCardToDo(x){
 }
 
 
-function htmlTemplatePersonsDetailCardToDo(x, j){
-    return`
+function htmlTemplatePersonsDetailCardToDo(x, j) {
+    return `
     <div class="names">
         <div class="initials-icon bg${j}">${tasksToDo[x]['initials'][j]}</div>
         <div class="name">${tasksToDo[x]['inCharge'][j]}</div>
+        
     </div>
     `;
 }
 
 
-function htmlTemplateSubtasksDetailCardToDo(x, j, checkedStatus){
+function htmlTemplateSubtasksDetailCardToDo(x, j, checkedStatus) {
     return `
     <span style="padding-top: 6px"> <input class="sutaskCheckbox" type="checkbox" ${checkedStatus}/> ${tasksToDo[x]['subtasks'][j]}</span>
     `;
 }
 
 
-function htmlTemplateDetailCardInProgress(x){
-    return`
+function htmlTemplateDetailCardInProgress(x) {
+    return `
     <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('tasksInProgress', ${x})"><button onclick="closeDetailCard('tasksInProgress', ${x})">X</button></div>
     <span class="category" style="background:${bgColor}">${tasksInProgress[x]['category']}</span>
     <h1>${tasksInProgress[x]['titel']}</h1>
@@ -185,8 +186,8 @@ function htmlTemplateDetailCardInProgress(x){
 }
 
 
-function htmlTemplatePersonsDetailCardInProgress(x, j){
-    return`
+function htmlTemplatePersonsDetailCardInProgress(x, j) {
+    return `
     <div class="names">
         <div class="initials-icon bg${j}">${tasksInProgress[x]['initials'][j]}</div>
         <div class="name">${tasksInProgress[x]['inCharge'][j]}</div>
@@ -195,15 +196,15 @@ function htmlTemplatePersonsDetailCardInProgress(x, j){
 }
 
 
-function htmlTemplateSubtasksDetailCardInProgress(x, j, checkedStatus){
+function htmlTemplateSubtasksDetailCardInProgress(x, j, checkedStatus) {
     return `
     <span style="padding-top: 6px"> <input class="sutaskCheckbox" type="checkbox" ${checkedStatus}/> ${tasksInProgress[x]['subtasks'][j]}</span>
     `;
 }
 
 
-function htmlTemplateDetailCardAwaitFeedback(x){
-    return`
+function htmlTemplateDetailCardAwaitFeedback(x) {
+    return `
     <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('tasksAwaitFeedback', ${x})"><button onclick="closeDetailCard('tasksAwaitFeedback', ${x})">X</button></div>
     <span class="category" style="background:${bgColor}">${tasksAwaitFeedback[x]['category']}</span>
     <h1>${tasksAwaitFeedback[x]['titel']}</h1>
@@ -227,8 +228,8 @@ function htmlTemplateDetailCardAwaitFeedback(x){
 }
 
 
-function htmlTemplatePersonsDetailCardAwaitFeedback(x, j){
-    return`
+function htmlTemplatePersonsDetailCardAwaitFeedback(x, j) {
+    return `
     <div class="names">
         <div class="initials-icon bg${j}">${tasksAwaitFeedback[x]['initials'][j]}</div>
         <div class="name">${tasksAwaitFeedback[x]['inCharge'][j]}</div>
@@ -237,15 +238,15 @@ function htmlTemplatePersonsDetailCardAwaitFeedback(x, j){
 }
 
 
-function htmlTemplateSubtasksDetailCardAwaitFeedback(x, j, checkedStatus){
+function htmlTemplateSubtasksDetailCardAwaitFeedback(x, j, checkedStatus) {
     return `
     <span style="padding-top: 6px"> <input class="sutaskCheckbox" type="checkbox" ${checkedStatus}/> ${tasksAwaitFeedback[x]['subtasks'][j]}</span>
     `;
 }
 
 
-function htmlTemplateDetailCardDone(x){
-    return`
+function htmlTemplateDetailCardDone(x) {
+    return `
     <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('tasksDone', ${x})"><button onclick="closeDetailCard('tasksDone', ${x})">X</button></div>
     <span class="category" style="background:${bgColor}">${tasksDone[x]['category']}</span>
     <h1>${tasksDone[x]['titel']}</h1>
@@ -269,8 +270,8 @@ function htmlTemplateDetailCardDone(x){
 }
 
 
-function htmlTemplatePersonsDetailCardDone(x, j){
-    return`
+function htmlTemplatePersonsDetailCardDone(x, j) {
+    return `
     <div class="names">
         <div class="initials-icon bg${j}">${tasksDone[x]['initials'][j]}</div>
         <div class="name">${tasksDone[x]['inCharge'][j]}</div>
@@ -279,15 +280,15 @@ function htmlTemplatePersonsDetailCardDone(x, j){
 }
 
 
-function htmlTemplateSubtasksDetailCardDone(x, j, checkedStatus){
+function htmlTemplateSubtasksDetailCardDone(x, j, checkedStatus) {
     return `
     <span style="padding-top: 6px"> <input class="sutaskCheckbox" type="checkbox" ${checkedStatus}/> ${tasksDone[x]['subtasks'][j]}</span>
     `;
 }
 
 
-function htmlTemplateTaskToEdit(titleEdit, year, month, day, taskStatus,x){
-    return`
+function htmlTemplateTaskToEdit(titleEdit, year, month, day, taskStatus, x) {
+    return `
     <div class="edit-task"</div>
     <h2>Edit Task</h2>
     <div>Title</div>
@@ -308,6 +309,13 @@ function htmlTemplateTaskToEdit(titleEdit, year, month, day, taskStatus,x){
         <button id="low-btn" type="button" onclick="setPriority('low'); editPriority('low', '${taskStatus}', ${x})">Low <img id="low-btn-img" src="assets/img/low.svg" alt="low"></button>
     </div>
     <span>Assigned to</span>
+    <div class="select-contacts-to-assign" id="select-contacts-to-assign-two" onclick="openContactsToAssign(); renderListAssignedToTwo()">
+        <span>Select contacts to assign</span><img src="assets/img/dropdown.svg">  
+    </div>
+    <div id="list-assigned-to-two" class="dropdown-check-list" tabindex="100">
+        <ul class="items" id="checkbox-list-assigned-to-two">
+        </ul>
+    </div>
     <span id="persons-to-edit" class="names"></span>
     <div onclick="closeEdit('${taskStatus}', ${x})" class="ok-btn"><button onclick="closeEdit('${taskStatus}', ${x})">OK</button>
     <img src="assets/img/check.svg">
@@ -316,7 +324,7 @@ function htmlTemplateTaskToEdit(titleEdit, year, month, day, taskStatus,x){
 }
 
 
-function htmlTemplateSubtasksToEdit(subtasksToEdit, i, checkedStatus){
+function htmlTemplateSubtasksToEdit(subtasksToEdit, i, checkedStatus) {
     return `
     <div class="ckeckbox-in-edit"> 
     <input style="width:5%" type="checkbox" class="edited-subtasks" ${checkedStatus}/> 
@@ -326,8 +334,8 @@ function htmlTemplateSubtasksToEdit(subtasksToEdit, i, checkedStatus){
 }
 
 
-function htmlTemplateAssignedToEdit(assignedToEdit, j){
-    return`
+function htmlTemplateAssignedToEdit(assignedToEdit, j) {
+    return `
     <div >
         <div class="initials-icon bg${j}">${assignedToEdit[j]}</div>        
     </div>

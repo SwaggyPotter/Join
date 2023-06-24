@@ -18,6 +18,7 @@ function openDetailCardToDo(x) {
     document.getElementById('body').style.overflow = 'hidden';
 }
 
+// aufgabe hilfe
 
 /**
  * this function renders the subtasks on the detail card for tasks to do

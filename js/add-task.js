@@ -50,7 +50,7 @@ async function pushTask(title, text, dueDate) {
  * this function searchs for checked ckeckboxes
  * 
  */
-function getCheckboxes(){
+function getCheckboxes() {
     getInCharge();
     getSubtasksForm();
     getSubtasksChecked();
@@ -62,8 +62,8 @@ function getCheckboxes(){
  * 
  * @param {Array} data 
  */
-async function saveNewTaskinFolder(data){
-    switch(containerToAdd) {
+async function saveNewTaskinFolder(data) {
+    switch (containerToAdd) {
         case ('toDo'):
             tasksToDo.push(data);
             break;
@@ -145,11 +145,11 @@ function getCategory() {
  * 
  * @param {string} category 
  */
-function checkEmptyCategory(category){
-    if (category == ''){
+function checkEmptyCategory(category) {
+    if (category == '') {
         document.getElementById('error-msg').classList.remove('d-none');
         document.getElementById('category-msg').classList.remove('d-none');
-    }else{
+    } else {
         addTask();
     }
 }
@@ -178,11 +178,11 @@ function getAssignedTo() {
  * 
  * @param {string} assignedTo 
  */
-function checkEmptyAssignedTo(assignedTo){
-    if (assignedTo ==''){
+function checkEmptyAssignedTo(assignedTo) {
+    if (assignedTo == '') {
         document.getElementById('error-msg').classList.remove('d-none');
         document.getElementById('assignedTo-msg').classList.remove('d-none');
-    }else{
+    } else {
         getCategory()
     }
 }
@@ -192,7 +192,7 @@ function checkEmptyAssignedTo(assignedTo){
  * this function closes the error message if no contact or category is selected
  * 
  */
-function closeErrorMsg(){
+function closeErrorMsg() {
     document.getElementById('assignedTo-msg').classList.add('d-none');
     document.getElementById('category-msg').classList.add('d-none');
     document.getElementById('new-category-msg').classList.add('d-none');
@@ -221,6 +221,9 @@ function getSubTasks() {
  */
 function openContactsToAssign() {
     document.getElementById('list-assigned-to').classList.toggle('d-none');
+    if (document.getElementById('list-assigned-to-two')) {
+        document.getElementById('list-assigned-to-two').classList.toggle('d-none')
+    }
 }
 
 
@@ -246,12 +249,21 @@ function renderListAssignedTo() {
 }
 
 
+function renderListAssignedToTwo() {
+    let content = document.getElementById('checkbox-list-assigned-to-two');
+    content.innerHTML = '';
+    for (let i = 0; i < contacts.length; i++)
+        content.innerHTML +=
+            htmlTemplateListAssignedTo(i);
+}
+// hilfe aufgabe
+
 /**
  * this function renders the category list
  * 
  */
 function renderListTaskCategory() {
-    content = document.getElementById('category-row').innerHTML = 
+    content = document.getElementById('category-row').innerHTML =
         htmlTemplateNewCategory();
     for (let i = 0; i < categories.length; i++) {
         categoryToRender = categories[i];
@@ -340,9 +352,9 @@ function resetPriorityBtn() {
  * this function renders the date picker with today´s date
  * 
  */
-function renderDueDate(){
+function renderDueDate() {
     let todayDate = new Date().toISOString().split('T')[0];
-    document.getElementById('date-picker').innerHTML = 
+    document.getElementById('date-picker').innerHTML =
         htmlTemplateDueDate(todayDate);
 }
 
