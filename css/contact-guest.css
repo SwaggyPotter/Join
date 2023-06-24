@@ -20,6 +20,13 @@ body {
     align-items: center;
 }
 
+.deleteContactLook{
+    position: absolute;
+    cursor: pointer;
+    left: 5%;
+    top: 5%;
+}
+
 .embleme-designe {
     background-color: rgb(81, 255, 0);
     width: 42px;

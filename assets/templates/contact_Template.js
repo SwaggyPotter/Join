@@ -1,5 +1,6 @@
 function detailScreenAdd(j) {
     return `
+    <img class="deleteContactLook" id="deleteContact" onclick="deleteContact(${j})" src="assets/img/trash.svg">
     <img onclick="closeDetail()" id="close-detail-arrow" src="assets/img/arrow-back.svg" alt="">
     <div class="name-and-embleme-container">
         <div style="background-color:${getBackgroundColor(document.getElementById(`userBackgroundId${j}`))};" class="detail-embleme">
