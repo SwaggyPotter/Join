@@ -21,11 +21,11 @@ function renderBoard() {
  * 
  * @param {string} category 
  */
-function getCategoryColor(category){
-    for (let i = 0; i < categoriesBackground.length; i++){
-        if (category == categories[i]){
+function getCategoryColor(category) {
+    for (let i = 0; i < categoriesBackground.length; i++) {
+        if (category == categories[i]) {
             bgColor = categoriesBackground[i];
-        } 
+        }
     }
 }
 
@@ -57,9 +57,9 @@ function renderTasksToDo() {
 function renderSelectedPersonToDo(i) {
     let selectedPerson = document.getElementById(`selected-person-to-do${i}`);
     let nbOfInCharge = tasksToDo[i]['inCharge'].length;
-    if (nbOfInCharge > 2){
+    if (nbOfInCharge > 2) {
         countTo = 3;
-    }else{
+    } else {
         countTo = nbOfInCharge
     }
     selectedPerson.innerHTML = '';
@@ -98,9 +98,9 @@ function renderTasksInProgress() {
 function renderSelectedPersonInProgress(i) {
     let selectedPerson = document.getElementById(`selected-person-in-progress${i}`);
     let nbOfInCharge = tasksInProgress[i]['inCharge'].length;
-    if (nbOfInCharge > 2){
+    if (nbOfInCharge > 2) {
         countTo = 3;
-    }else{
+    } else {
         countTo = nbOfInCharge
     }
     selectedPerson.innerHTML = '';
@@ -139,9 +139,9 @@ function renderTasksAwaitFeedback() {
 function renderSelectedPersonAwaitFeedback(i) {
     let selectedPerson = document.getElementById(`selected-person-await-feedback${i}`);
     let nbOfInCharge = tasksAwaitFeedback[i]['inCharge'].length;
-    if (nbOfInCharge > 2){
+    if (nbOfInCharge > 2) {
         countTo = 3;
-    }else{
+    } else {
         countTo = nbOfInCharge
     }
     selectedPerson.innerHTML = '';
@@ -180,9 +180,9 @@ function renderTasksDone() {
 function renderSelectedPersonDone(i) {
     let selectedPerson = document.getElementById(`selected-person-done${i}`);
     let nbOfInCharge = tasksDone[i]['inCharge'].length;
-    if (nbOfInCharge > 2){
+    if (nbOfInCharge > 2) {
         countTo = 3;
-    }else{
+    } else {
         countTo = nbOfInCharge
     }
     selectedPerson.innerHTML = '';
@@ -227,7 +227,7 @@ function checkDoneTasks(i, taskStatus) {
                 nbDone = nbDone + done;
             };
             break;
-    }   
+    }
 }
 
 
@@ -237,10 +237,10 @@ function checkDoneTasks(i, taskStatus) {
  * @param {number} nbOfInCharge 
  * @param {string} selectedPerson 
  */
-function fxNbOfInCharge(nbOfInCharge, selectedPerson){
-    if (nbOfInCharge > 3){
-        nbMore = nbOfInCharge-3;
-        selectedPerson.innerHTML +=`
+function fxNbOfInCharge(nbOfInCharge, selectedPerson) {
+    if (nbOfInCharge > 3) {
+        nbMore = nbOfInCharge - 3;
+        selectedPerson.innerHTML += `
         <div class="initials-icon bg3">+${nbMore}</div>`;
     }
 }
@@ -268,7 +268,7 @@ function filter() {
 function filterToDo(search) {
     document.getElementById('to-do-container').innerHTML = '';
     for (let i = 0; i < tasksToDo.length; i++) {
-        if (tasksToDo[i]['titel'].toLowerCase().includes(search)) {
+        if (tasksToDo[i]['titel'].toLowerCase().includes(search) || tasksToDo[i]['text'].toLowerCase().includes(search)) {
             let category = tasksToDo[i]['category'];
             getCategoryColor(`${category}`);
             checkDoneTasks(i, 'tasksToDo');
@@ -281,6 +281,7 @@ function filterToDo(search) {
 }
 
 
+
 /**
  * this function filters the tasks in progress by search
  * 
@@ -289,7 +290,7 @@ function filterToDo(search) {
 function filterInProgress(search) {
     document.getElementById('in-progress-container').innerHTML = '';
     for (let i = 0; i < tasksInProgress.length; i++) {
-        if (tasksInProgress[i]['titel'].toLowerCase().includes(search)) {
+        if (tasksInProgress[i]['titel'].toLowerCase().includes(search) || tasksInProgress[i]['text'].toLowerCase().includes(search)) {
             let category = tasksInProgress[i]['category'];
             getCategoryColor(`${category}`);
             checkDoneTasks(i, 'tasksInProgress');
@@ -310,7 +311,7 @@ function filterInProgress(search) {
 function filterAwaitFeedback(search) {
     document.getElementById('await-feedback-container').innerHTML = '';
     for (let i = 0; i < tasksAwaitFeedback.length; i++) {
-        if (tasksAwaitFeedback[i]['titel'].toLowerCase().includes(search)) {
+        if (tasksAwaitFeedback[i]['titel'].toLowerCase().includes(search) || tasksAwaitFeedback[i]['text'].toLowerCase().includes(search)) {
             let category = tasksAwaitFeedback[i]['category'];
             getCategoryColor(`${category}`);
             checkDoneTasks(i, 'tasksAwaitFeedback');
@@ -331,7 +332,7 @@ function filterAwaitFeedback(search) {
 function filterDone(search) {
     document.getElementById('done-container').innerHTML = '';
     for (let i = 0; i < tasksDone.length; i++) {
-        if (tasksDone[i]['titel'].toLowerCase().includes(search)) {
+        if (tasksDone[i]['titel'].toLowerCase().includes(search) || tasksDone[i]['text'].toLowerCase().includes(search)) {
             let category = tasksDone[i]['category'];
             getCategoryColor(`${category}`);
             checkDoneTasks(i, 'tasksDone');
