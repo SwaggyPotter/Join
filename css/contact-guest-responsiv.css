@@ -121,13 +121,28 @@
     .add-contact-button {
         position: absolute;
         right: 48px;
-        top: 10px;
+        top: 130px;
         bottom: unset;
         padding: 18px 10px 18px 10px;
         width: 197px;
         border-radius: 10px;
         border: none;
         background-color: #4589FF;
+        color: white;
+        font-size: 23px;
+        cursor: pointer;
+    }
+
+    .add-contact-button:hover {
+        position: absolute;
+        right: 48px;
+        top: 130px;
+        bottom: unset;
+        padding: 18px 10px 18px 10px;
+        width: 197px;
+        border-radius: 10px;
+        border: none;
+        background-color: #005eff;
         color: white;
         font-size: 23px;
         cursor: pointer;
@@ -271,13 +286,28 @@
     .add-contact-button {
         position: absolute;
         right: 48px;
-        top: 10px;
+        top: 130px;
         bottom: unset;
         padding: 18px 10px 18px 10px;
         width: 197px;
         border-radius: 10px;
         border: none;
         background-color: #4589FF;
+        color: white;
+        font-size: 23px;
+        cursor: pointer;
+    }
+
+    .add-contact-button:hover {
+        position: absolute;
+        right: 48px;
+        top: 130px;
+        bottom: unset;
+        padding: 18px 10px 18px 10px;
+        width: 197px;
+        border-radius: 10px;
+        border: none;
+        background-color: #005eff;
         color: white;
         font-size: 23px;
         cursor: pointer;
@@ -296,7 +326,6 @@
         transition: 125ms;
         background-color: rgb(255, 255, 255);
     }
-
 
     .email-card-guest {
         width: 453px;
