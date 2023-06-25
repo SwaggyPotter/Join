@@ -1,3 +1,5 @@
+let openTask;
+
 /**
  * this function opens the detail card for tasks to do
  * 
@@ -16,9 +18,11 @@ function openDetailCardToDo(x) {
     };
     renderSubtaksInDetailCardToDo(x);
     document.getElementById('body').style.overflow = 'hidden';
+    openTask = tasksToDo[x];
+    console.log(openTask)
 }
 
-// aufgabe hilfe
+//hilfe
 
 /**
  * this function renders the subtasks on the detail card for tasks to do
@@ -57,6 +61,8 @@ function openDetailCardInProgress(x) {
     };
     renderSubtaksInDetailCardInProgress(x);
     document.getElementById('body').style.overflow = 'hidden';
+    openTask = tasksInProgress[x];
+    console.log(openTask)
 }
 
 
@@ -96,6 +102,8 @@ function openDetailCardAwaitFeedback(x) {
     };
     renderSubtaksInDetailCardAwaitFeedback(x);
     document.getElementById('body').style.overflow = 'hidden';
+    openTask = tasksAwaitFeedback[x];
+    console.log(openTask)
 }
 
 
@@ -135,6 +143,8 @@ function openDetailCardDone(x) {
     };
     renderSubtaksInDetailCardDone(x);
     document.getElementById('body').style.overflow = 'hidden';
+    openTask = tasksDone[x];
+    console.log(openTask)
 }
 
 

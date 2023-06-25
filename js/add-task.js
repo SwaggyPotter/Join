@@ -254,9 +254,9 @@ function renderListAssignedToTwo() {
     content.innerHTML = '';
     for (let i = 0; i < contacts.length; i++)
         content.innerHTML +=
-            htmlTemplateListAssignedTo(i);
+            htmlTemplateListAssignedToTwo(i);
 }
-// hilfe aufgabe
+// hilfe
 
 /**
  * this function renders the category list

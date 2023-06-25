@@ -3,7 +3,10 @@ let textEdit;
 let dueDateEdit;
 let priorityEdit;
 let assignedToEdit;
-
+let removerArray = [];
+let removeInitials = [];
+let removedChars
+let removedInitials
 
 /**
  * this function gets the values who can be changed
@@ -196,17 +199,57 @@ function closeEdit(taskStatus, x) {
 }
 
 
-function closeEditExtension(taskStatus, x, checkboxChecked, taskType) {
-    loadNewAssignedTo();
-    taskType[x]['titel'] = document.getElementById('edited-title').value;
-    taskType[x]['text'] = document.getElementById('textarea-edit').value;
-    taskType[x]['dueDate'] = document.getElementById('due-date-edit').value;
-    taskType[x]['inCharge']
+function deleteContactFromTask(x) {
+    document.getElementById(`contact${x}`).style.backgroundColor = 'red';
+    removerArray.push(openTask['inCharge'][x])
+    removeInitials.push(openTask['initials'][x])
+    console.log(removerArray)
+    console.log(removeInitials)
+}
+//hilfe
+
+
+function removeArrayContent(sourceArray, removeArray) {
+    return sourceArray.filter(item => !removeArray.includes(item));
 }
 
 
-function loadNewAssignedTo(){
-    
+function closeEditExtension(taskStatus, x, checkboxChecked, taskType) {
+    taskType[x]['titel'] = document.getElementById('edited-title').value;
+    taskType[x]['text'] = document.getElementById('textarea-edit').value;
+    taskType[x]['dueDate'] = document.getElementById('due-date-edit').value;
+    taskType[x]['inCharge'] = loadNewAssignedTo(taskType[x]['inCharge']);
+    taskType[x]['initials'] = loadInitials(taskType[x]['initials']);
+    if (removerArray.length != 0) {
+        removedChars = removeArrayContent(taskType[x]['inCharge'], removerArray);
+        taskType[x]['inCharge'] = removedChars;
+    }
+    if (removeInitials.length != 0) {
+        removedInitials = removeArrayContent(taskType[x]['initials'], removeInitials);
+        taskType[x]['initials'] = removedInitials;
+    }
+}
+
+
+function loadNewAssignedTo(x) {
+    let inputElements = document.getElementsByClassName('checkbox-contacts-two');
+    for (let i = 0; inputElements[i]; ++i) {
+        if (inputElements[i].checked) {
+            x.push(contacts[i]['name'] + ' ' + contacts[i]['second-name']);
+        }
+    }
+    return x;
+}
+
+
+function loadInitials(x) {
+    let inputElements = document.getElementsByClassName('checkbox-contacts-two');
+    for (let i = 0; inputElements[i]; ++i) {
+        if (inputElements[i].checked) {
+            x.push(contacts[i]['name'].charAt(0) + contacts[i]['second-name'].charAt(0));
+        }
+    }
+    return x;
 }
 
 /**

@@ -14,6 +14,13 @@ function htmlTemplateListAssignedTo(i){
 }
 
 
+function htmlTemplateListAssignedToTwo(i){
+    return `
+    <li><input class="checkbox-contacts-two" type="checkbox" /> ${contacts[i]['name']} ${contacts[i]['second-name']}</li>
+    `;
+}
+//hilfe
+
 function htmlTemplateCategory(categoryToRender, ellipseToRender){
     return `
         <div class="category-row">

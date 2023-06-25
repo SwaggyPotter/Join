@@ -337,7 +337,7 @@ function htmlTemplateSubtasksToEdit(subtasksToEdit, i, checkedStatus) {
 function htmlTemplateAssignedToEdit(assignedToEdit, j) {
     return `
     <div >
-        <div class="initials-icon bg${j}">${assignedToEdit[j]}</div>        
+        <div id="contact${j}" onclick="deleteContactFromTask(${j})" class="initials-icon bg${j}">${assignedToEdit[j]}</div>        
     </div>
     `;
 }
