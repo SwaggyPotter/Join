@@ -312,7 +312,7 @@ function htmlTemplateTaskToEdit(titleEdit, year, month, day, taskStatus, x) {
     <div class="select-contacts-to-assign" id="select-contacts-to-assign-two" onclick="openContactsToAssign(); renderListAssignedToTwo()">
         <span>Select contacts to assign</span><img src="assets/img/dropdown.svg">  
     </div>
-    <div id="list-assigned-to-two" class="dropdown-check-list" tabindex="100">
+    <div id="list-assigned-to-two" class="dropdown-check-list d-none" tabindex="100">
         <ul class="items" id="checkbox-list-assigned-to-two">
         </ul>
     </div>

@@ -203,10 +203,7 @@ function deleteContactFromTask(x) {
     document.getElementById(`contact${x}`).style.backgroundColor = 'red';
     removerArray.push(openTask['inCharge'][x])
     removeInitials.push(openTask['initials'][x])
-    console.log(removerArray)
-    console.log(removeInitials)
 }
-//hilfe
 
 
 function removeArrayContent(sourceArray, removeArray) {
