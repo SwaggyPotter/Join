@@ -13,6 +13,11 @@ function getUsernameFromLocalStorage() {
 }
 
 
+/**
+ * the function give back the daytime
+ * 
+ * @returns return the time as word, evening, morning etc.
+ */
 function getTimeOfDay() {
     let currentHour = new Date().getHours();
 
