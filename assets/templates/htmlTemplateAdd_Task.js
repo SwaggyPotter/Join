@@ -1,27 +1,46 @@
-function htmlTemplateSubtasks(newtaskSubtask, i){
+function htmlTemplateSubtasks(newtaskSubtask, i) {
     return `
     <div class="row">
     <input class="checkbox-subtask" type="checkbox"> &nbsp;
     <span id="${i}">${newtaskSubtask}</span>
-    </div>`;    
+    </div>`;
 }
 
 
-function htmlTemplateListAssignedTo(i){
+function htmlTemplateListAssignedTo(i) {
     return `
     <li><input class="checkbox-contacts" type="checkbox" /> ${contacts[i]['name']} ${contacts[i]['second-name']}</li>
     `;
 }
 
 
-function htmlTemplateListAssignedToTwo(i){
-    return `
-    <li><input class="checkbox-contacts-two" type="checkbox" /> ${contacts[i]['name']} ${contacts[i]['second-name']}</li>
-    `;
+function htmlTemplateListAssignedToTwo(i, taskStatus, x) {
+    if (istNameImArray(contacts[i]['name'] + ' ' + contacts[i]['second-name'], taskStatus[x]['inCharge']) === true) {
+        return `
+        <li class="onList"><input class="checkbox-contacts-two" type="checkbox" /> Schon auf der liste</li>
+        `;
+    }
+    else {
+        return `
+        <li><input class="checkbox-contacts-two" type="checkbox" /> ${contacts[i]['name']} ${contacts[i]['second-name']}</li>
+        `;
+    }
+
 }
 //hilfe
 
-function htmlTemplateCategory(categoryToRender, ellipseToRender){
+
+function istNameImArray(vollerName, array) {
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === vollerName) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
+function htmlTemplateCategory(categoryToRender, ellipseToRender) {
     return `
         <div class="category-row">
             <div>
@@ -33,7 +52,7 @@ function htmlTemplateCategory(categoryToRender, ellipseToRender){
 }
 
 
-function htmlTemplateDueDate(todayDate){
+function htmlTemplateDueDate(todayDate) {
     return `
         <input type="date" id="due-date" name="trip-start" value="" min="${todayDate}" onfocus="this.showPicker()"required>
         <img src="assets/img/calendar.svg">
@@ -41,16 +60,16 @@ function htmlTemplateDueDate(todayDate){
 }
 
 
-function htmlTemplateNewCategory(){
-    return`
+function htmlTemplateNewCategory() {
+    return `
     <div class="new-category" id="new-category">
     <span class="hover" onclick="openNewCategory()">New Category</span>
     `;
 }
 
 
-function htmlTemplateNewCategoryEnter(){
-    return`
+function htmlTemplateNewCategoryEnter() {
+    return `
     <div class="input-filed-new-category">
     <input type="text" placeholder="Enter New Category" id="register-category"></input>
     <button type="button" onclick="closeNewCategory()">Cancel</button>
@@ -61,14 +80,14 @@ function htmlTemplateNewCategoryEnter(){
 }
 
 
-function htmlTemplateNewCategoryColor(ellipse, i){
-    return`
+function htmlTemplateNewCategoryColor(ellipse, i) {
+    return `
     <img src="${ellipse}" id="color${i}" onclick="setCategoryColor(${i})">
     `;
 }
 
 
-function htmlTemplateCategoryChecked(categoryToRender, ellipseToRender){
+function htmlTemplateCategoryChecked(categoryToRender, ellipseToRender) {
     return `
         <div class="category-row">
             <div>

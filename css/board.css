@@ -3,6 +3,10 @@
     flex-direction: row;
 }
 
+.onList{
+    display: none;
+}
+
 .search-bar {
     display: flex;
     justify-content: center;
