@@ -5,8 +5,8 @@ let priorityEdit;
 let assignedToEdit;
 let removerArray = [];
 let removeInitials = [];
-let removedChars
-let removedInitials
+let removedChars = [];
+let removedInitials = [];
 
 /**
  * this function gets the values who can be changed
@@ -225,6 +225,15 @@ function closeEditExtension(taskStatus, x, checkboxChecked, taskType) {
         removedInitials = removeArrayContent(taskType[x]['initials'], removeInitials);
         taskType[x]['initials'] = removedInitials;
     }
+    clearArray()
+}
+
+
+function clearArray() {
+    removedChars = [];
+    removedInitials = [];
+    removerArray = [];
+    removeInitials = [];
 }
 
 
