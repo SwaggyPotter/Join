@@ -309,7 +309,7 @@ function htmlTemplateTaskToEdit(titleEdit, year, month, day, taskStatus, x) {
         <button id="low-btn" type="button" onclick="setPriority('low'); editPriority('low', '${taskStatus}', ${x})">Low <img id="low-btn-img" src="assets/img/low.svg" alt="low"></button>
     </div>
     <span>Assigned to</span>
-    <div class="select-contacts-to-assign" id="select-contacts-to-assign-two" onclick="openContactsToAssign(); renderListAssignedToTwo()">
+    <div class="select-contacts-to-assign" id="select-contacts-to-assign-two" onclick="openContactsToAssign(); renderListAssignedToTwo(${taskStatus}, ${x})">
         <span>Select contacts to assign</span><img src="assets/img/dropdown.svg">  
     </div>
     <div id="list-assigned-to-two" class="dropdown-check-list d-none" tabindex="100">

@@ -249,12 +249,12 @@ function renderListAssignedTo() {
 }
 
 
-function renderListAssignedToTwo() {
+function renderListAssignedToTwo(taskStatus, x) {
     let content = document.getElementById('checkbox-list-assigned-to-two');
     content.innerHTML = '';
     for (let i = 0; i < contacts.length; i++)
         content.innerHTML +=
-            htmlTemplateListAssignedToTwo(i);
+            htmlTemplateListAssignedToTwo(i, taskStatus, x);
 }
 // hilfe
 
