@@ -1,8 +1,7 @@
 let urgentCounter = 0;
 let dateList = [];
 let dayTime = getTimeOfDay()
-document.getElementById('greetingTime').innerText = 'Good' + ' ' + dayTime;
-document.getElementById('good-morging-smartphone').innerText = 'Good' + ' ' + dayTime;
+
 
 /**
  * Get the username from the local storage
@@ -49,8 +48,8 @@ let username = getUsernameFromLocalStorage();
 function loadUserNameForGreeting() {
     if (checkUsernameInUrl(username)) {
         if (username !== null) {
-            document.getElementById('username-input').innerText = `, ${username}`;
-            document.getElementById('username-input-smartphone').innerText = ` ${username}`;
+            document.getElementById('username-input').innerText = `Good ${dayTime}, ${username}`;
+            document.getElementById('username-input-smartphone').innerText = `Good ${dayTime} ${username}`;
         }
     }
     else {
