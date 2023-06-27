@@ -278,10 +278,6 @@ h1 a {
     color:#008000;
 }
 
-#success p {
-    padding: 10px 0 0 0;
-}
-
 #success p.red {
     color: #DC143C;
 }

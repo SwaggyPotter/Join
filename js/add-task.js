@@ -256,7 +256,6 @@ function renderListAssignedToTwo(taskStatus, x) {
         content.innerHTML +=
             htmlTemplateListAssignedToTwo(i, taskStatus, x);
 }
-// hilfe
 
 /**
  * this function renders the category list
