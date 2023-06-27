@@ -1,6 +1,8 @@
 let urgentCounter = 0;
 let dateList = [];
-
+let dayTime = getTimeOfDay()
+document.getElementById('greetingTime').innerText = 'Good' + ' ' + dayTime;
+document.getElementById('good-morging-smartphone').innerText = 'Good' + ' ' + dayTime;
 
 /**
  * Get the username from the local storage
@@ -9,6 +11,19 @@ let dateList = [];
 function getUsernameFromLocalStorage() {
     let username = localStorage.getItem('username');
     return username;
+}
+
+
+function getTimeOfDay() {
+    let currentHour = new Date().getHours();
+
+    if (currentHour >= 6 && currentHour < 12) {
+        return "Morning";
+    } else if (currentHour >= 12 && currentHour < 18) {
+        return "Afternoon";
+    } else {
+        return "Evening";
+    }
 }
 
 

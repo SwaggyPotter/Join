@@ -12,6 +12,7 @@
         flex-direction: column;
         width: 100%;
         height: unset;
+        padding-top: 10%;
     }
 }
 
