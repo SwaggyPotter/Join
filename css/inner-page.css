@@ -26,7 +26,7 @@ h2 {
 }
 
 .paddingTop {
-    padding-top: 10vh;
+    padding-top: 0;
 }
 
 .header {
@@ -175,6 +175,7 @@ h2 {
     justify-content: space-between;
     height: 100%;
     box-sizing: border-box;
+    margin-top: 20vh;
 }
 
 .content .wrapper {
@@ -290,11 +291,13 @@ h2 {
         left: 0;
         background: white;
         z-index: 999;
+       
     }
 
     .sidebar .wrapper {
         padding: 0px 23px;
         height: auto;
+        margin-top: 0;
     }
 
     .navigation li, .navigation span.m-img {
@@ -348,6 +351,6 @@ h2 {
     }
 
     .paddingTop {
-        padding-top: 15vh;
+        padding-top: 0;
     }
 }

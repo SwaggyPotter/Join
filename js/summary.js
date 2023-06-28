@@ -60,6 +60,8 @@ function loadUserNameForGreeting() {
     else {
         document.getElementById('good-morging-smartphone').style.fontSize = '44px'
         document.getElementById('good-morging-smartphone').style.fontWeight = '700'
+        document.getElementById('username-input').innerText = `Good ${dayTime}`;
+        document.getElementById('username-input-smartphone').innerText = `Good ${dayTime}`
     }
 }
 
