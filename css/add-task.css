@@ -4,7 +4,7 @@ body {
     overflow: hidden;
 }
 
-.add-task-container{
+.add-task-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,7 +12,7 @@ body {
     margin-left: 150px;
 }
 
-.add-task-form{
+.add-task-form {
     display: flex;
     flex-direction: column;
     width: 100vw;
@@ -21,6 +21,10 @@ body {
 
 .bg1 {
     background-color: #f9f9f9;
+}
+
+.topPadding {
+    padding-top: 100px !important;
 }
 
 .title {
@@ -322,11 +326,12 @@ body {
     color: #f9f9f9;
 }
 
-.hover{
+.hover {
     background-color: transparent;
     border-radius: 8px;
     padding: 6px;
 }
+
 .hover:hover {
     cursor: pointer;
     background-color: lightgrey;
@@ -340,90 +345,100 @@ body {
 }
 
 @media(max-width: 1215px) {
-   .add-task-container{
-    justify-content:center ;
-    align-items: center;
-    margin-left: 0;
-   }
+    .add-task-container {
+        justify-content: center;
+        align-items: center;
+        margin-left: 0;
+    }
 
-   .wrapper{
+    .wrapper {
         display: flex;
         justify-content: center;
     }
 
-    .execute-buttons{
+    .execute-buttons {
         justify-content: center;
         margin-right: 0;
     }
 }
 
 
-@media(max-width: 570px){
-    .add-task-form{
+@media screen and (min-width: 1140px) {
+    .topPadding {
+        padding-top: 50px !important;
+    }
+}
+
+
+@media(max-width: 570px) {
+    .add-task-form {
         width: 95vw;
     }
-    .content{
+
+    .content {
         margin-left: 6px;
     }
-    .title{
+
+    .title {
         width: 90%
     }
 
-    .title input{
+    .title input {
         width: 90%
     }
-    .select-category{
+
+    .select-category {
         width: 90%;
     }
 
-    .date-picker{
+    .date-picker {
         justify-content: flex-start;
         width: 90%
-       }
-    
-       .date-picker img{
-        margin-left: -10%;
-       }
+    }
 
-    .select-contacts-to-assign{
+    .date-picker img {
+        margin-left: -10%;
+    }
+
+    .select-contacts-to-assign {
         width: 90%;
     }
 
-    .category-add-task{
+    .category-add-task {
         justify-content: center;
     }
 
-    .priority{
+    .priority {
         justify-content: space-around;
     }
 
-    .priority button{
+    .priority button {
         font-size: 12px;
     }
 
-    .description{
+    .description {
         justify-content: center;
     }
-    .description textarea{
+
+    .description textarea {
         display: flex;
         justify-content: center;
         align-items: center;
         width: 90%;
     }
 
-    .subtasks{
+    .subtasks {
         justify-content: center;
     }
 
-    .dropdown-check-list{
+    .dropdown-check-list {
         display: flex;
         justify-content: space-around;
     }
 
-    .execute-buttons button{
+    .execute-buttons button {
         font-size: 19px;
         padding: 6px;
         margin-inline: 6px;
     }
 }
-
