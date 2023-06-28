@@ -46,13 +46,16 @@ function editTasksExtension(taskStatus, x, taskType) {
 
 function setPriorityColor(priorityEdit) {
     if (priorityEdit == 'assets/img/urgent.svg') {
-        document.getElementById('urgent-btn').style.backgroundColor = 'red';
+        document.getElementById('urgent-btn').style.backgroundColor = 'rgb(255, 61, 0)';
+        document.getElementById('urgent-btn-img').src = 'assets/img/urgent-white.svg'
     }
     else if (priorityEdit == 'assets/img/medium.svg') {
-        document.getElementById('medium-btn').style.backgroundColor = 'yellow';
+        document.getElementById('medium-btn').style.backgroundColor = 'rgb(255, 168, 0)';
+        document.getElementById('medium-btn-img').src = 'assets/img/medium-white.svg'
     }
     else if (priorityEdit == 'assets/img/low.svg') {
-        document.getElementById('low-btn').style.backgroundColor = 'green';
+        document.getElementById('low-btn').style.backgroundColor = 'rgb(122, 226, 41)';
+        document.getElementById('low-btn-img').src = 'assets/img/low-white.svg'
     }
 }
 

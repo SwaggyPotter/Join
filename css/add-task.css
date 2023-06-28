@@ -17,6 +17,7 @@ body {
     flex-direction: column;
     width: 100vw;
     margin: 0;
+    max-height: 90vh;
 }
 
 .bg1 {
