@@ -6,6 +6,7 @@ body {
     display: flex;
     height: 90vh;
     overflow-y: scroll;
+    justify-content: unset !important;
 }
 
 #close-detail-arrow {

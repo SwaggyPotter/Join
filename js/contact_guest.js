@@ -6,7 +6,7 @@ async function loadContactFromBackEnd() {
         let contactsTransform = backend.getItem('contacts') || []
         sortedContacts = JSON.parse(contactsTransform) || []
         renderTheQuestContacts();
-    }, 300)
+    }, 500)
 }
 
 
