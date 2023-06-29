@@ -112,7 +112,7 @@
 
     #contact-content {
         display: flex;
-        height: 80vh;
+        height: 90vh;
         overflow-y: scroll;
         width: 100%;
         justify-content: center;
@@ -277,7 +277,7 @@
 
     #contact-content {
         display: flex;
-        height: 73vh;
+        height: 90vh;
         overflow-y: scroll;
         width: 100%;
         justify-content: center;
@@ -329,7 +329,7 @@
 
     .email-card-guest {
         width: 453px;
-        padding: 25px 12px;
+        padding: 100px 12px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -339,7 +339,7 @@
 @media screen and (max-height: 529px) and (min-height: 370px) {
     #contact-content {
         display: flex;
-        height: 50vh;
+        height: 90vh;
         overflow-y: scroll;
         width: 100%;
         justify-content: center;
@@ -349,7 +349,7 @@
 @media screen and (max-height: 700px) and (min-height: 530px) {
     #contact-content {
         display: flex;
-        height: 65vh;
+        height: 580px;
         overflow-y: scroll;
         width: 100%;
         justify-content: center;
@@ -359,7 +359,7 @@
 @media screen and (max-height: 853px) and (min-height: 700px) {
     #contact-content {
         display: flex;
-        height: 70vh;
+        height: 90vh;
         overflow-y: scroll;
         width: 100%;
         justify-content: center;
@@ -369,7 +369,7 @@
 @media screen and (max-height: 925px) and (min-height: 854px) {
     #contact-content {
         display: flex;
-        height: 78vh;
+        height: 90vh;
         overflow-y: scroll;
         width: 100%;
         justify-content: center;
