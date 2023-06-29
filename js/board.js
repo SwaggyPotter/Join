@@ -352,6 +352,7 @@ function filterDone(search) {
 function openAddTaskPopup(containerString) {
     containerToAdd = containerString;
     document.getElementById('add-task-popup-container').classList.remove('d-none');
+    document.getElementById('body').style.overflow = 'hidden';
     renderDueDate();
 }
 
@@ -364,4 +365,5 @@ function closeAddTask() {
     document.getElementById('add-task-popup-container').classList.add('d-none');
     document.getElementById('list-task-category').classList.add('d-none');
     document.getElementById('list-assigned-to').classList.add('d-none');
+    document.getElementById('body').style.overflow = 'visible';
 }

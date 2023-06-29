@@ -351,9 +351,23 @@
     align-items: center;
     justify-content: center;
     overflow-y: scroll !important;
-    min-height: 110%;
     height: auto !important;
     margin: auto;
+}
+
+#addTask-Board-Container-Header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 50px;
+}
+
+#addTask-Board-Container-Header h2{
+    padding: 0 !important;
+}
+
+#addTask-Board-Container-Header span{
+    cursor: pointer;
 }
 
 .edit-task {

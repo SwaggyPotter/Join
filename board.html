@@ -72,7 +72,9 @@
                         <div class="details d-none" id="add-task-popup-container" onclick="closeAddTask()">
                             <div id="add-task-popup" class="add-task-popup" onclick="stopPropagation(event)">
                                 <div class="header-add-task-popup">
-                                    <h2>Add Task</h2>
+                                    <div id="addTask-Board-Container-Header">
+                                        <h2>Add Task</h2><span onclick="closeAddTask()">X</span>
+                                    </div>
                                     <div w3-include-html="assets/templates/add_task_template.html"></div>
                                 </div>
                             </div>
@@ -80,7 +82,8 @@
                         <div class="wrapper">
                             <div class="menu-bar">
                                 <div class="search-bar">
-                                    <input type="text" placeholder="Find task" id="search" onkeydown="filter()" onkeyup="filter()">
+                                    <input type="text" placeholder="Find task" id="search" onkeydown="filter()"
+                                        onkeyup="filter()">
                                     <img src="assets/img/loupe.svg" alt="loupe">
                                 </div>
                                 <div class="add-task-btn">
@@ -101,7 +104,8 @@
                                 <div class="status">
                                     <div class="status-headline">
                                         <span>In progress</span>
-                                        <img src="assets/img/plus.svg" alt="add" onclick="openAddTaskPopup('inProgress')">
+                                        <img src="assets/img/plus.svg" alt="add"
+                                            onclick="openAddTaskPopup('inProgress')">
                                     </div>
                                     <div class="task-container" id="in-progress-container" ondrop="moveTo(event)"
                                         ondragover="allowDrop(event)">
@@ -111,7 +115,8 @@
                                 <div class="status">
                                     <div class="status-headline">
                                         <span>Await feedback</span>
-                                        <img src="assets/img/plus.svg" alt="add" onclick="openAddTaskPopup('awaitFeedback')">
+                                        <img src="assets/img/plus.svg" alt="add"
+                                            onclick="openAddTaskPopup('awaitFeedback')">
                                     </div>
                                     <div class="task-container" id="await-feedback-container" ondrop="moveTo(event)"
                                         ondragover="allowDrop(event)">
