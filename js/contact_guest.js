@@ -91,7 +91,7 @@ function openEdit(o) {
 function closeDetail() {
     if (window.innerWidth > 1340 && activShowingContact == true) {
         activShowingContact = false;
-        document.getElementById('detail-information-screen').style.padding = '58px 1865px';
+        document.getElementById('detail-information-screen').style.padding = '103px 1865px';
         document.getElementById('close-detail-arrow').style.position = 'initial';
     }
     else if (window.innerWidth < 1340 && activShowingContact == true) {
@@ -171,7 +171,7 @@ let activShowingContact = null;
 function showChosenContact(c) {
     activShowingContact = true;
     chosenContactCounter = c;
-    document.getElementById('detail-information-screen').style.padding = '58px 65px';
+    document.getElementById('detail-information-screen').style.padding = '103px 65px';
     removeBackgroundFromUnchosed(c);
     if (window.innerWidth < 1340) {
         document.getElementById('detail-information-screen').style.padding = '0';
@@ -187,7 +187,7 @@ window.addEventListener('resize', () => {
     if (window.innerWidth > 1340 && activShowingContact == true) {
         document.getElementById('detail-information-screen').style.padding = 'unset';
         document.getElementById('detail-information-screen').style.right = 'unset';
-        document.getElementById('detail-information-screen').style.padding = '58px 65px';
+        document.getElementById('detail-information-screen').style.padding = '103px 65px';
     }
     else if (window.innerWidth < 1340 && activShowingContact == true) {
         document.getElementById('detail-information-screen').style.padding = '0';
@@ -198,7 +198,7 @@ window.addEventListener('resize', () => {
         document.getElementById('detail-information-screen').style.right = '-100vw';
     }
     else if (window.innerWidth > 1340 && activShowingContact == false) {
-        document.getElementById('detail-information-screen').style.padding = '58px 1865px';
+        document.getElementById('detail-information-screen').style.padding = '103px 1865px';
         document.getElementById('detail-information-screen').style.right = 'unset';
     }
 })

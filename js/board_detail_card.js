@@ -18,6 +18,7 @@ function openDetailCardToDo(x) {
     };
     renderSubtaksInDetailCardToDo(x);
     document.getElementById('body').style.overflow = 'hidden';
+    document.getElementById('details').setAttribute('onclick', `closeDetailCard('tasksToDo', ${x})`)
     openTask = tasksToDo[x];
 }
 
@@ -58,6 +59,7 @@ function openDetailCardInProgress(x) {
     };
     renderSubtaksInDetailCardInProgress(x);
     document.getElementById('body').style.overflow = 'hidden';
+    document.getElementById('details').setAttribute('onclick', `closeDetailCard('tasksInProgress', ${x})`)
     openTask = tasksInProgress[x];
 }
 
@@ -98,6 +100,7 @@ function openDetailCardAwaitFeedback(x) {
     };
     renderSubtaksInDetailCardAwaitFeedback(x);
     document.getElementById('body').style.overflow = 'hidden';
+    document.getElementById('details').setAttribute('onclick', `closeDetailCard('tasksAwaitFeedback', ${x})`)
     openTask = tasksAwaitFeedback[x];
 }
 
@@ -138,6 +141,7 @@ function openDetailCardDone(x) {
     };
     renderSubtaksInDetailCardDone(x);
     document.getElementById('body').style.overflow = 'hidden';
+    document.getElementById('details').setAttribute('onclick', `closeDetailCard('tasksDone', ${x})`)
     openTask = tasksDone[x];
 }
 
