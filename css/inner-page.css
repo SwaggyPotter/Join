@@ -291,7 +291,7 @@ h2 {
         left: 0;
         background: white;
         z-index: 999;
-       
+       padding-top: 0 !important;
     }
 
     .sidebar .wrapper {
