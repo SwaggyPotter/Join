@@ -1,14 +1,42 @@
 let contacts = []
 let sortedContacts = sortContactsAndSave(contacts);
 
+
 async function loadContactFromBackEnd() {
+    setTimeout(() => {
+        let contactsTransform = backend.getItem('contacts') || [];
+
+        // JSON-Parsing in einer Promise-Struktur
+        const parseJSONPromise = new Promise((resolve, reject) => {
+            try {
+                resolve(JSON.parse(contactsTransform));
+            } catch (error) {
+                reject(error);
+            }
+        });
+
+        parseJSONPromise
+            .then(parsedContacts => {
+                sortedContacts = parsedContacts || [];
+
+                // Hier können Sie den Code ausführen, der auf sortedContacts zugreift
+                renderTheQuestContacts();
+            })
+            .catch(error => {
+                console.error('Fehler beim Parsen des JSON:', error);
+            });
+    }, 500);
+}
+
+/** function save
+ * async function loadContactFromBackEnd() {
     setTimeout(() => {
         let contactsTransform = backend.getItem('contacts') || []
         sortedContacts = JSON.parse(contactsTransform) || []
         renderTheQuestContacts();
     }, 500)
 }
-
+ */
 
 /**
  * render the contacts
