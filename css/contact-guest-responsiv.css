@@ -196,6 +196,7 @@
         border-radius: 0;
         overflow: hidden;
         transition: 525ms;
+        padding-bottom: 76px;
     }
 
     #add-taks-content-guest {
@@ -258,6 +259,7 @@
         overflow: hidden;
         transition: 525ms;
         border-radius: 0;
+        padding-bottom: 76px;
     }
 
     .embleme-and-input {
