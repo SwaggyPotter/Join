@@ -1,11 +1,10 @@
 let contacts = []
 let sortedContacts = sortContactsAndSave(contacts);
 
-
 async function loadContactFromBackEnd() {
     setTimeout(async () => {
         console.log(backend.getItem('contacts'))
-        let contactsTransform = backend.getItem('contacts') || [];
+        let contactsTransform = await getBackendItem()
 
         if (contactsTransform.length > 0) {
             try {
@@ -20,6 +19,11 @@ async function loadContactFromBackEnd() {
             console.warn('Das JSON-Dokument ist leer.');
         }
     }, 500);
+}
+
+function getBackendItem() {
+    let result = backend.getItem('contacts')
+    return result
 }
 
 /*async function loadContactFromBackEnd() {
