@@ -1,56 +1,19 @@
 let contacts = []
 let sortedContacts = sortContactsAndSave(contacts);
+let contactsTransform;
+
+
+
+
 
 async function loadContactFromBackEnd() {
-    setTimeout(async () => {
-        let contactsTransform = await getBackendItem()
-
-        if (contactsTransform.length > 0) {
-            try {
-                sortedContacts = JSON.parse(contactsTransform) || [];
-                console.log(sortedContacts)
-                // Hier können Sie den Code ausführen, der auf sortedContacts zugreift
-                renderTheQuestContacts();
-            } catch (error) {
-                console.error('Fehler beim Parsen des JSON:', error);
-            }
-        } else {
-            console.warn('Das JSON-Dokument ist leer.');
-        }
-    }, 500);
-}
-
-function getBackendItem() {
-    let result = backend.getItem('contacts')
-    console.log(result)
-    return result
-}
-
-/*async function loadContactFromBackEnd() {
-    setTimeout(async () => {
-        let contactsTransform = backend.getItem('contacts') || [];
-
-        try {
-            // Parsing des JSON mit await
-            sortedContacts = await JSON.parse(contactsTransform) || [];
-
-            // Hier können Sie den Code ausführen, der auf sortedContacts zugreift
-            renderTheQuestContacts();
-        } catch (error) {
-            console.error('Fehler beim Parsen des JSON:', error);
-        }
-    }, 500);
-}*/
-
-/** function save
- * async function loadContactFromBackEnd() {
     setTimeout(() => {
-        let contactsTransform = backend.getItem('contacts') || []
+        contactsTransform = backend.getItem('contacts') || []
         sortedContacts = JSON.parse(contactsTransform) || []
         renderTheQuestContacts();
-    }, 500)
+    }, 1000)
 }
- */
+
 
 /**
  * render the contacts
