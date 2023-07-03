@@ -3,13 +3,12 @@ let sortedContacts = sortContactsAndSave(contacts);
 
 async function loadContactFromBackEnd() {
     setTimeout(async () => {
-        console.log(backend.getItem('contacts'))
         let contactsTransform = await getBackendItem()
 
         if (contactsTransform.length > 0) {
             try {
                 sortedContacts = JSON.parse(contactsTransform) || [];
-
+                console.log(sortedContacts)
                 // Hier können Sie den Code ausführen, der auf sortedContacts zugreift
                 renderTheQuestContacts();
             } catch (error) {
@@ -23,6 +22,7 @@ async function loadContactFromBackEnd() {
 
 function getBackendItem() {
     let result = backend.getItem('contacts')
+    console.log(result)
     return result
 }
 
