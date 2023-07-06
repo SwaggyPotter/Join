@@ -179,6 +179,7 @@ function executeRenderingAddedSubtask(subtasksToEdit, i) {
 function closeEdit(taskStatus, x) {
     let inputElements = document.getElementsByClassName('edited-subtasks');
     document.getElementById('body').style.overflow = 'visible'
+    document.getElementById('list-assigned-to').classList.add('d-none');
     temporaryPersons = []
     getCheckedCheckBoxes(inputElements);
     switch (taskStatus) {
