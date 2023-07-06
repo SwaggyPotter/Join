@@ -366,4 +366,5 @@ function closeAddTask() {
     document.getElementById('list-task-category').classList.add('d-none');
     document.getElementById('list-assigned-to').classList.add('d-none');
     document.getElementById('body').style.overflow = 'visible';
+    temporaryPersons = []
 }

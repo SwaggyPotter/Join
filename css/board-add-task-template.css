@@ -154,6 +154,7 @@
     padding-bottom: 13px;
     border: none;
     border-bottom: 1px solid;
+    cursor: pointer;
 }
 
 .priority {

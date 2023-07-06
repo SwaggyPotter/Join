@@ -343,6 +343,10 @@
     padding-top: 0px !important
 }
 
+.addSubTask{
+    cursor: pointer;
+}
+
 .details {
     background-color: rgba(0, 0, 0, 0.2);
     z-index: 1000;

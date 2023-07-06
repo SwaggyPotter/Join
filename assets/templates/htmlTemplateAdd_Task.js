@@ -9,7 +9,7 @@ function htmlTemplateSubtasks(newtaskSubtask, i) {
 
 function htmlTemplateListAssignedTo(i) {
     return `
-    <li><input class="checkbox-contacts" type="checkbox" /> ${contacts[i]['name']} ${contacts[i]['second-name']}</li>
+    <li><input onclick="savePersonTemorary(1)" class="checkbox-contacts" type="checkbox" /> ${contacts[i]['name']} ${contacts[i]['second-name']}</li>
     `;
 }
 
@@ -22,7 +22,7 @@ function htmlTemplateListAssignedToTwo(i, taskStatus, x) {
     }
     else {
         return `
-        <li><input class="checkbox-contacts-two" type="checkbox" /> ${contacts[i]['name']} ${contacts[i]['second-name']}</li>
+        <li><input onclick="savePersonTemorary(2)" class="checkbox-contacts-two" type="checkbox" /> ${contacts[i]['name']} ${contacts[i]['second-name']}</li>
         `;
     }
 

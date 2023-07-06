@@ -172,7 +172,6 @@ function getAssignedTo() {
     checkEmptyAssignedTo(assignedTo);
 }
 
-
 /**
  * this function checks if a contact is assigned to the task
  * 
@@ -241,20 +240,30 @@ function openTaskCategory() {
  * 
  */
 function renderListAssignedTo() {
-    let content = document.getElementById('checkbox-list-assigned-to');
-    content.innerHTML = '';
-    for (let i = 0; i < contacts.length; i++)
-        content.innerHTML +=
-            htmlTemplateListAssignedTo(i);
+    if (temporaryPersons.length === 0) {
+        let content = document.getElementById('checkbox-list-assigned-to');
+        content.innerHTML = '';
+        for (let i = 0; i < contacts.length; i++)
+            content.innerHTML +=
+                htmlTemplateListAssignedTo(i);
+    }
+    else if (temporaryPersons.lenght > 0) {
+
+    }
 }
 
 
 function renderListAssignedToTwo(taskStatus, x) {
-    let content = document.getElementById('checkbox-list-assigned-to-two');
-    content.innerHTML = '';
-    for (let i = 0; i < contacts.length; i++)
-        content.innerHTML +=
-            htmlTemplateListAssignedToTwo(i, taskStatus, x);
+    if (temporaryPersons.length === 0) {
+        let content = document.getElementById('checkbox-list-assigned-to-two');
+        content.innerHTML = '';
+        for (let i = 0; i < contacts.length; i++)
+            content.innerHTML +=
+                htmlTemplateListAssignedToTwo(i, taskStatus, x);
+    }
+    else if (temporaryPersons.lenght > 0) {
+
+    }
 }
 
 /**
