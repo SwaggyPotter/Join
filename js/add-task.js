@@ -56,7 +56,6 @@ function removeStringFromArray(array, searchString) {
 }
 
 
-//aktuell hilfe
 let temporaryPersons = []
 function savePersonTemorary(k) {
     if (k == 1) {
@@ -72,7 +71,6 @@ function savePersonTemorary(k) {
             }
         }
         sortNamesByFirstLetter(temporaryPersons)
-        console.log('Temporary persons:', temporaryPersons)
     }
     else if (k == 2) {
         let inputElements = document.getElementsByClassName('checkbox-contacts-two');
@@ -87,7 +85,6 @@ function savePersonTemorary(k) {
             }
         }
         sortNamesByFirstLetter(temporaryPersons)
-        console.log('Temporary persons:', temporaryPersons)
     }
 }
 
@@ -236,9 +233,8 @@ function teporaryAdd(i) {
             teporaryCategory = removeStringFromArray(teporaryCategory, categories[i], teporaryCategory)
         }
     }
-    console.log(teporaryCategory)
 }
-//hilfe
+
 
 /**
  * this function checks if a category is selected

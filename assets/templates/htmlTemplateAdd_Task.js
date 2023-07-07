@@ -27,7 +27,6 @@ function htmlTemplateListAssignedToTwo(i, taskStatus, x) {
     }
 
 }
-//hilfe
 
 
 function istNameImArray(vollerName, array) {
@@ -39,7 +38,7 @@ function istNameImArray(vollerName, array) {
     return false;
 }
 
-//hilfe
+
 function htmlTemplateCategory(categoryToRender, ellipseToRender, i) {
     return `
         <div class="category-row">

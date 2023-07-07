@@ -234,9 +234,6 @@ function closeEditExtension(taskStatus, x, checkboxChecked, taskType) {
 }
 
 
-
-
-
 function loadNewAssignedTo(x) {
     let inputElements = document.getElementsByClassName('checkbox-contacts-two');
     for (let i = 0; inputElements[i]; ++i) {
