@@ -375,6 +375,7 @@ body {
 #close-detail-arrow {
     position: fixed;
     right: 60px;
+    top: 50px !important;
     cursor: pointer;
 }
 

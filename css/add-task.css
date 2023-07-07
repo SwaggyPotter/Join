@@ -435,7 +435,6 @@ body {
     }
 
     .dropdown-check-list {
-        display: flex;
         justify-content: space-around;
     }
 

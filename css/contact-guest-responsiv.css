@@ -209,6 +209,43 @@
         padding: 0;
     }
 
+    .embleme-edit {
+        display: flex;
+        color: white;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid white;
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        background-color: orange;
+        font-size: 47px;
+    }
+
+    #save-edit-btn {
+        padding: 18px 10px 18px 10px;
+        background-color: #4589FF;
+        width: 146px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        color: white;
+        margin-top: 20px;
+    }
+
+    .save-edit-btn {
+        padding: 18px 10px 18px 10px;
+        background-color: #4589FF;
+        width: 146px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        color: white;
+        margin-top: 20px;
+        cursor: pointer;
+    }
 
     .detail-embleme {
         display: flex;
@@ -230,7 +267,7 @@
         margin-top: 95px;
         margin-bottom: 0;
         margin-left: 35px;
-        width: 100%;
+        width: 95%;
     }
 
     #contact-information-info-container {
@@ -260,12 +297,13 @@
         transition: 525ms;
         border-radius: 0;
         padding-bottom: 76px;
+        height: 93%;
     }
 
     .embleme-and-input {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: unset;
         align-items: center;
         background-color: white;
         border: solid rgba(0, 0, 0, 0.103) 2px;
