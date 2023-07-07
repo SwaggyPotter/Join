@@ -39,12 +39,12 @@ function istNameImArray(vollerName, array) {
     return false;
 }
 
-
-function htmlTemplateCategory(categoryToRender, ellipseToRender) {
+//hilfe
+function htmlTemplateCategory(categoryToRender, ellipseToRender, i) {
     return `
         <div class="category-row">
             <div>
-                <div><input class="messageCheckbox" type="checkbox"/> ${categoryToRender}</div>
+                <div><input onclick="teporaryAdd(${i})" class="messageCheckbox" type="checkbox"/> ${categoryToRender}</div>
             </div>
             <img src="${ellipseToRender}">
         </div>

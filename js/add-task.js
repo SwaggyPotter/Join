@@ -4,7 +4,92 @@ let priority = 'low';
 let category = '';
 let nbOfSubtasks = 0;
 let data = '';
+let teporaryCategory = [];
 
+
+function clearArray() {
+    removedChars = [];
+    removedInitials = [];
+    removerArray = [];
+    removeInitials = [];
+}
+
+
+function sortNamesByFirstLetter(names) {
+    // Sortiere die Namen alphabetisch
+    names.sort();
+
+    // Erstelle ein Objekt, um Namen nach dem ersten Buchstaben zu gruppieren
+    const groupedNames = {};
+
+    // Iteriere über die Namen und gruppiere sie nach dem ersten Buchstaben
+    names.forEach(name => {
+        const words = name.split(' ');
+        const firstLetter = words[0].charAt(0).toUpperCase();
+        if (groupedNames[firstLetter]) {
+            groupedNames[firstLetter].push(name);
+        } else {
+            groupedNames[firstLetter] = [name];
+        }
+    });
+
+    // Sortiere die Gruppen nach dem ersten Buchstaben
+    const sortedGroups = Object.entries(groupedNames).sort();
+
+    // Erstelle eine flache sortierte Liste der Namen
+    const sortedNames = [];
+    sortedGroups.forEach(group => {
+        sortedNames.push(...group[1]);
+    });
+
+    // Gib die sortierte Liste der Namen zurück
+    return sortedNames;
+}
+
+
+function removeStringFromArray(array, searchString) {
+    const index = array.findIndex(item => item === searchString);
+    if (index !== -1) {
+        array.splice(index, 1);
+    }
+    return array;
+}
+
+
+//aktuell hilfe
+let temporaryPersons = []
+function savePersonTemorary(k) {
+    if (k == 1) {
+        let inputElements = document.getElementsByClassName('checkbox-contacts');
+        for (let i = 0; inputElements[i]; ++i) {
+            if (istNameImArray(contacts[i]['name'] + ' ' + contacts[i]['second-name'], temporaryPersons) == true && inputElements[i].checked) {
+            }
+            if (inputElements[i].checked && istNameImArray(contacts[i]['name'] + ' ' + contacts[i]['second-name'], temporaryPersons) == false) {
+                temporaryPersons.push(contacts[i]['name'] + ' ' + contacts[i]['second-name']);
+            }
+            if (!inputElements[i].checked && istNameImArray(contacts[i]['name'] + ' ' + contacts[i]['second-name'], temporaryPersons) == true) {
+                temporaryPersons = removeStringFromArray(temporaryPersons, contacts[i]['name'] + ' ' + contacts[i]['second-name'], temporaryPersons)
+            }
+        }
+        sortNamesByFirstLetter(temporaryPersons)
+        console.log('Temporary persons:', temporaryPersons)
+    }
+    else if (k == 2) {
+        let inputElements = document.getElementsByClassName('checkbox-contacts-two');
+        for (let i = 0; inputElements[i]; ++i) {
+            if (istNameImArray(contacts[i]['name'] + ' ' + contacts[i]['second-name'], temporaryPersons) == true && inputElements[i].checked) {
+            }
+            if (inputElements[i].checked && istNameImArray(contacts[i]['name'] + ' ' + contacts[i]['second-name'], temporaryPersons) == false) {
+                temporaryPersons.push(contacts[i]['name'] + ' ' + contacts[i]['second-name']);
+            }
+            if (!inputElements[i].checked && istNameImArray(contacts[i]['name'] + ' ' + contacts[i]['second-name'], temporaryPersons) == true) {
+                temporaryPersons = removeStringFromArray(temporaryPersons, contacts[i]['name'] + ' ' + contacts[i]['second-name'], temporaryPersons)
+            }
+        }
+        sortNamesByFirstLetter(temporaryPersons)
+        console.log('Temporary persons:', temporaryPersons)
+    }
+}
 
 /**
  * This function adds a task to the board's To Do list
@@ -139,6 +224,21 @@ function getCategory() {
     checkEmptyCategory(category);
 }
 
+function teporaryAdd(i) {
+    let inputElements = document.getElementsByClassName('messageCheckbox');
+    for (let i = 0; inputElements[i]; ++i) {
+        if (istNameImArray(categories[i], teporaryCategory) == true && inputElements[i].checked) {
+        }
+        if (inputElements[i].checked && istNameImArray(categories[i], teporaryCategory) == false) {
+            teporaryCategory.push(categories[i]);
+        }
+        if (!inputElements[i].checked && istNameImArray(categories[i], teporaryCategory) == true) {
+            teporaryCategory = removeStringFromArray(teporaryCategory, categories[i], teporaryCategory)
+        }
+    }
+    console.log(teporaryCategory)
+}
+//hilfe
 
 /**
  * this function checks if a category is selected
@@ -266,18 +366,22 @@ function renderListAssignedToTwo(taskStatus, x) {
     }
 }
 
+
+
 /**
  * this function renders the category list
  * 
  */
 function renderListTaskCategory() {
-    content = document.getElementById('category-row').innerHTML =
-        htmlTemplateNewCategory();
-    for (let i = 0; i < categories.length; i++) {
-        categoryToRender = categories[i];
-        categoryColorToRender = categoryColors[i];
-        document.getElementById('category-row').innerHTML +=
-            htmlTemplateCategory(categoryToRender, categoryColorToRender)
+    if (teporaryCategory.length === 0) {
+        content = document.getElementById('category-row').innerHTML =
+            htmlTemplateNewCategory();
+        for (let i = 0; i < categories.length; i++) {
+            categoryToRender = categories[i];
+            categoryColorToRender = categoryColors[i];
+            document.getElementById('category-row').innerHTML +=
+                htmlTemplateCategory(categoryToRender, categoryColorToRender, i)
+        }
     }
 }
 
