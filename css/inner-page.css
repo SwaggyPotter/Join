@@ -290,11 +290,11 @@ h2 {
         left: 0;
         background: white;
         z-index: 999;
-       padding-top: 0 !important;
+        padding-top: 0 !important;
     }
 
     .sidebar .wrapper {
-        padding: 0px 23px;
+        padding: 10px 23px;
         height: auto;
         margin-top: 0;
     }
