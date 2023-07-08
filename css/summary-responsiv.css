@@ -34,6 +34,10 @@
         margin-top: 43px;
     }
 
+    #greetingTime {
+        padding-top: 10vh;
+    }  
+
     #tasks-to-to:hover {
         transition: 125ms;
         display: flex;
@@ -86,6 +90,7 @@
     #greeting {
         display: none;
     }
+  
 
     #tasks-to-to {
         transition: 125ms;
