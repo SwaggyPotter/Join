@@ -57,35 +57,31 @@ function removeStringFromArray(array, searchString) {
 
 
 let temporaryPersons = []
+let id1 = 'checkbox-contacts'
+let id2 = 'checkbox-contacts-two'
 function savePersonTemorary(k) {
     if (k == 1) {
-        let inputElements = document.getElementsByClassName('checkbox-contacts');
-        for (let i = 0; inputElements[i]; ++i) {
-            if (istNameImArray(contacts[i]['name'] + ' ' + contacts[i]['second-name'], temporaryPersons) == true && inputElements[i].checked) {
-            }
-            if (inputElements[i].checked && istNameImArray(contacts[i]['name'] + ' ' + contacts[i]['second-name'], temporaryPersons) == false) {
-                temporaryPersons.push(contacts[i]['name'] + ' ' + contacts[i]['second-name']);
-            }
-            if (!inputElements[i].checked && istNameImArray(contacts[i]['name'] + ' ' + contacts[i]['second-name'], temporaryPersons) == true) {
-                temporaryPersons = removeStringFromArray(temporaryPersons, contacts[i]['name'] + ' ' + contacts[i]['second-name'], temporaryPersons)
-            }
-        }
-        sortNamesByFirstLetter(temporaryPersons)
+        saveExtension(id1)
     }
     else if (k == 2) {
-        let inputElements = document.getElementsByClassName('checkbox-contacts-two');
-        for (let i = 0; inputElements[i]; ++i) {
-            if (istNameImArray(contacts[i]['name'] + ' ' + contacts[i]['second-name'], temporaryPersons) == true && inputElements[i].checked) {
-            }
-            if (inputElements[i].checked && istNameImArray(contacts[i]['name'] + ' ' + contacts[i]['second-name'], temporaryPersons) == false) {
-                temporaryPersons.push(contacts[i]['name'] + ' ' + contacts[i]['second-name']);
-            }
-            if (!inputElements[i].checked && istNameImArray(contacts[i]['name'] + ' ' + contacts[i]['second-name'], temporaryPersons) == true) {
-                temporaryPersons = removeStringFromArray(temporaryPersons, contacts[i]['name'] + ' ' + contacts[i]['second-name'], temporaryPersons)
-            }
-        }
-        sortNamesByFirstLetter(temporaryPersons)
+        saveExtension(id2)
     }
+}
+
+
+function saveExtension(id) {
+    let inputElements = document.getElementsByClassName(id);
+    for (let i = 0; inputElements[i]; ++i) {
+        if (istNameImArray(contacts[i]['name'] + ' ' + contacts[i]['second-name'], temporaryPersons) == true && inputElements[i].checked) {
+        }
+        if (inputElements[i].checked && istNameImArray(contacts[i]['name'] + ' ' + contacts[i]['second-name'], temporaryPersons) == false) {
+            temporaryPersons.push(contacts[i]['name'] + ' ' + contacts[i]['second-name']);
+        }
+        if (!inputElements[i].checked && istNameImArray(contacts[i]['name'] + ' ' + contacts[i]['second-name'], temporaryPersons) == true) {
+            temporaryPersons = removeStringFromArray(temporaryPersons, contacts[i]['name'] + ' ' + contacts[i]['second-name'], temporaryPersons)
+        }
+    }
+    sortNamesByFirstLetter(temporaryPersons)
 }
 
 /**
@@ -220,6 +216,7 @@ function getCategory() {
     }
     checkEmptyCategory(category);
 }
+
 
 function teporaryAdd(i) {
     let inputElements = document.getElementsByClassName('messageCheckbox');
@@ -361,7 +358,6 @@ function renderListAssignedToTwo(taskStatus, x) {
 
     }
 }
-
 
 
 /**
