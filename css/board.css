@@ -217,6 +217,10 @@
     border: none;
 }
 
+.negativMargin {
+    margin-top: -5vh !important;
+}
+
 .name {
     margin-left: 20px;
     margin-top: 12px;
@@ -343,7 +347,7 @@
     padding-top: 0px !important
 }
 
-.addSubTask{
+.addSubTask {
     cursor: pointer;
 }
 
@@ -451,4 +455,3 @@
     align-items: center;
     justify-content: left;
 }
-

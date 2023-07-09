@@ -12,7 +12,7 @@
         flex-direction: column;
         width: 100%;
         height: unset;
-        padding-top: 10vh;
+        padding-top: 5vh;
     }
 }
 
@@ -35,7 +35,7 @@
     }
 
     #greetingTime {
-        padding-top: 10vh;
+        padding-top: 5vh;
     }  
 
     #tasks-to-to:hover {

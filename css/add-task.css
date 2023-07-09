@@ -9,7 +9,6 @@ body {
     justify-content: center;
     align-items: center;
     width: 25vw;
-    margin-left: 150px;
 }
 
 .add-task-form {
@@ -19,6 +18,28 @@ body {
     margin: 0;
     max-height: 90vh;
     padding-bottom: 200px;
+}
+
+.contentCenter{
+    display: flex;
+    justify-content: center;
+}
+
+.hoverEffectBTN {
+    background-color: #4589FF;
+    color: white;
+}
+
+.hoverEffectBTN:hover {
+    background-color: #0f67ff;
+}
+
+.hoverClearBTN {
+    background-color: #ffffff;
+}
+
+.hoverClearBTN:hover {
+    background-color: #9c9a9a;
 }
 
 .bg1 {

@@ -140,6 +140,7 @@ h2 {
     background: #f9f9f9;
     overflow: scroll;
     height: 94vh;
+    padding-top: 100px;
 }
 
 .content p {
@@ -273,9 +274,8 @@ h2 {
 
     .content {
         width: auto;
-        padding: 20px 33px 90px 33px;
+        padding: 110px 33px 90px 33px;
         overflow: auto;
-        height: max-content;
     }
 
     .content .wrapper {

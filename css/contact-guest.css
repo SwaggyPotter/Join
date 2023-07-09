@@ -134,6 +134,7 @@ body {
     display: flex;
     align-items: center;
     margin-bottom: 21px;
+    padding-top: 45px;
 }
 
 .detail-name {
