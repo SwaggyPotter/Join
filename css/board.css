@@ -47,6 +47,26 @@
     font-size: 23px;
 }
 
+.add-task-btn button:hover {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 138px;
+    height: 51px;
+    background: #0f67ff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 23px;
+}
+
+.hoverAddPlus:hover{
+    background-color: #c4c4c4;
+}
+
 .status-bar {
     display: flex;
     justify-content: space-between;
