@@ -19,26 +19,20 @@ function clearAddTaskForm() {
 /**
  * this function sets the new task's priority and changes the color of the buttons
  * 
- * @param {string} string 
+ * @param {prio} string 
  */
-function setPriority(string) {
-    priority = string;
+function setPriority(prio) {
     resetPriorityBtn();
-    switch (string) {
-
+    document.getElementById(`${prio}-btn-img`).src = `assets/img/${prio}-white.svg`;
+    switch (prio) {
         case 'low':
             document.getElementById('low-btn').style = ("background-color:#7AE229");
-            document.getElementById('low-btn-img').src = "assets/img/low-white.svg";
             break;
-
         case 'medium':
             document.getElementById('medium-btn').style = ("background-color:#FFA800");
-            document.getElementById('medium-btn-img').src = "assets/img/medium-white.svg";
             break;
-
         case 'urgent':
             document.getElementById('urgent-btn').style = ("background-color:#FF3D00");
-            document.getElementById('urgent-btn-img').src = "assets/img/urgent-white.svg";
             break;
     }
 }
