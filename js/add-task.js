@@ -5,8 +5,14 @@ let category = '';
 let nbOfSubtasks = 0;
 let data = '';
 let teporaryCategory = [];
+let temporaryPersons = []
+let id1 = 'checkbox-contacts'
+let id2 = 'checkbox-contacts-two'
 
-
+/**
+ * clear the array's after closing the edit window
+ * the array's for the edit window (contacts to assing)
+ */
 function clearArray() {
     removedChars = [];
     removedInitials = [];
@@ -15,14 +21,15 @@ function clearArray() {
 }
 
 
+/**
+ * sort a array with strings by the first letter
+ * 
+ * @param {sting} names 
+ * @returns 
+ */
 function sortNamesByFirstLetter(names) {
-    // Sortiere die Namen alphabetisch
     names.sort();
-
-    // Erstelle ein Objekt, um Namen nach dem ersten Buchstaben zu gruppieren
     const groupedNames = {};
-
-    // Iteriere über die Namen und gruppiere sie nach dem ersten Buchstaben
     names.forEach(name => {
         const words = name.split(' ');
         const firstLetter = words[0].charAt(0).toUpperCase();
@@ -32,33 +39,20 @@ function sortNamesByFirstLetter(names) {
             groupedNames[firstLetter] = [name];
         }
     });
-
-    // Sortiere die Gruppen nach dem ersten Buchstaben
     const sortedGroups = Object.entries(groupedNames).sort();
-
-    // Erstelle eine flache sortierte Liste der Namen
     const sortedNames = [];
     sortedGroups.forEach(group => {
         sortedNames.push(...group[1]);
     });
-
-    // Gib die sortierte Liste der Namen zurück
     return sortedNames;
 }
 
 
-function removeStringFromArray(array, searchString) {
-    const index = array.findIndex(item => item === searchString);
-    if (index !== -1) {
-        array.splice(index, 1);
-    }
-    return array;
-}
-
-
-let temporaryPersons = []
-let id1 = 'checkbox-contacts'
-let id2 = 'checkbox-contacts-two'
+/**
+ * check which checkboxes are open
+ * 
+ * @param {number} k 
+ */
 function savePersonTemorary(k) {
     if (k == 1) {
         saveExtension(id1)
@@ -69,6 +63,11 @@ function savePersonTemorary(k) {
 }
 
 
+/**
+ * get the contact to assign based on the checkbox which choosen.
+ * 
+ * @param {object} id 
+ */
 function saveExtension(id) {
     let inputElements = document.getElementsByClassName(id);
     for (let i = 0; inputElements[i]; ++i) {
@@ -83,6 +82,7 @@ function saveExtension(id) {
     }
     sortNamesByFirstLetter(temporaryPersons)
 }
+
 
 /**
  * This function adds a task to the board's To Do list
@@ -106,8 +106,7 @@ async function addTask() {
  * @param {date} dueDate 
  */
 async function pushTask(title, text, dueDate) {
-    data =
-    {
+    data = {
         category: `${category}`,
         titel: `${title}`,
         text: `${text}`,
@@ -265,6 +264,7 @@ function getAssignedTo() {
     checkEmptyAssignedTo(assignedTo);
 }
 
+
 /**
  * this function checks if a contact is assigned to the task
  * 
@@ -345,7 +345,12 @@ function renderListAssignedTo() {
     }
 }
 
-
+/**
+ * render the contact list if you click on an task to edit
+ * 
+ * @param {object} taskStatus 
+ * @param {number} x 
+ */
 function renderListAssignedToTwo(taskStatus, x) {
     if (temporaryPersons.length === 0) {
         let content = document.getElementById('checkbox-list-assigned-to-two');
@@ -391,85 +396,4 @@ function renderSubtasks() {
         nbOfSubtasks++;
     }
     content.value = '';
-}
-
-
-/**
- * this function empties the add task form
- * 
- */
-function clearAddTaskForm() {
-    document.getElementById('task-title').value = '';
-    renderListAssignedTo();
-    document.getElementById('due-date').value = "";
-    renderListTaskCategory();
-    setPriority('');
-    document.getElementById('task-description').value = '';
-    document.getElementById('ckeckbox-subtasks').innerHTML = '';
-    nbOfSubtasks = 0;
-}
-
-
-/**
- * this function sets the new task's priority and changes the color of the buttons
- * 
- * @param {string} string 
- */
-function setPriority(string) {
-    priority = string;
-    resetPriorityBtn();
-    switch (string) {
-
-        case 'low':
-            document.getElementById('low-btn').style = ("background-color:#7AE229");
-            document.getElementById('low-btn-img').src = "assets/img/low-white.svg";
-            break;
-
-        case 'medium':
-            document.getElementById('medium-btn').style = ("background-color:#FFA800");
-            document.getElementById('medium-btn-img').src = "assets/img/medium-white.svg";
-            break;
-
-        case 'urgent':
-            document.getElementById('urgent-btn').style = ("background-color:#FF3D00");
-            document.getElementById('urgent-btn-img').src = "assets/img/urgent-white.svg";
-            break;
-    }
-}
-
-
-/**
- * this function resets the priority buttons' color
- * 
- */
-function resetPriorityBtn() {
-    document.getElementById('urgent-btn').style = ("background-color:#f9f9f9");
-    document.getElementById('medium-btn').style = ("background-color:#f9f9f9");
-    document.getElementById('low-btn').style = ("background-color:#f9f9f9");
-    document.getElementById('low-btn-img').src = "assets/img/low.svg";
-    document.getElementById('medium-btn-img').src = "assets/img/medium.svg";
-    document.getElementById('urgent-btn-img').src = "assets/img/urgent.svg";
-}
-
-
-/**
- * this function renders the date picker with today´s date
- * 
- */
-function renderDueDate() {
-    let todayDate = new Date().toISOString().split('T')[0];
-    document.getElementById('date-picker').innerHTML =
-        htmlTemplateDueDate(todayDate);
-}
-
-
-/**
- * this function saves all JSON arrays to the backend
- * 
- */
-async function saveTasksToBackend() {
-    await backend.setItem('tasksToDo', JSON.stringify(tasksToDo));
-    await backend.setItem('tasksInProgress', JSON.stringify(tasksInProgress));
-    await backend.setItem('tasksAwaitFeedback', JSON.stringify(tasksAwaitFeedback));
-    await backend.setItem('tasksDone', JSON.stringify(tasksDone));
 }
