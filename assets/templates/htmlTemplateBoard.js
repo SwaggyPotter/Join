@@ -1,37 +1,48 @@
-/**
- * Task todo
- * @param {*} i 
- * @param {*} widthProgressBar 
- * @param {*} nbDone 
- * @returns 
- */
-function htmlTemplateTasksToDo(i, widthProgressBar, nbDone) {
-    return `
-    <div draggable="true" ondragstart=" startDragging(${i}, 'tasksToDo')" class="task-container-detail" onclick="openDetailCardToDo(${i})">
-        <div class="category" style="background:${bgColor}">${tasksToDo[i]['category']}</div>
-     <div class="headline-task-detail">${tasksToDo[i]['titel']}</div>
-        <div class="text-task-detail">${tasksToDo[i]['text']}</div>
-        <div class="progress-bar-task-detail">
-            <div class="progress-bar" id="progress-bar">
-                <div id="myBar" style="width:${widthProgressBar}%"></div>
-            </div>
-            <div class="already-done">${nbDone}/${tasksToDo[i]['subtasks'].length} Done</div>
-        </div>
-        <div class="footer-task-detail">
-        <div class="selected-person" id="selected-person-to-do${i}"></div>
-        <div class="priority-task-detail">
-            <img src="${tasksToDo[i]['priority']}">
-        </div>
-    </div>
-</div>
-        `;
-}
-
 
 function htmlTemplateSelectedPersonToDo(i, j) {
     return `
         <div class="initials-icon bg${j}">${tasksToDo[i]['initials'][j]}</div>
     `;
+}
+
+
+function getIdForPersons(tasktype) {
+    if (tasktype == tasksToDo) {
+        return `selected-person-to-do`
+    }
+    if (tasktype == tasksInProgress) {
+        return `selected-person-in-progress`
+    }
+    if (tasktype == tasksAwaitFeedback) {
+        return `selected-person-await-feedback`
+    }
+    if (tasktype == tasksDone) {
+        return `selected-person-done`
+    }
+}
+
+// Test
+// htmlTemplateTasks Done!
+function htmlTemplateTasks(i, widthProgressBar, nbDone, tasktype) {
+    return `
+    <div draggable="true" ondragstart=" startDragging(${i}, 'tasksToDo')" class="task-container-detail" onclick="openDetailCardToDo(${i})">
+        <div class="category" style="background:${bgColor}">${tasktype[i]['category']}</div>
+     <div class="headline-task-detail">${tasktype[i]['titel']}</div>
+        <div class="text-task-detail">${tasktype[i]['text']}</div>
+        <div class="progress-bar-task-detail">
+            <div class="progress-bar" id="progress-bar">
+                <div id="myBar" style="width:${widthProgressBar}%"></div>
+            </div>
+            <div class="already-done">${nbDone}/${tasktype[i]['subtasks'].length} Done</div>
+        </div>
+        <div class="footer-task-detail">
+        <div class="selected-person" id="${getIdForPersons(tasktype)}${i}"></div>
+        <div class="priority-task-detail">
+            <img src="${tasktype[i]['priority']}">
+        </div>
+    </div>
+</div>
+        `;
 }
 
 
@@ -81,36 +92,6 @@ function htmlTemplateSubtasksDetailCard(x, j, checkedStatus, tasktype) {
 }
 
 
-/**
- * Task in progress
- * @param {*} i 
- * @param {*} widthProgressBar 
- * @param {*} nbDone 
- * @returns 
- */
-function htmlTemplateTasksInProgress(i, widthProgressBar, nbDone) {
-    return `
-    <div draggable="true" ondragstart=" startDragging(${i}, 'tasksInProgress')" class="task-container-detail" onclick="openDetailCardInProgress(${i})">
-        <div class="category" style="background:${bgColor}">${tasksInProgress[i]['category']}</div>
-     <div class="headline-task-detail">${tasksInProgress[i]['titel']}</div>
-        <div class="text-task-detail">${tasksInProgress[i]['text']}</div>
-            <div class="progress-bar-task-detail">
-                <div class="progress-bar" id="progress-bar">
-                    <div id="myBar" style="width:${widthProgressBar}%"></div>
-                </div>
-            <div class="already-done">${nbDone}/${tasksInProgress[i]['subtasks'].length} Done</div>
-        </div>
-        <div class="footer-task-detail">
-        <div class="selected-person" id="selected-person-in-progress${i}"></div>
-        <div class="priority-task-detail">
-            <img src="${tasksInProgress[i]['priority']}">
-        </div>
-    </div>
-</div>
-        `;
-}
-
-
 function htmlTemplateSelectedPersonInProgress(i, j) {
     return `
     <div class="initials-icon bg${j}">${tasksInProgress[i]['initials'][j]}</div>
@@ -125,29 +106,6 @@ function htmlTemplateSubtasksDetailCardInProgress(x, j, checkedStatus) {
 }
 
 
-function htmlTemplateTasksAwaitFeedback(i, widthProgressBar, nbDone) {
-    return `
-    <div draggable="true" ondragstart=" startDragging(${i}, 'tasksAwaitFeedback')" class="task-container-detail" onclick="openDetailCardAwaitFeedback(${i})">
-        <div class="category" style="background:${bgColor}">${tasksAwaitFeedback[i]['category']}</div>
-     <div class="headline-task-detail">${tasksAwaitFeedback[i]['titel']}</div>
-        <div class="text-task-detail">${tasksAwaitFeedback[i]['text']}</div>
-        <div class="progress-bar-task-detail">
-            <div class="progress-bar" id="progress-bar">
-                 <div id="myBar" style="width:${widthProgressBar}%"></div>
-            </div>
-            <div class="already-done">${nbDone}/${tasksAwaitFeedback[i]['subtasks'].length} Done</div>
-        </div>
-        <div class="footer-task-detail">
-        <div class="selected-person" id="selected-person-await-feedback${i}"></div>
-        <div class="priority-task-detail">
-            <img src="${tasksAwaitFeedback[i]['priority']}">
-        </div>
-    </div>
-</div>
-        `;
-}
-
-
 function htmlTemplateSubtasksDetailCardAwaitFeedback(x, j, checkedStatus) {
     return `
     <span style="padding-top: 6px"> <input class="sutaskCheckbox" type="checkbox" ${checkedStatus}/> ${tasksAwaitFeedback[x]['subtasks'][j]}</span>
@@ -159,35 +117,6 @@ function htmlTemplateSelectedPersonAwaitFeedback(i, j) {
     return `
     <div class="initials-icon bg${j}">${tasksAwaitFeedback[i]['initials'][j]}</div>
     `;
-}
-
-/**
- * Task Done
- * @param {*} i 
- * @param {*} widthProgressBar 
- * @param {*} nbDone 
- * @returns 
- */
-function htmlTemplateTasksDone(i, widthProgressBar, nbDone) {
-    return `
-    <div draggable="true" ondragstart=" startDragging(${i}, 'tasksDone')" class="task-container-detail" onclick="openDetailCardDone(${i})">
-        <div class="category" style="background:${bgColor}">${tasksDone[i]['category']}</div>
-     <div class="headline-task-detail">${tasksDone[i]['titel']}</div>
-        <div class="text-task-detail">${tasksDone[i]['text']}</div>
-        <div class="progress-bar-task-detail">
-            <div class="progress-bar" id="progress-bar">
-                <div id="myBar" style="width:${widthProgressBar}%"></div>
-            </div>
-            <div class="already-done">${nbDone}/${tasksDone[i]['subtasks'].length} Done</div>
-        </div>
-        <div class="footer-task-detail">
-        <div class="selected-person" id="selected-person-done${i}"></div>
-        <div class="priority-task-detail">
-            <img src="${tasksDone[i]['priority']}">
-        </div>
-    </div>
-</div>
-        `;
 }
 
 

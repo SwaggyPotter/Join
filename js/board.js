@@ -43,7 +43,7 @@ function renderTasksToDo() {
         checkDoneTasks(i, 'tasksToDo');
         const widthProgressBar = nbDone / tasksToDo[i]['subtasks'].length * 100;
         toDo.innerHTML +=
-            htmlTemplateTasksToDo(i, widthProgressBar, nbDone, bgColor);
+            htmlTemplateTasks(i, widthProgressBar, nbDone, tasksToDo);
         renderSelectedPersonToDo(i);
     }
 }
@@ -84,7 +84,7 @@ function renderTasksInProgress() {
         checkDoneTasks(i, 'tasksInProgress');
         const widthProgressBar = nbDone / tasksInProgress[i]['subtasks'].length * 100;
         inProgress.innerHTML +=
-            htmlTemplateTasksInProgress(i, widthProgressBar, nbDone);
+            htmlTemplateTasks(i, widthProgressBar, nbDone, tasksInProgress);
         renderSelectedPersonInProgress(i);
     }
 }
@@ -125,7 +125,7 @@ function renderTasksAwaitFeedback() {
         checkDoneTasks(i, 'tasksAwaitFeedback');
         const widthProgressBar = nbDone / tasksAwaitFeedback[i]['subtasks'].length * 100;
         awaitFeedback.innerHTML +=
-            htmlTemplateTasksAwaitFeedback(i, widthProgressBar, nbDone);
+            htmlTemplateTasks(i, widthProgressBar, nbDone, tasksAwaitFeedback);
         renderSelectedPersonAwaitFeedback(i);
     }
 }
@@ -166,7 +166,7 @@ function renderTasksDone() {
         checkDoneTasks(i, 'tasksDone');
         const widthProgressBar = nbDone / tasksDone[i]['subtasks'].length * 100;
         doneContainer.innerHTML +=
-            htmlTemplateTasksDone(i, widthProgressBar, nbDone);
+            htmlTemplateTasks(i, widthProgressBar, nbDone, tasksDone);
         renderSelectedPersonDone(i);
     }
 }
@@ -274,7 +274,7 @@ function filterToDo(search) {
             checkDoneTasks(i, 'tasksToDo');
             const widthProgressBar = nbDone / tasksToDo[i]['subtasks'].length * 100;
             document.getElementById('to-do-container').innerHTML +=
-                htmlTemplateTasksToDo(i, widthProgressBar, nbDone);
+                htmlTemplateTasks(i, widthProgressBar, nbDone, tasksToDo);
             renderSelectedPersonToDo(i);
         }
     }
@@ -296,7 +296,7 @@ function filterInProgress(search) {
             checkDoneTasks(i, 'tasksInProgress');
             const widthProgressBar = nbDone / tasksInProgress[i]['subtasks'].length * 100;
             document.getElementById('in-progress-container').innerHTML +=
-                htmlTemplateTasksInProgress(i, widthProgressBar, nbDone);
+                htmlTemplateTasks(i, widthProgressBar, nbDone, tasksInProgress);
             renderSelectedPersonInProgress(i);
         }
     }
@@ -317,7 +317,7 @@ function filterAwaitFeedback(search) {
             checkDoneTasks(i, 'tasksAwaitFeedback');
             const widthProgressBar = nbDone / tasksAwaitFeedback[i]['subtasks'].length * 100;
             document.getElementById('await-feedback-container').innerHTML +=
-                htmlTemplateTasksAwaitFeedback(i, widthProgressBar, nbDone);
+                htmlTemplateTasks(i, widthProgressBar, nbDone, tasksAwaitFeedback);
             renderSelectedPersonAwaitFeedback(i);
         }
     }
@@ -338,7 +338,7 @@ function filterDone(search) {
             checkDoneTasks(i, 'tasksDone');
             const widthProgressBar = nbDone / tasksDone[i]['subtasks'].length * 100;
             document.getElementById('done-container').innerHTML +=
-                htmlTemplateTasksDone(i, widthProgressBar, nbDone);
+                htmlTemplateTasks(i, widthProgressBar, nbDone, tasksDone);
             renderSelectedPersonDone(i);
         }
     }
