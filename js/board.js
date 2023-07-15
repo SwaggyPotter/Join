@@ -3,7 +3,6 @@ let checkboxChecked;
 let containerToAdd;
 let bgColor;
 
-
 /**
  * this function renders the board
  * 
@@ -16,6 +15,7 @@ function renderBoard() {
 }
 
 
+
 /**
  * this function sets the background color for the category
  * 
@@ -26,6 +26,21 @@ function getCategoryColor(category) {
         if (category == categories[i]) {
             bgColor = categoriesBackground[i];
         }
+    }
+}
+
+
+function renderAllTasks(tasktype) {
+    let toDo = document.getElementById('to-do-container');
+    toDo.innerHTML = '';
+    for (let i = 0; i < tasktype.length; i++) {
+        let category = tasktype[i]['category'];
+        getCategoryColor(`${category}`);
+        checkDoneTasks(i, `'${tasktype}'`);
+        const widthProgressBar = nbDone / tasktype[i]['subtasks'].length * 100;
+        toDo.innerHTML +=
+            htmlTemplateTasks(i, widthProgressBar, nbDone, tasktype);
+        renderSelectedPersonToDo(i);
     }
 }
 
@@ -368,3 +383,5 @@ function closeAddTask() {
     document.getElementById('body').style.overflow = 'visible';
     temporaryPersons = []
 }
+
+

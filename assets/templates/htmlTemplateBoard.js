@@ -21,11 +21,42 @@ function getIdForPersons(tasktype) {
     }
 }
 
-// Test
-// htmlTemplateTasks Done!
+
+function getOpenDetailName(tasktype) {
+    if (tasktype == tasksToDo) {
+        return `openDetailCardToDo`
+    }
+    if (tasktype == tasksInProgress) {
+        return `openDetailCardInProgress`
+    }
+    if (tasktype == tasksAwaitFeedback) {
+        return `openDetailCardAwaitFeedback`
+    }
+    if (tasktype == tasksDone) {
+        return `openDetailCardDone`
+    }
+}
+
+
+function startDragNameFinder(tasktype){
+    if (tasktype == tasksToDo) {
+        return `tasksToDo`
+    }
+    if (tasktype == tasksInProgress) {
+        return `tasksInProgress`
+    }
+    if (tasktype == tasksAwaitFeedback) {
+        return `tasksAwaitFeedback`
+    }
+    if (tasktype == tasksDone) {
+        return `tasksDone`
+    } 
+}
+
+
 function htmlTemplateTasks(i, widthProgressBar, nbDone, tasktype) {
     return `
-    <div draggable="true" ondragstart=" startDragging(${i}, 'tasksToDo')" class="task-container-detail" onclick="openDetailCardToDo(${i})">
+    <div draggable="true" ondragstart=" startDragging(${i}, '${startDragNameFinder(tasktype)}')" class="task-container-detail" onclick="${getOpenDetailName(tasktype)}(${i})">
         <div class="category" style="background:${bgColor}">${tasktype[i]['category']}</div>
      <div class="headline-task-detail">${tasktype[i]['titel']}</div>
         <div class="text-task-detail">${tasktype[i]['text']}</div>
@@ -46,8 +77,6 @@ function htmlTemplateTasks(i, widthProgressBar, nbDone, tasktype) {
 }
 
 
-// Test 
-// DetailCard Done!
 function htmltemplateDetailCard(x, tasktype, tasktypeAsString) {
     return `
     <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('${tasktypeAsString}', ${x})"> <button onclick="closeDetailCard('${tasktypeAsString}', ${x})">X</button></div>
@@ -72,8 +101,7 @@ function htmltemplateDetailCard(x, tasktype, tasktypeAsString) {
     `;
 }
 
-//Test
-//Persons detail card Done!
+
 function htmlTemplatePersonsDetailCard(x, j, tasktype) {
     return `
     <div class="names">
@@ -83,8 +111,7 @@ function htmlTemplatePersonsDetailCard(x, j, tasktype) {
     `;
 }
 
-//Test
-// Subtasks Detail Card Done!
+
 function htmlTemplateSubtasksDetailCard(x, j, checkedStatus, tasktype) {
     return `
     <span style="padding-top: 6px"> <input class="sutaskCheckbox" type="checkbox" ${checkedStatus}/> ${tasktype[x]['subtasks'][j]}</span>

@@ -33,7 +33,7 @@ function loadTasksFromBackend() {
  * this function loads the contacts from backend
  * 
  */
-function loadContactsFromBackend(){
+function loadContactsFromBackend() {
     contacts = JSON.parse(backend.getItem('contacts'));
 }
 
@@ -42,7 +42,7 @@ function loadContactsFromBackend(){
  * this function loads the categories from the backend
  * 
  */
-function loadCategoriesFromBackend(){
+function loadCategoriesFromBackend() {
     categoriesBackground = JSON.parse(backend.getItem('categoriesBackground')) || [];
     categoryColors = JSON.parse(backend.getItem('categoryColors')) || [];
     categories = JSON.parse(backend.getItem('categories')) || [];
@@ -56,7 +56,7 @@ function loadCategoriesFromBackend(){
  */
 
 async function initBackend() {
-    await downloadFromServer();    
+    await downloadFromServer();
 }
 
 
@@ -178,7 +178,7 @@ async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
     for (let i = 0; i < includeElements.length; i++) {
         const element = includeElements[i];
-        file = element.getAttribute("w3-include-html"); 
+        file = element.getAttribute("w3-include-html");
         let resp = await fetch(file);
         if (resp.ok) {
             element.innerHTML = await resp.text();
