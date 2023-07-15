@@ -1,5 +1,20 @@
 let openTask;
 
+//Test renderSubtask Done
+function renderSubtaksInDetailCard(x, tasktype) {
+    document.getElementById('subtasks').innerHTML = '';
+    for (let j = 0; j < tasktype[x]['subtasks'].length; j++) {
+        if (tasktype[x]['alreadyDone'][j] == 1) {
+            checkedStatus = 'checked';
+        } else {
+            checkedStatus = '';
+        };
+        document.getElementById('subtasks').innerHTML +=
+            htmlTemplateSubtasksDetailCard(x, j, checkedStatus, tasktype);
+    }
+}
+
+
 /**
  * this function opens the detail card for tasks to do
  * 
@@ -14,30 +29,12 @@ function openDetailCardToDo(x) {
     document.getElementById('names-container').innerHTML = '';
     for (let j = 0; j < tasksToDo[x]['inCharge'].length; j++) {
         document.getElementById('names-container').innerHTML +=
-            htmlTemplatePersonsDetailCardToDo(x, j);
+            htmlTemplatePersonsDetailCard(x, j, tasksToDo);
     };
-    renderSubtaksInDetailCardToDo(x);
+    renderSubtaksInDetailCard(x, tasksToDo);
     document.getElementById('body').style.overflow = 'hidden';
     document.getElementById('details').setAttribute('onclick', `closeDetailCard('tasksToDo', ${x})`)
     openTask = tasksToDo[x];
-}
-
-/**
- * this function renders the subtasks on the detail card for tasks to do
- * 
- * @param {number} x 
- */
-function renderSubtaksInDetailCardToDo(x) {
-    document.getElementById('subtasks').innerHTML = '';
-    for (let j = 0; j < tasksToDo[x]['subtasks'].length; j++) {
-        if (tasksToDo[x]['alreadyDone'][j] == 1) {
-            checkedStatus = 'checked';
-        } else {
-            checkedStatus = '';
-        };
-        document.getElementById('subtasks').innerHTML +=
-            htmlTemplateSubtasksDetailCardToDo(x, j, checkedStatus);
-    }
 }
 
 
@@ -55,31 +52,12 @@ function openDetailCardInProgress(x) {
     document.getElementById('names-container').innerHTML = '';
     for (let j = 0; j < tasksInProgress[x]['inCharge'].length; j++) {
         document.getElementById('names-container').innerHTML +=
-            htmlTemplatePersonsDetailCardInProgress(x, j);
+            htmlTemplatePersonsDetailCard(x, j, tasksInProgress);
     };
-    renderSubtaksInDetailCardInProgress(x);
+    renderSubtaksInDetailCard(x, tasksInProgress);
     document.getElementById('body').style.overflow = 'hidden';
     document.getElementById('details').setAttribute('onclick', `closeDetailCard('tasksInProgress', ${x})`)
     openTask = tasksInProgress[x];
-}
-
-
-/**
- * this function renders the subtasks on the detail card for tasks in progress
- * 
- * @param {number} x 
- */
-function renderSubtaksInDetailCardInProgress(x) {
-    document.getElementById('subtasks').innerHTML = '';
-    for (let j = 0; j < tasksInProgress[x]['subtasks'].length; j++) {
-        if (tasksInProgress[x]['alreadyDone'][j] == 1) {
-            checkedStatus = 'checked';
-        } else {
-            checkedStatus = '';
-        };
-        document.getElementById('subtasks').innerHTML +=
-            htmlTemplateSubtasksDetailCardInProgress(x, j, checkedStatus);
-    }
 }
 
 
@@ -96,31 +74,12 @@ function openDetailCardAwaitFeedback(x) {
         htmltemplateDetailCard(x, tasksInProgress, 'tasksAwaitFeedback');
     for (let j = 0; j < tasksAwaitFeedback[x]['inCharge'].length; j++) {
         document.getElementById('names-container').innerHTML +=
-            htmlTemplatePersonsDetailCardAwaitFeedback(x, j);
+            htmlTemplatePersonsDetailCard(x, j, tasksAwaitFeedback);
     };
-    renderSubtaksInDetailCardAwaitFeedback(x);
+    renderSubtaksInDetailCard(x, tasksAwaitFeedback);
     document.getElementById('body').style.overflow = 'hidden';
     document.getElementById('details').setAttribute('onclick', `closeDetailCard('tasksAwaitFeedback', ${x})`)
     openTask = tasksAwaitFeedback[x];
-}
-
-
-/**
- * this function renders the subtasks on the detail card for tasks await feedback
- * 
- * @param {number} x 
- */
-function renderSubtaksInDetailCardAwaitFeedback(x) {
-    document.getElementById('subtasks').innerHTML = '';
-    for (let j = 0; j < tasksAwaitFeedback[x]['subtasks'].length; j++) {
-        if (tasksAwaitFeedback[x]['alreadyDone'][j] == 1) {
-            checkedStatus = 'checked';
-        } else {
-            checkedStatus = '';
-        };
-        document.getElementById('subtasks').innerHTML +=
-            htmlTemplateSubtasksDetailCardAwaitFeedback(x, j, checkedStatus);
-    }
 }
 
 
@@ -137,31 +96,12 @@ function openDetailCardDone(x) {
         htmltemplateDetailCard(x, tasksDone, 'tasksDone');
     for (let j = 0; j < tasksDone[x]['inCharge'].length; j++) {
         document.getElementById('names-container').innerHTML +=
-            htmlTemplatePersonsDetailCardDone(x, j);
+            htmlTemplatePersonsDetailCard(x, j, tasksDone);
     };
-    renderSubtaksInDetailCardDone(x);
+    renderSubtaksInDetailCard(x, tasksDone);
     document.getElementById('body').style.overflow = 'hidden';
     document.getElementById('details').setAttribute('onclick', `closeDetailCard('tasksDone', ${x})`)
     openTask = tasksDone[x];
-}
-
-
-/**
- * this function renders the subtasks on the detail card for tasks done
- * 
- * @param {number} x 
- */
-function renderSubtaksInDetailCardDone(x) {
-    document.getElementById('subtasks').innerHTML = '';
-    for (let j = 0; j < tasksDone[x]['subtasks'].length; j++) {
-        if (tasksDone[x]['alreadyDone'][j] == 1) {
-            checkedStatus = 'checked';
-        } else {
-            checkedStatus = '';
-        };
-        document.getElementById('subtasks').innerHTML +=
-            htmlTemplateSubtasksDetailCardDone(x, j, checkedStatus);
-    }
 }
 
 
@@ -258,6 +198,8 @@ function deleteTask(taskToDelete, x) {
             tasksDone = tasksDone.filter(isGoodValue);
             break;
     }
+
+
     closeDetailCard();
     saveTasksToBackend();
     renderBoard();
