@@ -341,6 +341,7 @@ function renderListAssignedTo() {
                 htmlTemplateListAssignedTo(i);
     }
     else if (temporaryPersons.lenght > 0) {
+
     }
 }
 
@@ -359,6 +360,7 @@ function renderListAssignedToTwo(taskStatus, x) {
                 htmlTemplateListAssignedToTwo(i, taskStatus, x);
     }
     else if (temporaryPersons.lenght > 0) {
+
     }
 }
 

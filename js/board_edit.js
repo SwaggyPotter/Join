@@ -32,13 +32,7 @@ function editTask(taskStatus, x) {
     renderEditTaskCard(taskStatus, titleEdit, textEdit, dueDateEdit, subtasksToEdit, subtasksToEditAlreadyDone, x);
 }
 
-/**
- * Fill the inputs of the edit card with the information of the task
- * 
- * @param {string} taskStatus 
- * @param {number} x 
- * @param {string} taskType 
- */
+
 function editTasksExtension(taskStatus, x, taskType) {
     titleEdit = taskType[x]['titel'];
     textEdit = taskType[x]['text'];
@@ -49,11 +43,7 @@ function editTasksExtension(taskStatus, x, taskType) {
     subtasksToEditAlreadyDone = taskType[x]['alreadyDone'];
 }
 
-/**
- * Set the color from the button priority and change the embleme color to white
- * 
- * @param {string} priorityEdit 
- */
+
 function setPriorityColor(priorityEdit) {
     if (priorityEdit == 'assets/img/urgent.svg') {
         document.getElementById('urgent-btn').style.backgroundColor = 'rgb(255, 61, 0)';
@@ -155,14 +145,7 @@ function renderAddedSubtask(taskStatus, x) {
     }
 }
 
-/**
- * render the subtask
- * 
- * @param {sting} taskStatus 
- * @param {number} x 
- * @param {string} taskType 
- * @param {string} subtasksToPush 
- */
+
 function renderTaksExtension(taskStatus, x, taskType, subtasksToPush) {
     let i = 0;
     subtasksToPush = document.getElementById('task-subtask-edit').value;
@@ -199,17 +182,6 @@ function closeEdit(taskStatus, x) {
     document.getElementById('list-assigned-to').classList.add('d-none');
     temporaryPersons = []
     getCheckedCheckBoxes(inputElements);
-    checkForTaskCategory(taskStatus, x)
-    closeEditedCard();
-}
-
-/**
- * loop over the checkboxes and add the choosen contacts
- * 
- * @param {string} taskStatus 
- * @param {number} x 
- */
-function checkForTaskCategory(taskStatus, x) {
     switch (taskStatus) {
         case 'tasksToDo':
             updateCheckboxChecked(taskStatus, x, checkboxChecked);
@@ -228,14 +200,10 @@ function checkForTaskCategory(taskStatus, x) {
             closeEditExtension(taskStatus, x, checkboxChecked, tasksDone);
             break;
     }
+    closeEditedCard();
 }
 
 
-/**
- * delete the contact from the task by clicking on his embleme
- * 
- * @param {number} x 
- */
 function deleteContactFromTask(x) {
     document.getElementById(`contact${x}`).style.backgroundColor = 'red';
     removerArray.push(openTask['inCharge'][x])
@@ -243,26 +211,11 @@ function deleteContactFromTask(x) {
 }
 
 
-/**
- * Remove the contend in from an array in another array
- * 
- * @param {array} sourceArray 
- * @param {array} removeArray 
- * @returns 
- */
 function removeArrayContent(sourceArray, removeArray) {
     return sourceArray.filter(item => !removeArray.includes(item));
 }
 
 
-/**
- * push the new edit data to the array
- * 
- * @param {sting} taskStatus 
- * @param {number} x 
- * @param {boolean} checkboxChecked 
- * @param {sting} taskType 
- */
 function closeEditExtension(taskStatus, x, checkboxChecked, taskType) {
     taskType[x]['titel'] = document.getElementById('edited-title').value;
     taskType[x]['text'] = document.getElementById('textarea-edit').value;
@@ -281,12 +234,6 @@ function closeEditExtension(taskStatus, x, checkboxChecked, taskType) {
 }
 
 
-/**
- * load the contacts to assigned if there not on the list already
- * 
- * @param {number} x 
- * @returns 
- */
 function loadNewAssignedTo(x) {
     let inputElements = document.getElementsByClassName('checkbox-contacts-two');
     for (let i = 0; inputElements[i]; ++i) {
@@ -298,12 +245,6 @@ function loadNewAssignedTo(x) {
 }
 
 
-/**
- * load the initials
- * 
- * @param {number} x 
- * @returns 
- */
 function loadInitials(x) {
     let inputElements = document.getElementsByClassName('checkbox-contacts-two');
     for (let i = 0; inputElements[i]; ++i) {
