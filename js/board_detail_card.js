@@ -10,7 +10,7 @@ function openDetailCardToDo(x) {
     let category = tasksToDo[x]['category'];
     getCategoryColor(`${category}`);
     document.getElementById('detail-popup').innerHTML =
-        htmlTemplateDetailCardToDo(x);
+        htmltemplateDetailCard(x, tasksToDo, 'tasksToDo');
     document.getElementById('names-container').innerHTML = '';
     for (let j = 0; j < tasksToDo[x]['inCharge'].length; j++) {
         document.getElementById('names-container').innerHTML +=
@@ -51,7 +51,7 @@ function openDetailCardInProgress(x) {
     let category = tasksInProgress[x]['category'];
     getCategoryColor(`${category}`);
     document.getElementById('detail-popup').innerHTML =
-        htmlTemplateDetailCardInProgress(x);
+        htmltemplateDetailCard(x, tasksInProgress, 'tasksInProgress');
     document.getElementById('names-container').innerHTML = '';
     for (let j = 0; j < tasksInProgress[x]['inCharge'].length; j++) {
         document.getElementById('names-container').innerHTML +=
@@ -93,7 +93,7 @@ function openDetailCardAwaitFeedback(x) {
     let category = tasksAwaitFeedback[x]['category'];
     getCategoryColor(`${category}`);
     document.getElementById('detail-popup').innerHTML =
-        htmlTemplateDetailCardAwaitFeedback(x);
+        htmltemplateDetailCard(x, tasksInProgress, 'tasksAwaitFeedback');
     for (let j = 0; j < tasksAwaitFeedback[x]['inCharge'].length; j++) {
         document.getElementById('names-container').innerHTML +=
             htmlTemplatePersonsDetailCardAwaitFeedback(x, j);
@@ -134,7 +134,7 @@ function openDetailCardDone(x) {
     let category = tasksDone[x]['category'];
     getCategoryColor(`${category}`);
     document.getElementById('detail-popup').innerHTML =
-        htmlTemplateDetailCardDone(x);
+        htmltemplateDetailCard(x, tasksDone, 'tasksDone');
     for (let j = 0; j < tasksDone[x]['inCharge'].length; j++) {
         document.getElementById('names-container').innerHTML +=
             htmlTemplatePersonsDetailCardDone(x, j);

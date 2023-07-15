@@ -1,3 +1,10 @@
+/**
+ * Task todo
+ * @param {*} i 
+ * @param {*} widthProgressBar 
+ * @param {*} nbDone 
+ * @returns 
+ */
 function htmlTemplateTasksToDo(i, widthProgressBar, nbDone) {
     return `
     <div draggable="true" ondragstart=" startDragging(${i}, 'tasksToDo')" class="task-container-detail" onclick="openDetailCardToDo(${i})">
@@ -28,6 +35,56 @@ function htmlTemplateSelectedPersonToDo(i, j) {
 }
 
 
+function htmlTemplatePersonsDetailCardToDo(x, j) {
+    return `
+    <div class="names">
+        <div class="initials-icon bg${j}">${tasksToDo[x]['initials'][j]}</div>
+        <div class="name">${tasksToDo[x]['inCharge'][j]}</div>
+        
+    </div>
+    `;
+}
+
+
+function htmlTemplateSubtasksDetailCardToDo(x, j, checkedStatus) {
+    return `
+    <span style="padding-top: 6px"> <input class="sutaskCheckbox" type="checkbox" ${checkedStatus}/> ${tasksToDo[x]['subtasks'][j]}</span>
+    `;
+}
+
+
+function htmltemplateDetailCard(x, tasktype, tasktypeAsString) {
+    return `
+    <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('${tasktypeAsString}', ${x})"> <button onclick="closeDetailCard('${tasktypeAsString}', ${x})">X</button></div>
+    <span class="category" style="background:${bgColor}">${tasktype[x]['category']}</span>
+    <h1>${tasktype[x]['titel']}</h1>
+    <span class="task-text">${tasktype[x]['text']}</span>    
+    <span class="text-fix">Due date: ${tasktype[x]['dueDate']}</span>
+    <div class="priority-container">
+        <span class="text-fix-priority">Priority:</span> 
+        <div class="${tasktype[x]['priorityByName']} priority-level">
+            <span class="priority-text">${tasktype[x]['priorityByName']}</span>    
+            <img src="${tasktype[x]['priority']}">
+        </div>
+    </div>
+    <span class="text-fix">Subtasks: </span>
+    <div id="subtasks"></div>
+    <span class="text-fix">Assigned To:</span>
+    <div class="names-container" id="names-container">
+        
+    </div>
+    <div class="edit-btn"><img src="assets/img/edit-button.svg" onclick="editTask('${tasktypeAsString}', ${x})"></div>
+    `;
+}
+
+
+/**
+ * Task in progress
+ * @param {*} i 
+ * @param {*} widthProgressBar 
+ * @param {*} nbDone 
+ * @returns 
+ */
 function htmlTemplateTasksInProgress(i, widthProgressBar, nbDone) {
     return `
     <div draggable="true" ondragstart=" startDragging(${i}, 'tasksInProgress')" class="task-container-detail" onclick="openDetailCardInProgress(${i})">
@@ -51,9 +108,26 @@ function htmlTemplateTasksInProgress(i, widthProgressBar, nbDone) {
 }
 
 
+function htmlTemplatePersonsDetailCardInProgress(x, j) {
+    return `
+    <div class="names">
+        <div class="initials-icon bg${j}">${tasksInProgress[x]['initials'][j]}</div>
+        <div class="name">${tasksInProgress[x]['inCharge'][j]}</div>
+    </div>
+    `;
+}
+
+
 function htmlTemplateSelectedPersonInProgress(i, j) {
     return `
     <div class="initials-icon bg${j}">${tasksInProgress[i]['initials'][j]}</div>
+    `;
+}
+
+
+function htmlTemplateSubtasksDetailCardInProgress(x, j, checkedStatus) {
+    return `
+    <span style="padding-top: 6px"> <input class="sutaskCheckbox" type="checkbox" ${checkedStatus}/> ${tasksInProgress[x]['subtasks'][j]}</span>
     `;
 }
 
@@ -81,13 +155,36 @@ function htmlTemplateTasksAwaitFeedback(i, widthProgressBar, nbDone) {
 }
 
 
+function htmlTemplatePersonsDetailCardAwaitFeedback(x, j) {
+    return `
+    <div class="names">
+        <div class="initials-icon bg${j}">${tasksAwaitFeedback[x]['initials'][j]}</div>
+        <div class="name">${tasksAwaitFeedback[x]['inCharge'][j]}</div>
+    </div>
+    `;
+}
+
+
+function htmlTemplateSubtasksDetailCardAwaitFeedback(x, j, checkedStatus) {
+    return `
+    <span style="padding-top: 6px"> <input class="sutaskCheckbox" type="checkbox" ${checkedStatus}/> ${tasksAwaitFeedback[x]['subtasks'][j]}</span>
+    `;
+}
+
+
 function htmlTemplateSelectedPersonAwaitFeedback(i, j) {
     return `
     <div class="initials-icon bg${j}">${tasksAwaitFeedback[i]['initials'][j]}</div>
     `;
 }
 
-
+/**
+ * Task Done
+ * @param {*} i 
+ * @param {*} widthProgressBar 
+ * @param {*} nbDone 
+ * @returns 
+ */
 function htmlTemplateTasksDone(i, widthProgressBar, nbDone) {
     return `
     <div draggable="true" ondragstart=" startDragging(${i}, 'tasksDone')" class="task-container-detail" onclick="openDetailCardDone(${i})">
@@ -114,158 +211,6 @@ function htmlTemplateTasksDone(i, widthProgressBar, nbDone) {
 function htmlTemplateSelectedPersonDone(i, j) {
     return `
     <div class="initials-icon bg${j}">${tasksDone[i]['initials'][j]}</div>
-    `;
-}
-
-
-function htmlTemplateDetailCardToDo(x) {
-    return `
-    <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('tasksToDo', ${x})"> <button onclick="closeDetailCard('tasksToDo', ${x})">X</button></div>
-    <span class="category" style="background:${bgColor}">${tasksToDo[x]['category']}</span>
-    <h1>${tasksToDo[x]['titel']}</h1>
-    <span class="task-text">${tasksToDo[x]['text']}</span>    
-    <span class="text-fix">Due date: ${tasksToDo[x]['dueDate']}</span>
-    <div class="priority-container">
-        <span class="text-fix-priority">Priority:</span> 
-        <div class="${tasksToDo[x]['priorityByName']} priority-level">
-            <span class="priority-text">${tasksToDo[x]['priorityByName']}</span>    
-            <img src="${tasksToDo[x]['priority']}">
-        </div>
-    </div>
-    <span class="text-fix">Subtasks: </span>
-    <div id="subtasks"></div>
-    <span class="text-fix">Assigned To:</span>
-    <div class="names-container" id="names-container">
-        
-    </div>
-    <div class="edit-btn"><img src="assets/img/edit-button.svg" onclick="editTask('tasksToDo', ${x})"></div>
-    `;
-}
-
-
-function htmlTemplatePersonsDetailCardToDo(x, j) {
-    return `
-    <div class="names">
-        <div class="initials-icon bg${j}">${tasksToDo[x]['initials'][j]}</div>
-        <div class="name">${tasksToDo[x]['inCharge'][j]}</div>
-        
-    </div>
-    `;
-}
-
-
-function htmlTemplateSubtasksDetailCardToDo(x, j, checkedStatus) {
-    return `
-    <span style="padding-top: 6px"> <input class="sutaskCheckbox" type="checkbox" ${checkedStatus}/> ${tasksToDo[x]['subtasks'][j]}</span>
-    `;
-}
-
-
-function htmlTemplateDetailCardInProgress(x) {
-    return `
-    <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('tasksInProgress', ${x})"><button onclick="closeDetailCard('tasksInProgress', ${x})">X</button></div>
-    <span class="category" style="background:${bgColor}">${tasksInProgress[x]['category']}</span>
-    <h1>${tasksInProgress[x]['titel']}</h1>
-    <span class="task-text">${tasksInProgress[x]['text']}</span>    
-    <span class="text-fix">Due date: ${tasksInProgress[x]['dueDate']}</span>
-    <div class="priority-container">
-        <span class="text-fix-priority">Priority:</span> 
-        <div class="${tasksInProgress[x]['priorityByName']} priority-level">
-            <span class="priority-text">${tasksInProgress[x]['priorityByName']}</span>    
-            <img src="${tasksInProgress[x]['priority']}">
-        </div>
-    </div>
-    <span class="text-fix">Subtasks: </span>
-    <div id="subtasks"></div>
-    <span class="text-fix">Assigned To:</span>
-    <div class="names-container" id="names-container">
-        
-    </div>
-    <div class="edit-btn"><img src="assets/img/edit-button.svg" onclick="editTask('tasksInProgress', ${x})"></div>
-    `;
-}
-
-
-function htmlTemplatePersonsDetailCardInProgress(x, j) {
-    return `
-    <div class="names">
-        <div class="initials-icon bg${j}">${tasksInProgress[x]['initials'][j]}</div>
-        <div class="name">${tasksInProgress[x]['inCharge'][j]}</div>
-    </div>
-    `;
-}
-
-
-function htmlTemplateSubtasksDetailCardInProgress(x, j, checkedStatus) {
-    return `
-    <span style="padding-top: 6px"> <input class="sutaskCheckbox" type="checkbox" ${checkedStatus}/> ${tasksInProgress[x]['subtasks'][j]}</span>
-    `;
-}
-
-
-function htmlTemplateDetailCardAwaitFeedback(x) {
-    return `
-    <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('tasksAwaitFeedback', ${x})"><button onclick="closeDetailCard('tasksAwaitFeedback', ${x})">X</button></div>
-    <span class="category" style="background:${bgColor}">${tasksAwaitFeedback[x]['category']}</span>
-    <h1>${tasksAwaitFeedback[x]['titel']}</h1>
-<span class="task-text">${tasksAwaitFeedback[x]['text']}</span>    
-    <span class="text-fix">Due date: ${tasksAwaitFeedback[x]['dueDate']}</span>
-    <div class="priority-container">
-        <span class="text-fix-priority">Priority:</span> 
-        <div class="${tasksAwaitFeedback[x]['priorityByName']} priority-level">
-            <span class="priority-text">${tasksAwaitFeedback[x]['priorityByName']}</span>    
-            <img src="${tasksAwaitFeedback[x]['priority']}">
-        </div>
-    </div>
-    <span class="text-fix">Subtasks: </span>
-    <div id="subtasks"></div>
-    <span class="text-fix">Assigned To:</span>
-    <div class="names-container" id="names-container">
-        
-    </div>
-    <div class="edit-btn"><img src="assets/img/edit-button.svg" onclick="editTask('tasksAwaitFeedback', ${x})"></div>
-    `;
-}
-
-
-function htmlTemplatePersonsDetailCardAwaitFeedback(x, j) {
-    return `
-    <div class="names">
-        <div class="initials-icon bg${j}">${tasksAwaitFeedback[x]['initials'][j]}</div>
-        <div class="name">${tasksAwaitFeedback[x]['inCharge'][j]}</div>
-    </div>
-    `;
-}
-
-
-function htmlTemplateSubtasksDetailCardAwaitFeedback(x, j, checkedStatus) {
-    return `
-    <span style="padding-top: 6px"> <input class="sutaskCheckbox" type="checkbox" ${checkedStatus}/> ${tasksAwaitFeedback[x]['subtasks'][j]}</span>
-    `;
-}
-
-
-function htmlTemplateDetailCardDone(x) {
-    return `
-    <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('tasksDone', ${x})"><button onclick="closeDetailCard('tasksDone', ${x})">X</button></div>
-    <span class="category" style="background:${bgColor}">${tasksDone[x]['category']}</span>
-    <h1>${tasksDone[x]['titel']}</h1>
-    <span class="task-text">${tasksDone[x]['text']}</span>    
-    <span class="text-fix">Due date: ${tasksDone[x]['dueDate']}</span>
-    <div class="priority-container">
-        <span class="text-fix-priority">Priority:</span> 
-        <div class="${tasksDone[x]['priorityByName']} priority-level">
-            <span class="priority-text">${tasksDone[x]['priorityByName']}</span>    
-            <img src="${tasksDone[x]['priority']}">
-        </div>
-    </div>
-    <span class="text-fix">Subtasks: </span>
-    <div id="subtasks"></div>
-    <span class="text-fix">Assigned To:</span>
-    <div class="names-container" id="names-container">
-        
-    </div>
-    <div class="edit-btn"><img src="assets/img/edit-button.svg" onclick="editTask('tasksDone', ${x})"></div>
     `;
 }
 
