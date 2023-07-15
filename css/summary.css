@@ -12,6 +12,10 @@ body {
     padding-top: 0vh;
 }
 
+.content::-webkit-scrollbar {
+    display: none;
+}
+
 #summary-content {
     overflow: scroll;
     height: 90vh;

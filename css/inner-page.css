@@ -16,6 +16,14 @@ h2 {
     padding: 0 0 10px 0;
 }
 
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.content::-webkit-scrollbar {
+    display: none;
+}
+
 .header .container .center {
     padding: 0 33px;
 }
@@ -119,6 +127,10 @@ h2 {
 .more-details a {
     text-decoration: none;
     color: #000;
+}
+
+.more-details li {
+    margin-bottom: 10px;
 }
 
 .more-details ul {
