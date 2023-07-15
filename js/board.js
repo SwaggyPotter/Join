@@ -8,13 +8,43 @@ let bgColor;
  * 
  */
 function renderBoard() {
-    renderTasksToDo();
-    renderTasksInProgress();
-    renderTasksAwaitFeedback();
-    renderTasksDone();
+    renderAllTasks(tasksToDo)
+    renderAllTasks(tasksInProgress)
+    renderAllTasks(tasksAwaitFeedback)
+    renderAllTasks(tasksDone)
 }
 
 
+function giveBackTheTaskTheme(tasktype) {
+    if (tasktype == tasksToDo) {
+        return `to-do-container`
+    }
+    if (tasktype == tasksInProgress) {
+        return `in-progress-container`
+    }
+    if (tasktype == tasksAwaitFeedback) {
+        return `await-feedback-container`
+    }
+    if (tasktype == tasksDone) {
+        return `done-container`
+    }
+}
+
+
+function giveBackTheId(tasktype) {
+    if (tasktype == tasksToDo) {
+        return `selected-person-to-do`
+    }
+    if (tasktype == tasksInProgress) {
+        return `selected-person-in-progress`
+    }
+    if (tasktype == tasksAwaitFeedback) {
+        return `selected-person-await-feedback`
+    }
+    if (tasktype == tasksDone) {
+        return `selected-person-done`
+    }
+}
 
 /**
  * this function sets the background color for the category
@@ -31,47 +61,23 @@ function getCategoryColor(category) {
 
 
 function renderAllTasks(tasktype) {
-    let toDo = document.getElementById('to-do-container');
-    toDo.innerHTML = '';
+    let taskContainer = document.getElementById(`${giveBackTheTaskTheme(tasktype)}`);
+    taskContainer.innerHTML = '';
     for (let i = 0; i < tasktype.length; i++) {
         let category = tasktype[i]['category'];
         getCategoryColor(`${category}`);
         checkDoneTasks(i, `'${tasktype}'`);
         const widthProgressBar = nbDone / tasktype[i]['subtasks'].length * 100;
-        toDo.innerHTML +=
+        taskContainer.innerHTML +=
             htmlTemplateTasks(i, widthProgressBar, nbDone, tasktype);
-        renderSelectedPersonToDo(i);
+        renderSelectedPerson(i, tasktype);
     }
 }
 
 
-/**
- * this function renders the tasks to do container
- * 
- */
-function renderTasksToDo() {
-    let toDo = document.getElementById('to-do-container');
-    toDo.innerHTML = '';
-    for (let i = 0; i < tasksToDo.length; i++) {
-        let category = tasksToDo[i]['category'];
-        getCategoryColor(`${category}`);
-        checkDoneTasks(i, 'tasksToDo');
-        const widthProgressBar = nbDone / tasksToDo[i]['subtasks'].length * 100;
-        toDo.innerHTML +=
-            htmlTemplateTasks(i, widthProgressBar, nbDone, tasksToDo);
-        renderSelectedPersonToDo(i);
-    }
-}
-
-
-/**
- * this function renders the selected persons for the task to do
- * 
- * @param {number} i 
- */
-function renderSelectedPersonToDo(i) {
-    let selectedPerson = document.getElementById(`selected-person-to-do${i}`);
-    let nbOfInCharge = tasksToDo[i]['inCharge'].length;
+function renderSelectedPerson(i, tasktype) {
+    let selectedPerson = document.getElementById(`${giveBackTheId(tasktype)}${i}`);
+    let nbOfInCharge = tasktype[i]['inCharge'].length;
     if (nbOfInCharge > 2) {
         countTo = 3;
     } else {
@@ -80,130 +86,7 @@ function renderSelectedPersonToDo(i) {
     selectedPerson.innerHTML = '';
     for (let j = 0; j < countTo; j++) {
         selectedPerson.innerHTML +=
-            htmlTemplateSelectedPersonToDo(i, j)
-    }
-    fxNbOfInCharge(nbOfInCharge, selectedPerson);
-}
-
-
-/**
- * this function renders the tasks in progress container
- * 
- */
-function renderTasksInProgress() {
-    let inProgress = document.getElementById('in-progress-container');
-    inProgress.innerHTML = '';
-    for (let i = 0; i < tasksInProgress.length; i++) {
-        let category = tasksInProgress[i]['category'];
-        getCategoryColor(`${category}`);
-        checkDoneTasks(i, 'tasksInProgress');
-        const widthProgressBar = nbDone / tasksInProgress[i]['subtasks'].length * 100;
-        inProgress.innerHTML +=
-            htmlTemplateTasks(i, widthProgressBar, nbDone, tasksInProgress);
-        renderSelectedPersonInProgress(i);
-    }
-}
-
-
-/**
- * this function renders the selected persons for the task in progress
- * 
- * @param {number} i 
- */
-function renderSelectedPersonInProgress(i) {
-    let selectedPerson = document.getElementById(`selected-person-in-progress${i}`);
-    let nbOfInCharge = tasksInProgress[i]['inCharge'].length;
-    if (nbOfInCharge > 2) {
-        countTo = 3;
-    } else {
-        countTo = nbOfInCharge
-    }
-    selectedPerson.innerHTML = '';
-    for (let j = 0; j < countTo; j++) {
-        selectedPerson.innerHTML +=
-            htmlTemplateSelectedPersonInProgress(i, j)
-    }
-    fxNbOfInCharge(nbOfInCharge, selectedPerson);
-}
-
-
-/**
- * this function renders the tasks await feedback container
- * 
- */
-function renderTasksAwaitFeedback() {
-    let awaitFeedback = document.getElementById('await-feedback-container');
-    awaitFeedback.innerHTML = '';
-    for (let i = 0; i < tasksAwaitFeedback.length; i++) {
-        let category = tasksAwaitFeedback[i]['category'];
-        getCategoryColor(`${category}`);
-        checkDoneTasks(i, 'tasksAwaitFeedback');
-        const widthProgressBar = nbDone / tasksAwaitFeedback[i]['subtasks'].length * 100;
-        awaitFeedback.innerHTML +=
-            htmlTemplateTasks(i, widthProgressBar, nbDone, tasksAwaitFeedback);
-        renderSelectedPersonAwaitFeedback(i);
-    }
-}
-
-
-/**
- * this function renders the selected persons for the task await feedback
- * 
- * @param {number} i 
- */
-function renderSelectedPersonAwaitFeedback(i) {
-    let selectedPerson = document.getElementById(`selected-person-await-feedback${i}`);
-    let nbOfInCharge = tasksAwaitFeedback[i]['inCharge'].length;
-    if (nbOfInCharge > 2) {
-        countTo = 3;
-    } else {
-        countTo = nbOfInCharge
-    }
-    selectedPerson.innerHTML = '';
-    for (let j = 0; j < countTo; j++) {
-        selectedPerson.innerHTML +=
-            htmlTemplateSelectedPersonAwaitFeedback(i, j)
-    }
-    fxNbOfInCharge(nbOfInCharge, selectedPerson);
-}
-
-
-/**
- * this function renders the tasks done container
- * 
- */
-function renderTasksDone() {
-    let doneContainer = document.getElementById('done-container');
-    doneContainer.innerHTML = '';
-    for (let i = 0; i < tasksDone.length; i++) {
-        let category = tasksDone[i]['category'];
-        getCategoryColor(`${category}`);
-        checkDoneTasks(i, 'tasksDone');
-        const widthProgressBar = nbDone / tasksDone[i]['subtasks'].length * 100;
-        doneContainer.innerHTML +=
-            htmlTemplateTasks(i, widthProgressBar, nbDone, tasksDone);
-        renderSelectedPersonDone(i);
-    }
-}
-
-
-/**
- * this function renders the selected persons for the task done
- * 
- * @param {number} i 
- */
-function renderSelectedPersonDone(i) {
-    let selectedPerson = document.getElementById(`selected-person-done${i}`);
-    let nbOfInCharge = tasksDone[i]['inCharge'].length;
-    if (nbOfInCharge > 2) {
-        countTo = 3;
-    } else {
-        countTo = nbOfInCharge
-    }
-    selectedPerson.innerHTML = '';
-    for (let j = 0; j < countTo; j++) {
-        selectedPerson.innerHTML +=
-            htmlTemplateSelectedPersonDone(i, j)
+            htmlTemplateSelectedPerson(i, j, tasktype)
     }
     fxNbOfInCharge(nbOfInCharge, selectedPerson);
 }
@@ -383,5 +266,3 @@ function closeAddTask() {
     document.getElementById('body').style.overflow = 'visible';
     temporaryPersons = []
 }
-
-

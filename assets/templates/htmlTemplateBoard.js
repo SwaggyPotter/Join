@@ -38,7 +38,7 @@ function getOpenDetailName(tasktype) {
 }
 
 
-function startDragNameFinder(tasktype){
+function startDragNameFinder(tasktype) {
     if (tasktype == tasksToDo) {
         return `tasksToDo`
     }
@@ -50,7 +50,14 @@ function startDragNameFinder(tasktype){
     }
     if (tasktype == tasksDone) {
         return `tasksDone`
-    } 
+    }
+}
+
+
+function htmlTemplateSelectedPerson(i, j, tasktype) {
+    return `
+        <div class="initials-icon bg${j}">${tasktype[i]['initials'][j]}</div>
+    `;
 }
 
 
