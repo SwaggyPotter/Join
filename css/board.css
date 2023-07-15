@@ -63,7 +63,7 @@
     font-size: 23px;
 }
 
-.hoverAddPlus:hover{
+.hoverAddPlus:hover {
     background-color: #c4c4c4;
 }
 
@@ -254,6 +254,40 @@
 
 .edit-btn:hover {
     cursor: pointer;
+}
+
+.edit-btn img {
+    z-index: 3;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 225ms;
+}
+
+.edit-btn img:hover {
+    z-index: 3;
+    cursor: pointer;
+    background-color: #4589ff;
+    border-radius: 15px;
+    transition: 225ms;
+}
+
+.hoverEffectBTN {
+    background-color: #4589FF;
+    color: white;
+}
+
+.hoverEffectBTN:hover {
+    background-color: #0f67ff;
+}
+
+.hoverClearBTN {
+    background-color: #ffffff;
+}
+
+.hoverClearBTN:hover {
+    background-color: #9c9a9a;
 }
 
 .text-fix {

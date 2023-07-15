@@ -55,10 +55,13 @@
     width: 20%;
     border-radius: 6px;
     padding: 12px;
+    transition: 225ms;
 }
 
 .ok-btn:hover {
     cursor: pointer;
+    transition: 225ms;
+    border-radius: 16px;
 }
 
 .ok-btn button {
