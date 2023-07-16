@@ -33,6 +33,13 @@ function editTask(taskStatus, x) {
 }
 
 
+/**
+ * start editing the task
+ * 
+ * @param {string} taskStatus 
+ * @param {number} x 
+ * @param {array} taskType 
+ */
 function editTasksExtension(taskStatus, x, taskType) {
     titleEdit = taskType[x]['titel'];
     textEdit = taskType[x]['text'];
@@ -44,6 +51,11 @@ function editTasksExtension(taskStatus, x, taskType) {
 }
 
 
+/**
+ * change background color and picture of the priority
+ * 
+ * @param {*} priorityEdit 
+ */
 function setPriorityColor(priorityEdit) {
     if (priorityEdit == 'assets/img/urgent.svg') {
         document.getElementById('urgent-btn').style.backgroundColor = 'rgb(255, 61, 0)';
@@ -146,6 +158,14 @@ function renderAddedSubtask(taskStatus, x) {
 }
 
 
+/**
+ * render the subtask
+ * 
+ * @param {string} taskStatus 
+ * @param {number} x 
+ * @param {array} taskType 
+ * @param {object} subtasksToPush 
+ */
 function renderTaksExtension(taskStatus, x, taskType, subtasksToPush) {
     let i = 0;
     subtasksToPush = document.getElementById('task-subtask-edit').value;
@@ -204,6 +224,11 @@ function closeEdit(taskStatus, x) {
 }
 
 
+/**
+ * delete a contact from an task
+ * 
+ * @param {number} x 
+ */
 function deleteContactFromTask(x) {
     document.getElementById(`contact${x}`).style.backgroundColor = 'red';
     removerArray.push(openTask['inCharge'][x])
@@ -211,11 +236,26 @@ function deleteContactFromTask(x) {
 }
 
 
+/**
+ * remove character from an array in another array
+ * 
+ * @param {array} sourceArray 
+ * @param {array} removeArray 
+ * @returns 
+ */
 function removeArrayContent(sourceArray, removeArray) {
     return sourceArray.filter(item => !removeArray.includes(item));
 }
 
 
+/**
+ * close the edit
+ * 
+ * @param {string} taskStatus 
+ * @param {number} x 
+ * @param {object} checkboxChecked 
+ * @param {array} taskType 
+ */
 function closeEditExtension(taskStatus, x, checkboxChecked, taskType) {
     taskType[x]['titel'] = document.getElementById('edited-title').value;
     taskType[x]['text'] = document.getElementById('textarea-edit').value;
@@ -234,6 +274,10 @@ function closeEditExtension(taskStatus, x, checkboxChecked, taskType) {
 }
 
 
+/**
+ * @param {number} x 
+ * @returns the contacts that not already on the list
+ */
 function loadNewAssignedTo(x) {
     let inputElements = document.getElementsByClassName('checkbox-contacts-two');
     for (let i = 0; inputElements[i]; ++i) {
@@ -245,6 +289,11 @@ function loadNewAssignedTo(x) {
 }
 
 
+/**
+ * 
+ * @param {number} x 
+ * @returns the initials of the persons that on the task
+ */
 function loadInitials(x) {
     let inputElements = document.getElementsByClassName('checkbox-contacts-two');
     for (let i = 0; inputElements[i]; ++i) {
@@ -316,6 +365,15 @@ function changePriority(taskStatus, x, symbol, level) {
 }
 
 
+/**
+ * change the priority symbol
+ * 
+ * @param {string} taskStatus 
+ * @param {number} x 
+ * @param {*} symbol 
+ * @param {*} level 
+ * @param {array} taskType 
+ */
 function changePriorityExtension(taskStatus, x, symbol, level, taskType) {
     taskType[x]['priority'] = symbol;
     taskType[x]['priorityByName'] = level;

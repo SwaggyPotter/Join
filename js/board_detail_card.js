@@ -15,6 +15,12 @@ function renderSubtaksInDetailCard(x, tasktype) {
 }
 
 
+/**
+ * open the detail card on the board
+ * 
+ * @param {number} x 
+ * @param {string} tasktype 
+ */
 function openDetailcard(x, tasktype) {
     document.getElementById('details').classList.remove('d-none');
     let category = tasktype[x]['category'];
@@ -93,6 +99,14 @@ function updateCheckboxChecked(taskStatus, x, checkboxChecked) {
 }
 
 
+/**
+ * check if the checkbox is checked
+ * 
+ * @param {string} taskStatus 
+ * @param {number} x 
+ * @param {array} checkboxChecked 
+ * @param {array} taskType 
+ */
 function updateCheckboxCheckedExtension(taskStatus, x, checkboxChecked, taskType) {
     taskType[x]['alreadyDone'] = [];
     for (let i = 0; i < checkboxChecked.length; i++) {

@@ -25,7 +25,7 @@ function clearArray() {
  * sort a array with strings by the first letter
  * 
  * @param {sting} names 
- * @returns 
+ * @returns array with sortet names
  */
 function sortNamesByFirstLetter(names) {
     names.sort();
@@ -217,6 +217,11 @@ function getCategory() {
 }
 
 
+/**
+ * Push a person in an temporary array
+ * 
+ * @param {number} i 
+ */
 function teporaryAdd(i) {
     let inputElements = document.getElementsByClassName('messageCheckbox');
     for (let i = 0; inputElements[i]; ++i) {

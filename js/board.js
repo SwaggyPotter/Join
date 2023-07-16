@@ -15,6 +15,11 @@ function renderBoard() {
 }
 
 
+/**
+ * 
+ * @param {array} tasktype 
+ * @returns the container of the tasktype
+ */
 function giveBackTheTaskTheme(tasktype) {
     if (tasktype == tasksToDo) {
         return `to-do-container`
@@ -31,6 +36,11 @@ function giveBackTheTaskTheme(tasktype) {
 }
 
 
+/**
+ * 
+ * @param {array} tasktype 
+ * @returns the id
+ */
 function giveBackTheId(tasktype) {
     if (tasktype == tasksToDo) {
         return `selected-person-to-do`
@@ -60,6 +70,11 @@ function getCategoryColor(category) {
 }
 
 
+/**
+ * render the tasks
+ * 
+ * @param {array} tasktype 
+ */
 function renderAllTasks(tasktype) {
     let taskContainer = document.getElementById(`${giveBackTheTaskTheme(tasktype)}`);
     taskContainer.innerHTML = '';
@@ -75,6 +90,12 @@ function renderAllTasks(tasktype) {
 }
 
 
+/**
+ * render the persons on the task
+ * 
+ * @param {number} i 
+ * @param {array} tasktype 
+ */
 function renderSelectedPerson(i, tasktype) {
     let selectedPerson = document.getElementById(`${giveBackTheId(tasktype)}${i}`);
     let nbOfInCharge = tasktype[i]['inCharge'].length;

@@ -38,6 +38,10 @@ function getBackgroundColor(element) {
 }
 
 
+/**
+ * @param {*} rgbColor 
+ * @returns the hexa code color
+ */
 function rgbToHex(rgbColor) {
     let rgbArray = rgbColor.substring(4, rgbColor.length - 1).split(",");
     let hexArray = [];
@@ -91,6 +95,10 @@ function addTaskWithTimeOut() {
 }
 
 
+/**
+ * delete the contact
+ * @param {number} i 
+ */
 async function deleteContact(i) {
     await backend.setItem('contacts', JSON.stringify(sortedContacts))
     sortedContacts = JSON.parse(backend.getItem('contacts')) || [];

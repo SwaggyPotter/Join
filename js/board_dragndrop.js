@@ -27,6 +27,11 @@ function moveTo(container) {
 }
 
 
+/**
+ * move the tast position
+ * 
+ * @param {*} isGoodValue 
+ */
 function changeTaskPosition(isGoodValue) {
     const moveTask = (taskArray) => {
         currentTask = taskArray[movedTask];
@@ -48,6 +53,13 @@ function changeTaskPosition(isGoodValue) {
 }
 
 
+/**
+ * extension of the change position function
+ * 
+ * @param {*} isGoodValue 
+ * @param {string} taskTypeString 
+ * @param {string} taskType 
+ */
 function changeTaskPositionExtension(isGoodValue, taskTypeString, taskType) {
     if (currentDraggedElement == taskTypeString) {
         currentTask = taskType[movedTask];
@@ -57,6 +69,9 @@ function changeTaskPositionExtension(isGoodValue, taskTypeString, taskType) {
 }
 
 
+/**
+ * Push the array into a new array
+ */
 function moveTarget() {
     if (target == 'to-do-container') {
         tasksToDo.push(currentTask);

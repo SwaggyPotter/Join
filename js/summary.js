@@ -230,6 +230,11 @@ function checkForUrgentTasks() {
 }
 
 
+/**
+ * check if a task is urgent
+ * 
+ * @param {array} taksType 
+ */
 function checkForUrgentTasksExtension(taksType) {
     if (taksType[i]['priorityByName'] === 'urgent') {
         urgentCounter++

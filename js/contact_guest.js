@@ -2,6 +2,10 @@ let contacts = []
 let sortedContacts = sortContactsAndSave(contacts);
 let contactsTransform;
 
+
+/**
+ * load the contacts from the backend
+ */
 async function loadContactFromBackEnd() {
     setTimeout(() => {
         contactsTransform = backend.getItem('contacts') || []
