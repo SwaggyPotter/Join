@@ -63,7 +63,7 @@ function htmlTemplateSelectedPerson(i, j, tasktype) {
 
 function htmlTemplateTasks(i, widthProgressBar, nbDone, tasktype) {
     return `
-    <div draggable="true" ondragstart=" startDragging(${i}, '${startDragNameFinder(tasktype)}')" class="task-container-detail" onclick="${getOpenDetailName(tasktype)}(${i})">
+    <div draggable="true" ondragstart=" startDragging(${i}, '${startDragNameFinder(tasktype)}')" class="task-container-detail" onclick="openDetailcard(${i},${startDragNameFinder(tasktype)})">
         <div class="category" style="background:${bgColor}">${tasktype[i]['category']}</div>
      <div class="headline-task-detail">${tasktype[i]['titel']}</div>
         <div class="text-task-detail">${tasktype[i]['text']}</div>
@@ -84,9 +84,9 @@ function htmlTemplateTasks(i, widthProgressBar, nbDone, tasktype) {
 }
 
 
-function htmltemplateDetailCard(x, tasktype, tasktypeAsString) {
+function htmltemplateDetailCard(x, tasktype) {
     return `
-    <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('${tasktypeAsString}', ${x})"> <button onclick="closeDetailCard('${tasktypeAsString}', ${x})">X</button></div>
+    <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask(${startDragNameFinder(tasktype)}, ${x})"> <button onclick="closeDetailCard(${startDragNameFinder(tasktype)}, ${x})">X</button></div>
     <span class="category" style="background:${bgColor}">${tasktype[x]['category']}</span>
     <h1>${tasktype[x]['titel']}</h1>
     <span class="task-text">${tasktype[x]['text']}</span>    
@@ -104,7 +104,7 @@ function htmltemplateDetailCard(x, tasktype, tasktypeAsString) {
     <div class="names-container" id="names-container">
         
     </div>
-    <div class="edit-btn"><img src="assets/img/edit-button.svg" onclick="editTask('${tasktypeAsString}', ${x})"></div>
+    <div class="edit-btn"><img src="assets/img/edit-button.svg" onclick="editTask('${startDragNameFinder(tasktype)}', ${x})"></div>
     `;
 }
 

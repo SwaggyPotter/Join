@@ -415,6 +415,15 @@ body {
     cursor: pointer;
 }
 
+#close-detail-arrow:hover {
+    position: fixed;
+    right: 60px;
+    top: 50px !important;
+    cursor: pointer;
+    background-color: #c1ccdd;
+    border-radius: 5px;
+}
+
 #warning-full-name {
     position: fixed;
     background-color: #bfc3c988;

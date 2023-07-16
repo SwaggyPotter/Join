@@ -15,93 +15,22 @@ function renderSubtaksInDetailCard(x, tasktype) {
 }
 
 
-/**
- * this function opens the detail card for tasks to do
- * 
- * @param {number} x 
- */
-function openDetailCardToDo(x) {
+function openDetailcard(x, tasktype) {
     document.getElementById('details').classList.remove('d-none');
-    let category = tasksToDo[x]['category'];
+    let category = tasktype[x]['category'];
     getCategoryColor(`${category}`);
     document.getElementById('detail-popup').innerHTML =
-        htmltemplateDetailCard(x, tasksToDo, 'tasksToDo');
+        htmltemplateDetailCard(x, tasktype);
+
     document.getElementById('names-container').innerHTML = '';
-    for (let j = 0; j < tasksToDo[x]['inCharge'].length; j++) {
+    for (let j = 0; j < tasktype[x]['inCharge'].length; j++) {
         document.getElementById('names-container').innerHTML +=
-            htmlTemplatePersonsDetailCard(x, j, tasksToDo);
+            htmlTemplatePersonsDetailCard(x, j, tasktype);
     };
-    renderSubtaksInDetailCard(x, tasksToDo);
+    renderSubtaksInDetailCard(x, tasktype);
     document.getElementById('body').style.overflow = 'hidden';
-    document.getElementById('details').setAttribute('onclick', `closeDetailCard('tasksToDo', ${x})`)
-    openTask = tasksToDo[x];
-}
-
-
-/**
- * this function opens the detail card for tasks in progress
- * 
- * @param {number} x 
- */
-function openDetailCardInProgress(x) {
-    document.getElementById('details').classList.remove('d-none');
-    let category = tasksInProgress[x]['category'];
-    getCategoryColor(`${category}`);
-    document.getElementById('detail-popup').innerHTML =
-        htmltemplateDetailCard(x, tasksInProgress, 'tasksInProgress');
-    document.getElementById('names-container').innerHTML = '';
-    for (let j = 0; j < tasksInProgress[x]['inCharge'].length; j++) {
-        document.getElementById('names-container').innerHTML +=
-            htmlTemplatePersonsDetailCard(x, j, tasksInProgress);
-    };
-    renderSubtaksInDetailCard(x, tasksInProgress);
-    document.getElementById('body').style.overflow = 'hidden';
-    document.getElementById('details').setAttribute('onclick', `closeDetailCard('tasksInProgress', ${x})`)
-    openTask = tasksInProgress[x];
-}
-
-
-/**
- * this function opens the detail card for tasks await feedback
- * 
- * @param {number} x 
- */
-function openDetailCardAwaitFeedback(x) {
-    document.getElementById('details').classList.remove('d-none');
-    let category = tasksAwaitFeedback[x]['category'];
-    getCategoryColor(`${category}`);
-    document.getElementById('detail-popup').innerHTML =
-        htmltemplateDetailCard(x, tasksInProgress, 'tasksAwaitFeedback');
-    for (let j = 0; j < tasksAwaitFeedback[x]['inCharge'].length; j++) {
-        document.getElementById('names-container').innerHTML +=
-            htmlTemplatePersonsDetailCard(x, j, tasksAwaitFeedback);
-    };
-    renderSubtaksInDetailCard(x, tasksAwaitFeedback);
-    document.getElementById('body').style.overflow = 'hidden';
-    document.getElementById('details').setAttribute('onclick', `closeDetailCard('tasksAwaitFeedback', ${x})`)
-    openTask = tasksAwaitFeedback[x];
-}
-
-
-/**
- * this function opens the detail card for tasks done
- * 
- * @param {number} x 
- */
-function openDetailCardDone(x) {
-    document.getElementById('details').classList.remove('d-none');
-    let category = tasksDone[x]['category'];
-    getCategoryColor(`${category}`);
-    document.getElementById('detail-popup').innerHTML =
-        htmltemplateDetailCard(x, tasksDone, 'tasksDone');
-    for (let j = 0; j < tasksDone[x]['inCharge'].length; j++) {
-        document.getElementById('names-container').innerHTML +=
-            htmlTemplatePersonsDetailCard(x, j, tasksDone);
-    };
-    renderSubtaksInDetailCard(x, tasksDone);
-    document.getElementById('body').style.overflow = 'hidden';
-    document.getElementById('details').setAttribute('onclick', `closeDetailCard('tasksDone', ${x})`)
-    openTask = tasksDone[x];
+    document.getElementById('details').setAttribute('onclick', `closeDetailCard('${startDragNameFinder(tasktype)}', ${x})`)
+    openTask = tasktype[x];
 }
 
 

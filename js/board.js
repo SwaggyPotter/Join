@@ -66,7 +66,7 @@ function renderAllTasks(tasktype) {
     for (let i = 0; i < tasktype.length; i++) {
         let category = tasktype[i]['category'];
         getCategoryColor(`${category}`);
-        checkDoneTasks(i, `'${tasktype}'`);
+        checkDoneTasks(i, `${startDragNameFinder(tasktype)}`);
         const widthProgressBar = nbDone / tasktype[i]['subtasks'].length * 100;
         taskContainer.innerHTML +=
             htmlTemplateTasks(i, widthProgressBar, nbDone, tasktype);
@@ -173,7 +173,7 @@ function filterToDo(search) {
             const widthProgressBar = nbDone / tasksToDo[i]['subtasks'].length * 100;
             document.getElementById('to-do-container').innerHTML +=
                 htmlTemplateTasks(i, widthProgressBar, nbDone, tasksToDo);
-            renderSelectedPersonToDo(i);
+            renderSelectedPerson(i, tasksToDo);
         }
     }
 }
@@ -195,7 +195,7 @@ function filterInProgress(search) {
             const widthProgressBar = nbDone / tasksInProgress[i]['subtasks'].length * 100;
             document.getElementById('in-progress-container').innerHTML +=
                 htmlTemplateTasks(i, widthProgressBar, nbDone, tasksInProgress);
-            renderSelectedPersonInProgress(i);
+            renderSelectedPerson(i, tasksInProgress);
         }
     }
 }
@@ -216,7 +216,7 @@ function filterAwaitFeedback(search) {
             const widthProgressBar = nbDone / tasksAwaitFeedback[i]['subtasks'].length * 100;
             document.getElementById('await-feedback-container').innerHTML +=
                 htmlTemplateTasks(i, widthProgressBar, nbDone, tasksAwaitFeedback);
-            renderSelectedPersonAwaitFeedback(i);
+            renderSelectedPerson(i, tasksAwaitFeedback);
         }
     }
 }
@@ -237,7 +237,7 @@ function filterDone(search) {
             const widthProgressBar = nbDone / tasksDone[i]['subtasks'].length * 100;
             document.getElementById('done-container').innerHTML +=
                 htmlTemplateTasks(i, widthProgressBar, nbDone, tasksDone);
-            renderSelectedPersonDone(i);
+            renderSelectedPerson(i, tasksDone);;
         }
     }
 }
